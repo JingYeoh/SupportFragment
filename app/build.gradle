@@ -22,7 +22,7 @@ android {
         dataBinding {
             enabled = true
         }
-        
+
         /*jackOptions {
             enabled true
         }*/
@@ -82,6 +82,8 @@ dependencies {
     compile deps.arouter_annotation
     //v
     compile deps.design
+    //helper
+    compile deps.eventbus
 }
 
 def static releaseTime() {

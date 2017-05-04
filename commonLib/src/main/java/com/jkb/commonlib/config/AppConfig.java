@@ -17,6 +17,14 @@ public interface AppConfig {
     }
 
     /**
+     * 时间总线的TAG
+     */
+    interface EventBusTAG {
+        String APP_INIT = "/app/init";
+        String APP_INIT_COMPLECTED = "/app/init/completed";
+    }
+
+    /**
      * 用于保存和恢复的Key
      */
     interface KeyBundle {
@@ -32,5 +40,12 @@ public interface AppConfig {
         int THREE = 1003;
         int FOUR = 1004;
         int FIVE = 1005;
+    }
+
+    /**
+     * 数据库
+     */
+    interface Db {
+        String NAME = "tantan.db";
     }
 }

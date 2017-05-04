@@ -9,6 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!-- toolbar的主题-->
         <item name="toolbarStyle">@style/MyActionBarStyle</item>
+        <item name="android:windowBackground">@drawable/img_launch</item>
     </style>
 
     <!--自定义的ActionBar样式-->
