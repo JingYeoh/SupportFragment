@@ -19,9 +19,13 @@ android {
             }
         }
 
-        jackOptions {
-            enabled true
+        dataBinding {
+            enabled = true
         }
+        
+        /*jackOptions {
+            enabled true
+        }*/
     }
 
     compileOptions {
@@ -58,7 +62,7 @@ android {
             minifyEnabled false
             zipAlignEnabled false
             shrinkResources false
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
         }
     }
 
@@ -76,6 +80,8 @@ dependencies {
     compile deps.arouter_api
     annotationProcessor deps.arouter_compiler
     compile deps.arouter_annotation
+    //v
+    compile deps.design
 }
 
 def static releaseTime() {

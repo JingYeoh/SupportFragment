@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SupportFragment</string>
+
+    <string name="onboarding_finish_button_description">开始探探</string>
 </resources>

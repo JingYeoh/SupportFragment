@@ -3,4 +3,11 @@
     <color name="colorPrimary">#e2662a</color>
     <color name="colorPrimaryDark">#bd3e27</color>
     <color name="colorAccent">#bd3e27</color>
+
+    <!--引导-->
+    <color name="guide_1">#0C69B1</color>
+    <color name="guide_2">#3D3425</color>
+    <color name="guide_3">#978D81</color>
+    <color name="guide_4">#1E2B38</color>
+    <color name="guide_5">#57ac68</color>
 </resources>
