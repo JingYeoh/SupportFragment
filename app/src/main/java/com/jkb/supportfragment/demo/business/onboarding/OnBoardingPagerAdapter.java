@@ -25,23 +25,16 @@ public class OnBoardingPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-       /* if (position == 0) {
+        if (position == 0) {
             return AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.ONE);
         } else if (position == 1) {
             return AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.TWO);
-        } else {
-            return AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.THREE);
-        }*/
-        if (position == 0) {
-            return OnBoardingPlaceHolderFragment.newInstance(AppConfig.OnBoardType.ONE);
-        } else if (position == 1) {
-            return OnBoardingPlaceHolderFragment.newInstance(AppConfig.OnBoardType.TWO);
         } else if (position == 2) {
-            return OnBoardingPlaceHolderFragment.newInstance(AppConfig.OnBoardType.THREE);
+            return AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.THREE);
         } else if (position == 3) {
-            return OnBoardingPlaceHolderFragment.newInstance(AppConfig.OnBoardType.FOUR);
+            return AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.FOUR);
         } else {
-            return OnBoardingPlaceHolderFragment.newInstance(AppConfig.OnBoardType.FIVE);
+            return AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.FIVE);
         }
     }
 }

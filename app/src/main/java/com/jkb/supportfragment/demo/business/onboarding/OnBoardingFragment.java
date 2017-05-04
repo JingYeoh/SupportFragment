@@ -1,14 +1,11 @@
 package com.jkb.supportfragment.demo.business.onboarding;
 
 import android.animation.ArgbEvaluator;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -16,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.utils.DimensionUtils;
+import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 
 /**
@@ -24,16 +22,6 @@ import com.jkb.supportfragment.demo.R;
  */
 @Route(path = AppConfig.RouterPath.ONBOARDING_CONTENT)
 public class OnBoardingFragment extends BaseFragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
-
-    public static OnBoardingFragment newInstance() {
-        Bundle args = new Bundle();
-        OnBoardingFragment fragment = new OnBoardingFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public OnBoardingFragment() {
-    }
 
     //ui
     private ViewPager viewPager;
@@ -75,7 +63,7 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.onBoarding_finish://引动结束
+            case R.id.onBoarding_finish://引导结束
                 break;
         }
     }

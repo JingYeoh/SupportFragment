@@ -8,12 +8,12 @@ public interface AppConfig {
 
     /**
      * 路由路径
+     * 注意：path最少两级
      */
     interface RouterPath {
-
         /*Fragment*/
         String ONBOARDING_CONTENT = "/onBoarding/content";
-        String ONBOARDING_PLACEHOLDER = "/onBoarding/placeHolder";
+        String ONBOARDING_PLACEHOLDER = "/onBoarding/placeholder";
     }
 
     /**

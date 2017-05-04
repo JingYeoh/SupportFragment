@@ -2,6 +2,7 @@ package com.jkb.supportfragment.demo;
 
 import android.os.Bundle;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.jkb.commonlib.base.BaseActivity;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
@@ -26,10 +27,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-            SupportFragment fragment = AppLauncher.launchOnBoardingPlaceHolder(AppConfig.OnBoardType.ONE);
-            LogUtils.d(this, "fragment=" + fragment);
-            startFragment(OnBoardingFragment.newInstance());
-//            startFragment(OnBoardingPlaceHolderFragment.newInstance(AppConfig.OnBoardType.ONE));
+            startFragment(AppLauncher.launchOnBoardingMain());
         }
     }
 

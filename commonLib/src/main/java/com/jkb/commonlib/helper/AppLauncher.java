@@ -23,7 +23,7 @@ public class AppLauncher {
      */
     public static SupportFragment launchOnBoardingPlaceHolder(int onBoardType) {
         return (SupportFragment) ARouter.getInstance().
-                build(AppConfig.RouterPath.ONBOARDING_CONTENT)
+                build(AppConfig.RouterPath.ONBOARDING_PLACEHOLDER)
                 .withInt(AppConfig.KeyBundle.ONBOARDING_TYPE, onBoardType).navigation();
     }
 }

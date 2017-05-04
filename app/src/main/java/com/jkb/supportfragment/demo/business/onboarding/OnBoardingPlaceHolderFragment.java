@@ -15,14 +15,6 @@ import com.jkb.supportfragment.demo.R;
 @Route(path = AppConfig.RouterPath.ONBOARDING_PLACEHOLDER)
 public class OnBoardingPlaceHolderFragment extends BaseFragment {
 
-    public static OnBoardingPlaceHolderFragment newInstance(int type) {
-        Bundle args = new Bundle();
-        args.putInt(AppConfig.KeyBundle.ONBOARDING_TYPE, type);
-        OnBoardingPlaceHolderFragment fragment = new OnBoardingPlaceHolderFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     //新手上路的类型
     private int mOnBoardingType;
     //ui
