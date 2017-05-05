@@ -15,6 +15,8 @@ import com.jkb.commonlib.exception.auth.UnLoginException;
 import com.jkb.commonlib.exception.auth.UserInfoNotFoundException;
 import com.jkb.commonlib.utils.TimeUtils;
 
+import org.simple.eventbus.EventBus;
+
 import java.util.Observable;
 
 /**
@@ -175,7 +177,6 @@ public class AppManager extends Observable implements AppAction {
      */
     private void insertStatus(boolean isLogin) {
         Status status = new Status();
-        status.setVersion(getSystemVersion());
         status.setFlag_login(isLogin);
         if (isLogin) {
             status.setUser_id(mUser.getUserId());

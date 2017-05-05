@@ -7,6 +7,7 @@ import org.greenrobot.greendao.annotation.Property;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
@@ -20,10 +21,6 @@ public class Status implements Serializable {
 
     @Id(autoincrement = true)
     private Long id;//默认自增id
-
-    @NotNull
-    @Property(nameInDb = "version")
-    private String version;
 
     @NotNull
     @Property(nameInDb = "flag_login")
@@ -40,22 +37,13 @@ public class Status implements Serializable {
     public Status() {
     }
 
-    @Generated(hash = 1999419557)
-    public Status(Long id, @NotNull String version, boolean flag_login, int user_id,
+    @Generated(hash = 1486184134)
+    public Status(Long id, boolean flag_login, int user_id,
             @NotNull Date create_time) {
         this.id = id;
-        this.version = version;
         this.flag_login = flag_login;
         this.user_id = user_id;
         this.create_time = create_time;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     public boolean isFlag_login() {

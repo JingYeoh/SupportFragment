@@ -26,4 +26,20 @@ public class AppLauncher {
                 build(AppConfig.RouterPath.ONBOARDING_PLACEHOLDER)
                 .withInt(AppConfig.KeyBundle.ONBOARDING_TYPE, onBoardType).navigation();
     }
+
+    /**
+     * 启动输入帐号页面
+     */
+    public static SupportFragment launchAccount() {
+        return (SupportFragment) ARouter.getInstance().
+                build(AppConfig.RouterPath.AUTH_ACCOUNT).navigation();
+    }
+
+    /**
+     * 启动登录页面
+     */
+    public static SupportFragment launchLogin() {
+        return (SupportFragment) ARouter.getInstance().
+                build(AppConfig.RouterPath.AUTH_LOGIN).navigation();
+    }
 }

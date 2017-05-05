@@ -14,6 +14,13 @@ public interface AppConfig {
         /*Fragment*/
         String ONBOARDING_CONTENT = "/onBoarding/content";
         String ONBOARDING_PLACEHOLDER = "/onBoarding/placeholder";
+
+        String AUTH_ACCOUNT = "/auth/account";
+        String AUTH_LOGIN = "/auth/login";
+        String AUTH_PASSWORD_FINDBACK = "/auth/password/findBack";
+        String AUTH_PASSWORD_RESET = "/auth/password/reset";
+
+        String APP_MAIN = "/app/main";
     }
 
     /**
@@ -47,6 +54,15 @@ public interface AppConfig {
      */
     interface Db {
         String NAME = "tantan.db";
+    }
+
+    /**
+     * SharedPreference
+     */
+    interface SharedPreference {
+        String NAME_APP = "tantanApp";
+
+        String KEY_LASH_USE_VERSION = "lastUseVersion";
     }
 
     /**

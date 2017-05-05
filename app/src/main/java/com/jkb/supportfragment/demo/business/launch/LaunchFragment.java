@@ -3,11 +3,14 @@ package com.jkb.supportfragment.demo.business.launch;
 import android.os.Bundle;
 import android.os.Message;
 
-import com.jkb.commonlib.base.ui.BaseFragment;
+import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
-import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
+import com.jkb.supportfragment.demo.business.helper.InjectRepertory;
+import com.jkb.supportfragment.demo.business.launch.contract.LaunchContract;
+import com.jkb.supportfragment.demo.business.launch.presenter.LaunchPresenter;
+import com.jkb.supportfragment.demo.databinding.FrgLaunchBinding;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -18,7 +21,8 @@ import org.simple.eventbus.ThreadMode;
  * Created by yj on 2017/5/4.
  */
 
-public class LaunchFragment extends BaseFragment {
+public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunchBinding> implements
+        LaunchContract.View {
 
     public static LaunchFragment newInstance() {
         Bundle args = new Bundle();
@@ -30,6 +34,11 @@ public class LaunchFragment extends BaseFragment {
     @Override
     public int getRootViewId() {
         return R.layout.frg_launch;
+    }
+
+    @Override
+    public void initPresenter() {
+        new LaunchPresenter(this, InjectRepertory.provideLaunchDR(mContext));
     }
 
     @Override
@@ -58,13 +67,39 @@ public class LaunchFragment extends BaseFragment {
      */
     @Subscriber(mode = ThreadMode.MAIN, tag = AppConfig.EventBusTAG.APP_INIT_COMPLECTED)
     public void onAppInitCompleted(Message message) {
-        LogUtils.d(this, "onAppInitCompleted");
-        startFragment(AppLauncher.launchOnBoardingMain());
-        close();
+        getPresenter().start();
     }
 
     @Override
     public boolean requestFullScreenStyle() {
         return true;
+    }
+
+    @Override
+    public void setLaunchEntity(LaunchEntity entity) {
+        getBinding().setLaunch(entity);
+    }
+
+    @Override
+    public void launchOnBoarding() {
+        startFragment(AppLauncher.launchOnBoardingMain());
+        close();
+    }
+
+    @Override
+    public void launchMain() {
+        startFragment(AppLauncher.launchAccount());
+        close();
+    }
+
+    @Override
+    public void launchAccount() {
+        startFragment(AppLauncher.launchAccount());
+        close();
+    }
+
+    @Override
+    public void setPresenter(LaunchContract.Presenter presenter) {
+        mPresenter = presenter;
     }
 }

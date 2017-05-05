@@ -25,10 +25,9 @@ public class StatusDao extends AbstractDao<Status, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Version = new Property(1, String.class, "version", false, "version");
-        public final static Property Flag_login = new Property(2, boolean.class, "flag_login", false, "flag_login");
-        public final static Property User_id = new Property(3, int.class, "user_id", false, "user_id");
-        public final static Property Create_time = new Property(4, java.util.Date.class, "create_time", false, "create_time");
+        public final static Property Flag_login = new Property(1, boolean.class, "flag_login", false, "flag_login");
+        public final static Property User_id = new Property(2, int.class, "user_id", false, "user_id");
+        public final static Property Create_time = new Property(3, java.util.Date.class, "create_time", false, "create_time");
     }
 
 
@@ -45,10 +44,9 @@ public class StatusDao extends AbstractDao<Status, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"status\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"version\" TEXT NOT NULL ," + // 1: version
-                "\"flag_login\" INTEGER NOT NULL ," + // 2: flag_login
-                "\"user_id\" INTEGER NOT NULL ," + // 3: user_id
-                "\"create_time\" INTEGER NOT NULL );"); // 4: create_time
+                "\"flag_login\" INTEGER NOT NULL ," + // 1: flag_login
+                "\"user_id\" INTEGER NOT NULL ," + // 2: user_id
+                "\"create_time\" INTEGER NOT NULL );"); // 3: create_time
     }
 
     /** Drops the underlying database table. */
@@ -65,10 +63,9 @@ public class StatusDao extends AbstractDao<Status, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindString(2, entity.getVersion());
-        stmt.bindLong(3, entity.getFlag_login() ? 1L: 0L);
-        stmt.bindLong(4, entity.getUser_id());
-        stmt.bindLong(5, entity.getCreate_time().getTime());
+        stmt.bindLong(2, entity.getFlag_login() ? 1L: 0L);
+        stmt.bindLong(3, entity.getUser_id());
+        stmt.bindLong(4, entity.getCreate_time().getTime());
     }
 
     @Override
@@ -79,10 +76,9 @@ public class StatusDao extends AbstractDao<Status, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindString(2, entity.getVersion());
-        stmt.bindLong(3, entity.getFlag_login() ? 1L: 0L);
-        stmt.bindLong(4, entity.getUser_id());
-        stmt.bindLong(5, entity.getCreate_time().getTime());
+        stmt.bindLong(2, entity.getFlag_login() ? 1L: 0L);
+        stmt.bindLong(3, entity.getUser_id());
+        stmt.bindLong(4, entity.getCreate_time().getTime());
     }
 
     @Override
@@ -94,10 +90,9 @@ public class StatusDao extends AbstractDao<Status, Long> {
     public Status readEntity(Cursor cursor, int offset) {
         Status entity = new Status( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1), // version
-            cursor.getShort(offset + 2) != 0, // flag_login
-            cursor.getInt(offset + 3), // user_id
-            new java.util.Date(cursor.getLong(offset + 4)) // create_time
+            cursor.getShort(offset + 1) != 0, // flag_login
+            cursor.getInt(offset + 2), // user_id
+            new java.util.Date(cursor.getLong(offset + 3)) // create_time
         );
         return entity;
     }
@@ -105,10 +100,9 @@ public class StatusDao extends AbstractDao<Status, Long> {
     @Override
     public void readEntity(Cursor cursor, Status entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setVersion(cursor.getString(offset + 1));
-        entity.setFlag_login(cursor.getShort(offset + 2) != 0);
-        entity.setUser_id(cursor.getInt(offset + 3));
-        entity.setCreate_time(new java.util.Date(cursor.getLong(offset + 4)));
+        entity.setFlag_login(cursor.getShort(offset + 1) != 0);
+        entity.setUser_id(cursor.getInt(offset + 2));
+        entity.setCreate_time(new java.util.Date(cursor.getLong(offset + 3)));
      }
     
     @Override

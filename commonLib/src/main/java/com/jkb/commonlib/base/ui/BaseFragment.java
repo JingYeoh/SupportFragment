@@ -1,5 +1,7 @@
 package com.jkb.commonlib.base.ui;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.jkb.commonlib.base.ui.action.BaseAction;
 import com.jkb.commonlib.base.ui.action.BaseFragmentAction;
+import com.jkb.commonlib.base.ui.action.frame.IMVVMAction;
 import com.jkb.support.ui.SupportFragment;
 import com.jkb.support.utils.LogUtils;
 
@@ -20,11 +23,13 @@ import com.jkb.support.utils.LogUtils;
  * Fragment的基类
  */
 
-public abstract class BaseFragment extends SupportFragment implements BaseAction,
-        BaseFragmentAction {
+public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFragment implements BaseAction,
+        BaseFragmentAction, IMVVMAction<VM> {
 
     //view
     protected View rootView;
+    //data
+    private VM mBinding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,7 +42,12 @@ public abstract class BaseFragment extends SupportFragment implements BaseAction
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         LogUtils.d(TAG, "onCreateView");
-        rootView = inflater.inflate(getRootViewId(), container, false);
+        if (isSupportMVVM()) {
+            mBinding = DataBindingUtil.inflate(inflater, getRootViewId(), container, false);
+            rootView = mBinding.getRoot();
+        } else {
+            rootView = inflater.inflate(getRootViewId(), container, false);
+        }
         return rootView;
     }
 
@@ -100,5 +110,15 @@ public abstract class BaseFragment extends SupportFragment implements BaseAction
     public void showShortToast(String value) {
         if (TextUtils.isEmpty(value)) return;
         Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean isSupportMVVM() {
+        return false;
+    }
+
+    @Override
+    final public VM getBinding() {
+        return mBinding;
     }
 }

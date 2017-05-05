@@ -7,7 +7,6 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.db.DbManager;
-import com.jkb.support.utils.LogUtils;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;

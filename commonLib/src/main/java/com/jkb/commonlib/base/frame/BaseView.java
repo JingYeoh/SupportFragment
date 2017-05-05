@@ -14,7 +14,7 @@ public interface BaseView<T extends BasePresenter> {
     /**
      * 显示Toast
      */
-    void showShortToash(String value);
+    void showShortToast(String value);
 
     /**
      * 注入P层

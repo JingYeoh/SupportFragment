@@ -13,6 +13,11 @@ public interface BasePresenter {
     void start();
 
     /**
+     * 绑定数据到视图中
+     */
+    void bindDataToView();
+
+    /**
      * 銷毀P层
      */
     void destroy();
