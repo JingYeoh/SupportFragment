@@ -2,6 +2,7 @@ package com.jkb.commonlib.base.ui;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -55,6 +56,7 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setWindowStyle();
+        setImmersiveStatus();
         init(savedInstanceState);
     }
 
@@ -91,6 +93,20 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
         }
     }
 
+    /**
+     * 沉浸式状态栏
+     */
+    private void setImmersiveStatus() {
+        if (!requestImmersiveStatusStyle()) return;
+        Window window = mActivity.getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
+
     @Override
     public View findViewById(@IdRes int id) {
         return rootView.findViewById(id);
@@ -103,6 +119,11 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
 
     @Override
     public boolean requestFullScreenStyle() {
+        return false;
+    }
+
+    @Override
+    public boolean requestImmersiveStatusStyle() {
         return false;
     }
 

@@ -1,0 +1,1162 @@
+[
+  {
+    "id": "china",
+    "code": "+86",
+    "name": "中国"
+  },
+  {
+    "id": "hong-kong",
+    "code": "+852",
+    "name": "香港"
+  },
+  {
+    "id": "taiwan",
+    "code": "+886",
+    "name": "台湾"
+  },
+  {
+    "id": "south-korea",
+    "code": "+82",
+    "name": "韩国"
+  },
+  {
+    "id": "japan",
+    "code": "+81",
+    "name": "日本"
+  },
+  {
+    "id": "afghanistan",
+    "code": "+93",
+    "name": "阿富汗"
+  },
+  {
+    "id": "albania",
+    "code": "+355",
+    "name": "阿尔巴尼亚"
+  },
+  {
+    "id": "algeria",
+    "code": "+213",
+    "name": "阿尔及利亚"
+  },
+  {
+    "id": "american-samoa",
+    "code": "+1684",
+    "name": "美国萨摩亚"
+  },
+  {
+    "id": "andorra",
+    "code": "+376",
+    "name": "安道尔"
+  },
+  {
+    "id": "angola",
+    "code": "+244",
+    "name": "安哥拉"
+  },
+  {
+    "id": "anguilla",
+    "code": "+1264",
+    "name": "安圭拉"
+  },
+  {
+    "id": "antarctica",
+    "code": "+672",
+    "name": "南极洲"
+  },
+  {
+    "id": "antigua-and-barbuda",
+    "code": "+1268",
+    "name": "安提瓜和巴布达"
+  },
+  {
+    "id": "argentina",
+    "code": "+54",
+    "name": "阿根廷"
+  },
+  {
+    "id": "armenia",
+    "code": "+374",
+    "name": "亚美尼亚"
+  },
+  {
+    "id": "aruba",
+    "code": "+297",
+    "name": "阿鲁巴"
+  },
+  {
+    "id": "australia",
+    "code": "+61",
+    "name": "澳大利亚"
+  },
+  {
+    "id": "austria",
+    "code": "+43",
+    "name": "奥地利"
+  },
+  {
+    "id": "azerbaijan",
+    "code": "+994",
+    "name": "阿塞拜疆"
+  },
+  {
+    "id": "bahamas",
+    "code": "+1242",
+    "name": "巴哈马"
+  },
+  {
+    "id": "bahrain",
+    "code": "+973",
+    "name": "巴林"
+  },
+  {
+    "id": "bangladesh",
+    "code": "+880",
+    "name": "孟加拉国"
+  },
+  {
+    "id": "barbados",
+    "code": "+1246",
+    "name": "巴巴多斯"
+  },
+  {
+    "id": "belarus",
+    "code": "+375",
+    "name": "白俄罗斯"
+  },
+  {
+    "id": "belgium",
+    "code": "+32",
+    "name": "比利时"
+  },
+  {
+    "id": "belize",
+    "code": "+501",
+    "name": "伯利兹"
+  },
+  {
+    "id": "benin",
+    "code": "+229",
+    "name": "贝宁"
+  },
+  {
+    "id": "bermuda",
+    "code": "+1441",
+    "name": "百慕大"
+  },
+  {
+    "id": "bhutan",
+    "code": "+975",
+    "name": "不丹"
+  },
+  {
+    "id": "bolivia",
+    "code": "+591",
+    "name": "玻利维亚"
+  },
+  {
+    "id": "bosnia-and-herzegovina",
+    "code": "+387",
+    "name": "波斯尼亚和黑塞哥维那"
+  },
+  {
+    "id": "botswana",
+    "code": "+267",
+    "name": "博茨瓦纳"
+  },
+  {
+    "id": "brazil",
+    "code": "+55",
+    "name": "巴西"
+  },
+  {
+    "id": "british-virgin-islands",
+    "code": "+1284",
+    "name": "英国维尔京群岛"
+  },
+  {
+    "id": "brunei",
+    "code": "+673",
+    "name": "文莱"
+  },
+  {
+    "id": "bulgaria",
+    "code": "+359",
+    "name": "保加利亚"
+  },
+  {
+    "id": "burkina-faso",
+    "code": "+226",
+    "name": "布基纳法索"
+  },
+  {
+    "id": "burundi",
+    "code": "+257",
+    "name": "布隆迪"
+  },
+  {
+    "id": "cambodia",
+    "code": "+855",
+    "name": "柬埔寨"
+  },
+  {
+    "id": "cameroon",
+    "code": "+237",
+    "name": "喀麦隆"
+  },
+  {
+    "id": "canada",
+    "code": "+1",
+    "name": "加拿大"
+  },
+  {
+    "id": "cape-verde",
+    "code": "+238",
+    "name": "佛得角"
+  },
+  {
+    "id": "cayman-islands",
+    "code": "+1345",
+    "name": "开曼群岛"
+  },
+  {
+    "id": "central-african-republic",
+    "code": "+236",
+    "name": "中非共和国"
+  },
+  {
+    "id": "chad",
+    "code": "+235",
+    "name": "乍得"
+  },
+  {
+    "id": "chile",
+    "code": "+56",
+    "name": "智利"
+  },
+  {
+    "id": "christmas-island",
+    "code": "+61",
+    "name": "圣诞岛"
+  },
+  {
+    "id": "cocos-keeling-islands",
+    "code": "+61",
+    "name": "科科斯-基林群岛"
+  },
+  {
+    "id": "colombia",
+    "code": "+57",
+    "name": "哥伦比亚"
+  },
+  {
+    "id": "comoros",
+    "code": "+269",
+    "name": "科摩罗"
+  },
+  {
+    "id": "congo",
+    "code": "+242",
+    "name": "刚果"
+  },
+  {
+    "id": "congo-drc",
+    "code": "+243",
+    "name": "刚果民主共和国"
+  },
+  {
+    "id": "cook-islands",
+    "code": "+682",
+    "name": "库克群岛"
+  },
+  {
+    "id": "costa-rica",
+    "code": "+506",
+    "name": "库克群岛"
+  },
+  {
+    "id": "cote-divoire",
+    "code": "+225",
+    "name": "科特迪瓦"
+  },
+  {
+    "id": "croatia",
+    "code": "+385",
+    "name": "克罗地亚"
+  },
+  {
+    "id": "cuba",
+    "code": "+53",
+    "name": "古巴"
+  },
+  {
+    "id": "cyprus",
+    "code": "+357",
+    "name": "塞浦路斯"
+  },
+  {
+    "id": "czech-republic",
+    "code": "+420",
+    "name": "捷克共和国"
+  },
+  {
+    "id": "denmark",
+    "code": "+45",
+    "name": "丹麦"
+  },
+  {
+    "id": "djibouti",
+    "code": "+253",
+    "name": "吉布提"
+  },
+  {
+    "id": "dominica",
+    "code": "+1767",
+    "name": "多米尼加"
+  },
+  {
+    "id": "dominican-republic",
+    "code": "+1809",
+    "name": "多明尼加共和国"
+  },
+  {
+    "id": "ecuador",
+    "code": "+593",
+    "name": "厄瓜多尔"
+  },
+  {
+    "id": "egypt",
+    "code": "+20",
+    "name": "埃及"
+  },
+  {
+    "id": "el-salvador",
+    "code": "+503",
+    "name": "圣萨尔瓦多"
+  },
+  {
+    "id": "equatorial-guinea",
+    "code": "+240",
+    "name": "赤道几内亚"
+  },
+  {
+    "id": "eritrea",
+    "code": "+291",
+    "name": "厄立特里亚"
+  },
+  {
+    "id": "estonia",
+    "code": "+372",
+    "name": "爱沙尼亚"
+  },
+  {
+    "id": "ethiopia",
+    "code": "+251",
+    "name": "埃塞俄比亚"
+  },
+  {
+    "id": "falkland-islands",
+    "code": "+500",
+    "name": "福克兰群岛"
+  },
+  {
+    "id": "faroe-islands",
+    "code": "+298",
+    "name": "法罗群岛"
+  },
+  {
+    "id": "fiji",
+    "code": "+679",
+    "name": "斐济"
+  },
+  {
+    "id": "finland",
+    "code": "+358",
+    "name": "芬兰"
+  },
+  {
+    "id": "france",
+    "code": "+33",
+    "name": "法国"
+  },
+  {
+    "id": "french-guiana",
+    "code": "+594",
+    "name": "法属圭亚那"
+  },
+  {
+    "id": "french-polynesia",
+    "code": "+689",
+    "name": "法国属波利尼西亚"
+  },
+  {
+    "id": "french-southern-and-antarctic-lands",
+    "code": "+596",
+    "name": "法属南半球和南极领地"
+  },
+  {
+    "id": "gabon",
+    "code": "+241",
+    "name": "加蓬"
+  },
+  {
+    "id": "gambia",
+    "code": "+220",
+    "name": "冈比亚"
+  },
+  {
+    "id": "georgia",
+    "code": "+995",
+    "name": "格鲁吉亚"
+  },
+  {
+    "id": "germany",
+    "code": "+49",
+    "name": "德国"
+  },
+  {
+    "id": "ghana",
+    "code": "+233",
+    "name": "加纳"
+  },
+  {
+    "id": "gibraltar",
+    "code": "+350",
+    "name": "直布罗陀"
+  },
+  {
+    "id": "greece",
+    "code": "+375",
+    "name": "希腊"
+  },
+  {
+    "id": "greenland",
+    "code": "+299",
+    "name": "格陵兰"
+  },
+  {
+    "id": "grenada",
+    "code": "+1473",
+    "name": "格林纳达"
+  },
+  {
+    "id": "guadeloupe",
+    "code": "+590",
+    "name": "瓜德罗普岛"
+  },
+  {
+    "id": "guam",
+    "code": "+1671",
+    "name": "关岛"
+  },
+  {
+    "id": "guatemala",
+    "code": "+502",
+    "name": "危地马拉"
+  },
+  {
+    "id": "guinea",
+    "code": "+224",
+    "name": "根西岛"
+  },
+  {
+    "id": "guinea-bissau",
+    "code": "+225",
+    "name": "几内亚比绍"
+  },
+  {
+    "id": "guyana",
+    "code": "+592",
+    "name": "圭亚那"
+  },
+  {
+    "id": "haiti",
+    "code": "+509",
+    "name": "海地"
+  },
+  {
+    "id": "holy-see-vatican-city",
+    "code": "+379",
+    "name": "罗马教廷梵蒂冈城"
+  },
+  {
+    "id": "honduras",
+    "code": "+504",
+    "name": "洪都拉斯"
+  },
+  {
+    "id": "hungary",
+    "code": "+36",
+    "name": "匈牙利"
+  },
+  {
+    "id": "iceland",
+    "code": "+354",
+    "name": "冰岛"
+  },
+  {
+    "id": "india",
+    "code": "+91",
+    "name": "印度"
+  },
+  {
+    "id": "indonesia",
+    "code": "+62",
+    "name": "印尼"
+  },
+  {
+    "id": "iran",
+    "code": "+98",
+    "name": "伊朗"
+  },
+  {
+    "id": "iraq",
+    "code": "+964",
+    "name": "伊拉克"
+  },
+  {
+    "id": "ireland",
+    "code": "+353",
+    "name": "爱尔兰"
+  },
+  {
+    "id": "israel",
+    "code": "+972",
+    "name": "以色列"
+  },
+  {
+    "id": "italy",
+    "code": "+39",
+    "name": "意大利"
+  },
+  {
+    "id": "jamaica",
+    "code": "+1876",
+    "name": "牙买加"
+  },
+  {
+    "id": "jordan",
+    "code": "+962",
+    "name": "约旦"
+  },
+  {
+    "id": "kazakhstan",
+    "code": "+7",
+    "name": "哈萨克斯坦"
+  },
+  {
+    "id": "kenya",
+    "code": "+254",
+    "name": "肯尼亚"
+  },
+  {
+    "id": "kiribati",
+    "code": "+686",
+    "name": "基里巴斯"
+  },
+  {
+    "id": "kuwait",
+    "code": "+965",
+    "name": "科威特"
+  },
+  {
+    "id": "kyrgyzstan",
+    "code": "+996",
+    "name": "吉尔吉斯斯坦"
+  },
+  {
+    "id": "laos",
+    "code": "+856",
+    "name": "老挝"
+  },
+  {
+    "id": "latvia",
+    "code": "+371",
+    "name": "拉脱维亚"
+  },
+  {
+    "id": "lebanon",
+    "code": "+961",
+    "name": "黎巴嫩"
+  },
+  {
+    "id": "lesotho",
+    "code": "+266",
+    "name": "莱索托"
+  },
+  {
+    "id": "liberia",
+    "code": "+231",
+    "name": "利比里亚"
+  },
+  {
+    "id": "libya",
+    "code": "+218",
+    "name": "利比亚"
+  },
+  {
+    "id": "liechtenstein",
+    "code": "+423",
+    "name": "列支敦士登"
+  },
+  {
+    "id": "lithuania",
+    "code": "+370",
+    "name": "立陶宛"
+  },
+  {
+    "id": "luxembourg",
+    "code": "+352",
+    "name": "卢森堡"
+  },
+  {
+    "id": "macau",
+    "code": "+853",
+    "name": "澳门"
+  },
+  {
+    "id": "macedonia-fyro",
+    "code": "+509",
+    "name": "马其顿"
+  },
+  {
+    "id": "madagascar",
+    "code": "+261",
+    "name": "马达加斯加"
+  },
+  {
+    "id": "malawi",
+    "code": "+265",
+    "name": "马拉维"
+  },
+  {
+    "id": "malaysia",
+    "code": "+60",
+    "name": "马来西亚"
+  },
+  {
+    "id": "maldives",
+    "code": "+960",
+    "name": "马尔代夫"
+  },
+  {
+    "id": "mali",
+    "code": "+223",
+    "name": "马里"
+  },
+  {
+    "id": "malta",
+    "code": "+356",
+    "name": "马耳他"
+  },
+  {
+    "id": "marshall-islands",
+    "code": "+692",
+    "name": "马歇尔群岛"
+  },
+  {
+    "id": "martinique",
+    "code": "+596",
+    "name": "马提尼克"
+  },
+  {
+    "id": "mauritania",
+    "code": "+222",
+    "name": "毛里塔尼亚"
+  },
+  {
+    "id": "mauritius",
+    "code": "+230",
+    "name": "毛里求斯"
+  },
+  {
+    "id": "mayotte",
+    "code": "+269",
+    "name": "马约特岛"
+  },
+  {
+    "id": "mexico",
+    "code": "+52",
+    "name": "墨西哥"
+  },
+  {
+    "id": "micronesia",
+    "code": "+691",
+    "name": "密克罗尼西亚"
+  },
+  {
+    "id": "moldova",
+    "code": "+373",
+    "name": "摩尔多瓦"
+  },
+  {
+    "id": "monaco",
+    "code": "+377",
+    "name": "摩纳哥"
+  },
+  {
+    "id": "mongolia",
+    "code": "+976",
+    "name": "蒙古"
+  },
+  {
+    "id": "montenegro",
+    "code": "+382",
+    "name": "黑山"
+  },
+  {
+    "id": "montserrat",
+    "code": "+1664",
+    "name": "蒙特塞拉特"
+  },
+  {
+    "id": "morocco",
+    "code": "+212",
+    "name": "摩洛哥"
+  },
+  {
+    "id": "mozambique",
+    "code": "+258",
+    "name": "莫桑比克"
+  },
+  {
+    "id": "myanmar",
+    "code": "+95",
+    "name": "缅甸"
+  },
+  {
+    "id": "namibia",
+    "code": "+264",
+    "name": "纳米比亚"
+  },
+  {
+    "id": "nauru",
+    "code": "+674",
+    "name": "瑙鲁"
+  },
+  {
+    "id": "nepal",
+    "code": "+977",
+    "name": "尼泊尔"
+  },
+  {
+    "id": "netherlands",
+    "code": "+31",
+    "name": "荷兰"
+  },
+  {
+    "id": "netherlands-antilles",
+    "code": "+599",
+    "name": "荷兰安的列斯群岛"
+  },
+  {
+    "id": "new-caledonia",
+    "code": "+687",
+    "name": "新喀里多尼亚"
+  },
+  {
+    "id": "new-zealand",
+    "code": "+64",
+    "name": "新西兰"
+  },
+  {
+    "id": "nicaragua",
+    "code": "+505",
+    "name": "尼加拉瓜"
+  },
+  {
+    "id": "niger",
+    "code": "+227",
+    "name": "尼日尔"
+  },
+  {
+    "id": "nigeria",
+    "code": "+234",
+    "name": "尼日利亚"
+  },
+  {
+    "id": "niue",
+    "code": "+683",
+    "name": "纽埃"
+  },
+  {
+    "id": "norfolk-island",
+    "code": "+6723",
+    "name": "诺福克岛"
+  },
+  {
+    "id": "north-korea",
+    "code": "+850",
+    "name": "朝鲜"
+  },
+  {
+    "id": "northern-mariana-islands",
+    "code": "+1670",
+    "name": "北马里亚纳群岛"
+  },
+  {
+    "id": "norway",
+    "code": "+47",
+    "name": "挪威"
+  },
+  {
+    "id": "oman",
+    "code": "+968",
+    "name": "阿曼"
+  },
+  {
+    "id": "pakistan",
+    "code": "+92",
+    "name": "巴基斯坦"
+  },
+  {
+    "id": "palau",
+    "code": "+680",
+    "name": "帕劳"
+  },
+  {
+    "id": "palestine",
+    "code": "+970",
+    "name": "巴勒斯坦"
+  },
+  {
+    "id": "panama",
+    "code": "+507",
+    "name": "巴拿马"
+  },
+  {
+    "id": "papua-new-guinea",
+    "code": "+675",
+    "name": "巴布亚-新几内亚"
+  },
+  {
+    "id": "paraguay",
+    "code": "+595",
+    "name": "巴拉圭"
+  },
+  {
+    "id": "peru",
+    "code": "+51",
+    "name": "秘鲁"
+  },
+  {
+    "id": "philippines",
+    "code": "+63",
+    "name": "菲律宾"
+  },
+  {
+    "id": "pitcairn-islands",
+    "code": "+872",
+    "name": "皮特凯恩群岛"
+  },
+  {
+    "id": "poland",
+    "code": "+48",
+    "name": "波兰"
+  },
+  {
+    "id": "portugal",
+    "code": "+351",
+    "name": "葡萄牙"
+  },
+  {
+    "id": "puerto-rico",
+    "code": "+1787",
+    "name": "波多黎各"
+  },
+  {
+    "id": "qatar",
+    "code": "+974",
+    "name": "卡塔尔"
+  },
+  {
+    "id": "romania",
+    "code": "+40",
+    "name": "罗马尼亚"
+  },
+  {
+    "id": "russia",
+    "code": "+7",
+    "name": "俄国"
+  },
+  {
+    "id": "rwanda",
+    "code": "+250",
+    "name": "卢旺达"
+  },
+  {
+    "id": "saint-helena-ascension-and-tristan-da-cunha",
+    "code": "+290",
+    "name": "圣海伦娜"
+  },
+  {
+    "id": "saint-kitts-and-nevis",
+    "code": "+1869",
+    "name": "圣基茨和尼维斯"
+  },
+  {
+    "id": "saint-lucia",
+    "code": "+1758",
+    "name": "圣卢西亚"
+  },
+  {
+    "id": "saint-vincent-and-the-grenadines",
+    "code": "+1784",
+    "name": "圣文森特和格林纳丁斯"
+  },
+  {
+    "id": "samoa",
+    "code": "+685",
+    "name": "萨摩亚"
+  },
+  {
+    "id": "san-marino",
+    "code": "+378",
+    "name": "圣马力诺"
+  },
+  {
+    "id": "saudi-arabia",
+    "code": "+966",
+    "name": "沙特阿拉伯"
+  },
+  {
+    "id": "sao-tome-and-principe",
+    "code": "+239",
+    "name": "圣多美与普林西比"
+  },
+  {
+    "id": "senegal",
+    "code": "+221",
+    "name": "塞内加尔"
+  },
+  {
+    "id": "serbia",
+    "code": "+381",
+    "name": "塞尔维亚"
+  },
+  {
+    "id": "seychelles",
+    "code": "+248",
+    "name": "塞舌尔"
+  },
+  {
+    "id": "sierra-leone",
+    "code": "+232",
+    "name": "塞拉利昂"
+  },
+  {
+    "id": "singapore",
+    "code": "+65",
+    "name": "新加坡"
+  },
+  {
+    "id": "slovakia",
+    "code": "+421",
+    "name": "斯洛伐克"
+  },
+  {
+    "id": "slovenia",
+    "code": "+386",
+    "name": "斯洛文尼亚"
+  },
+  {
+    "id": "solomon-islands",
+    "code": "+677",
+    "name": "所罗门群岛"
+  },
+  {
+    "id": "somalia",
+    "code": "+252",
+    "name": "索马里"
+  },
+  {
+    "id": "south-africa",
+    "code": "+27",
+    "name": "南非洲"
+  },
+  {
+    "id": "south-georgia-and-the-south-sandwich-islands",
+    "code": "+500",
+    "name": "南乔治亚岛和南桑威奇群岛"
+  },
+  {
+    "id": "south-sudan",
+    "code": "+211",
+    "name": "南苏丹"
+  },
+  {
+    "id": "spain",
+    "code": "+34",
+    "name": "西班牙"
+  },
+  {
+    "id": "sri-lanka",
+    "code": "+94",
+    "name": "斯里兰卡"
+  },
+  {
+    "id": "sudan",
+    "code": "+249",
+    "name": "苏丹"
+  },
+  {
+    "id": "suriname",
+    "code": "+597",
+    "name": "苏里南"
+  },
+  {
+    "id": "sweden",
+    "code": "+46",
+    "name": "瑞典"
+  },
+  {
+    "id": "switzerland",
+    "code": "+41",
+    "name": "瑞士"
+  },
+  {
+    "id": "syria",
+    "code": "+963",
+    "name": "叙利亚"
+  },
+  {
+    "id": "tajikistan",
+    "code": "+992",
+    "name": "塔吉克斯坦"
+  },
+  {
+    "id": "tanzania",
+    "code": "+255",
+    "name": "坦桑尼亚"
+  },
+  {
+    "id": "thailand",
+    "code": "+66",
+    "name": "泰国"
+  },
+  {
+    "id": "togo",
+    "code": "+228",
+    "name": "多哥"
+  },
+  {
+    "id": "tokelau",
+    "code": "+690",
+    "name": "托克劳"
+  },
+  {
+    "id": "tonga",
+    "code": "+676",
+    "name": "汤加"
+  },
+  {
+    "id": "trinidad-and-tobago",
+    "code": "+1868",
+    "name": "特里尼达和多巴哥"
+  },
+  {
+    "id": "tunisia",
+    "code": "+216",
+    "name": "突尼斯"
+  },
+  {
+    "id": "turkey",
+    "code": "+90",
+    "name": "土耳其"
+  },
+  {
+    "id": "turkmenistan",
+    "code": "+993",
+    "name": "土库曼斯坦"
+  },
+  {
+    "id": "turks-and-caicos-islands",
+    "code": "+1649",
+    "name": "特克斯和凯科斯群岛"
+  },
+  {
+    "id": "tuvalu",
+    "code": "+688",
+    "name": "图瓦卢"
+  },
+  {
+    "id": "uganda",
+    "code": "+256",
+    "name": "乌干达"
+  },
+  {
+    "id": "ukraine",
+    "code": "+380",
+    "name": "乌克兰"
+  },
+  {
+    "id": "united-arab-emirates",
+    "code": "+971",
+    "name": "阿拉伯联合酋长国"
+  },
+  {
+    "id": "united-kingdom",
+    "code": "+44",
+    "name": "英国"
+  },
+  {
+    "id": "united-states",
+    "code": "+1",
+    "name": "美国"
+  },
+  {
+    "id": "uruguay",
+    "code": "+598",
+    "name": "乌拉圭"
+  },
+  {
+    "id": "us-virgin-islands",
+    "code": "+1340",
+    "name": "美属维尔京群岛"
+  },
+  {
+    "id": "uzbekistan",
+    "code": "+998",
+    "name": "乌兹别克斯坦"
+  },
+  {
+    "id": "vanuatu",
+    "code": "+678",
+    "name": "瓦努阿图"
+  },
+  {
+    "id": "venezuela",
+    "code": "+58",
+    "name": "委内瑞拉"
+  },
+  {
+    "id": "vietnam",
+    "code": "+84",
+    "name": "越南"
+  },
+  {
+    "id": "wallis-and-futuna",
+    "code": "+681",
+    "name": "瓦利斯和富图纳群岛"
+  },
+  {
+    "id": "western-sahara",
+    "code": "+212",
+    "name": "西方撒哈拉"
+  },
+  {
+    "id": "yemen",
+    "code": "+967",
+    "name": "也门"
+  },
+  {
+    "id": "zambia",
+    "code": "+260",
+    "name": "赞比亚"
+  },
+  {
+    "id": "zimbabwe",
+    "code": "+263",
+    "name": "津巴布韦"
+  }
+]

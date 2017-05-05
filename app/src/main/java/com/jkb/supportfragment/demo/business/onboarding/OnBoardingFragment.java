@@ -60,6 +60,11 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
+    public boolean requestImmersiveStatusStyle() {
+        return true;
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.onBoarding_finish://引导结束

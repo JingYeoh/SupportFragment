@@ -3,7 +3,7 @@ package com.jkb.supportfragment.demo.business.launch.presenter;
 import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.base.frame.BaseModel;
 import com.jkb.supportfragment.demo.R;
-import com.jkb.supportfragment.demo.business.launch.LaunchEntity;
+import com.jkb.supportfragment.demo.entity.launch.LaunchEntity;
 import com.jkb.supportfragment.demo.business.launch.contract.LaunchContract;
 import com.jkb.supportfragment.demo.business.launch.model.LaunchDataRepertory;
 

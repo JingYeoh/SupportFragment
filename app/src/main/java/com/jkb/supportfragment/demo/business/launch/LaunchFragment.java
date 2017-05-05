@@ -11,6 +11,7 @@ import com.jkb.supportfragment.demo.business.helper.InjectRepertory;
 import com.jkb.supportfragment.demo.business.launch.contract.LaunchContract;
 import com.jkb.supportfragment.demo.business.launch.presenter.LaunchPresenter;
 import com.jkb.supportfragment.demo.databinding.FrgLaunchBinding;
+import com.jkb.supportfragment.demo.entity.launch.LaunchEntity;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -53,7 +54,6 @@ public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunch
 
     @Override
     public void initListener() {
-
     }
 
     @Override

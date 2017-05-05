@@ -1,4 +1,4 @@
-package com.jkb.supportfragment.demo.business.launch;
+package com.jkb.supportfragment.demo.entity.launch;
 
 import android.databinding.Bindable;
 import android.support.annotation.IdRes;

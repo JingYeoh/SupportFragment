@@ -4,7 +4,7 @@
 
     <data>
 
-        <import type="com.jkb.supportfragment.demo.business.launch.LaunchEntity"/>
+        <import type="com.jkb.supportfragment.demo.entity.launch.LaunchEntity"/>
 
         <variable
             name="launch"

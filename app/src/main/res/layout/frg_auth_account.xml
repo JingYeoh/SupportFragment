@@ -1,13 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <data>
+
+        <import type="com.jkb.supportfragment.demo.entity.auth.AccountEntity"/>
+
+        <import type="com.jkb.commonlib.utils.StringUtils"/>
+
+        <variable
+            name="account"
+            type="AccountEntity"/>
+
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="帐号页面"/>
-</LinearLayout>
+        android:background="@color/general"
+        android:orientation="vertical">
+
+        <FrameLayout
+            style="@style/TitleStyle"
+            android:background="@color/colorPrimary"
+            >
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/general_padding"
+                android:paddingRight="@dimen/general_padding"
+                android:text="@string/phone_number"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:padding="@dimen/general_padding">
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableBottom="@drawable/line_color_gravy"
+                    android:drawablePadding="5dp"
+                    android:focusable="false"
+                    android:text="@{account.areaCode}"/>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:hint="@string/please_input_phone_number">
+
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableBottom="@drawable/line_color_primary"
+                    android:drawablePadding="5dp"
+                    android:inputType="number"
+                    android:text="@{account.account}"
+                    android:textColorHint="@color/hint"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/account_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_color_primart_dark"
+            android:enabled="@{StringUtils.hasEmpty(account.account,account.areaCode)?false:true}"
+            android:focusable="@{StringUtils.hasEmpty(account.account,account.areaCode)?false:true}"
+            android:text="@string/Continue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text_size"/>
+    </LinearLayout>
+</layout>

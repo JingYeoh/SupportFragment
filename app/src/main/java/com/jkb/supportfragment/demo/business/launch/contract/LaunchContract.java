@@ -2,7 +2,7 @@ package com.jkb.supportfragment.demo.business.launch.contract;
 
 import com.jkb.commonlib.base.frame.BasePresenter;
 import com.jkb.commonlib.base.frame.BaseView;
-import com.jkb.supportfragment.demo.business.launch.LaunchEntity;
+import com.jkb.supportfragment.demo.entity.launch.LaunchEntity;
 
 /**
  * 启动页面协议类
