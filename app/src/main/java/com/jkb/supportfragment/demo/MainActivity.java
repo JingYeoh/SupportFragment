@@ -26,10 +26,10 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
-        EventBus.getDefault().post(Message.obtain(), AppConfig.EventBusTAG.APP_INIT);
         if (savedInstanceState == null) {
             startFragment(LaunchFragment.newInstance());
         }
+        EventBus.getDefault().post(Message.obtain(), AppConfig.EventBusTAG.APP_INIT);
     }
 
     @Override
@@ -46,5 +46,11 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void close() {
+        super.close();
+        System.exit(0);
     }
 }

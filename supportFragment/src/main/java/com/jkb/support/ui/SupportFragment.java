@@ -147,7 +147,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     }
 
     @Override
-    public final void close() {
+    public void close() {
         clearFragments();
         Fragment parentFragment = getParentFragment();
         if (parentFragment == null) {//由Activity直接添加的

@@ -86,7 +86,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
-    public final void close() {
+    public void close() {
         clearFragments();
         finish();
     }

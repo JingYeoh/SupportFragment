@@ -1,11 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
+def appVerCode = 2
+def appVerName = "1.0.1"
+
 publish {
     userOrg = 'jkb'
-    groupId = 'com.justkiddingbaby.supportfragment'
+    groupId = 'com.justkiddingbaby'
     artifactId = 'supportfragment'
-    publishVersion = '1.0.0'
+    publishVersion = appVerName
     desc = 'An Android frame In order to provide single Activity+multi Fragment support.'
     website = 'https://github.com/YangJing96/SupportFragment'
 }
@@ -17,8 +20,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0.0"
+        versionCode appVerCode
+        versionName appVerName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

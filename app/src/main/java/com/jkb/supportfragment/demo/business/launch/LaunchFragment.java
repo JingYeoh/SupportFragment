@@ -6,6 +6,7 @@ import android.os.Message;
 import com.jkb.commonlib.base.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 
 import org.simple.eventbus.EventBus;
@@ -57,7 +58,13 @@ public class LaunchFragment extends BaseFragment {
      */
     @Subscriber(mode = ThreadMode.MAIN, tag = AppConfig.EventBusTAG.APP_INIT_COMPLECTED)
     public void onAppInitCompleted(Message message) {
+        LogUtils.d(this, "onAppInitCompleted");
         startFragment(AppLauncher.launchOnBoardingMain());
         close();
+    }
+
+    @Override
+    public boolean requestFullScreenStyle() {
+        return true;
     }
 }
