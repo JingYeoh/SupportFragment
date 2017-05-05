@@ -1,4 +1,4 @@
-package com.jkb.commonlib.base.action;
+package com.jkb.commonlib.base.ui.action;
 
 /**
  * 视图的动作

@@ -1,4 +1,4 @@
-package com.jkb.commonlib.base;
+package com.jkb.commonlib.base.ui;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -11,8 +11,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.jkb.commonlib.base.action.BaseAction;
-import com.jkb.commonlib.base.action.BaseFragmentAction;
+import com.jkb.commonlib.base.ui.action.BaseAction;
+import com.jkb.commonlib.base.ui.action.BaseFragmentAction;
 import com.jkb.support.ui.SupportFragment;
 import com.jkb.support.utils.LogUtils;
 

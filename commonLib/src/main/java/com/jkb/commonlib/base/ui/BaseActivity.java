@@ -1,4 +1,4 @@
-package com.jkb.commonlib.base;
+package com.jkb.commonlib.base.ui;
 
 import android.content.Context;
 import android.os.Build;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.jkb.commonlib.base.action.BaseAction;
+import com.jkb.commonlib.base.ui.action.BaseAction;
 import com.jkb.support.ui.SupportActivity;
 import com.jkb.support.utils.LogUtils;
 

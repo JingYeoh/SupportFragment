@@ -1,9 +1,8 @@
-package com.jkb.commonlib.base.action;
+package com.jkb.commonlib.base.ui.action;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.StyleRes;
 import android.view.View;
 
 /**

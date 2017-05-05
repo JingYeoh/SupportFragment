@@ -3,7 +3,7 @@ package com.jkb.supportfragment.demo;
 import android.os.Bundle;
 import android.os.Message;
 
-import com.jkb.commonlib.base.BaseActivity;
+import com.jkb.commonlib.base.ui.BaseActivity;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.supportfragment.demo.business.launch.LaunchFragment;
 

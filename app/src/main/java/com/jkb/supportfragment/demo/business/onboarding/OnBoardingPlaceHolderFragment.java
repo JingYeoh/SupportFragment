@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.jkb.commonlib.base.BaseFragment;
+import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.supportfragment.demo.R;
 

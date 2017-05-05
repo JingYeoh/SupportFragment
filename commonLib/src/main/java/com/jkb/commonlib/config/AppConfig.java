@@ -48,4 +48,14 @@ public interface AppConfig {
     interface Db {
         String NAME = "tantan.db";
     }
+
+    /**
+     * App状态
+     */
+    interface AppStatus {
+        int LOGIN = 1001;//登录
+        int UNLOGIN = 1002;//未登录
+        int LOGOUT = 1003;//登出
+        int ERROR = 1004;//错误
+    }
 }
