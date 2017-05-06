@@ -25,7 +25,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-//        AndroidBug5497Workaround.assistActivity(this);
         EventBus.getDefault().register(this);
         if (savedInstanceState == null) {
             startFragment(LaunchFragment.newInstance());
