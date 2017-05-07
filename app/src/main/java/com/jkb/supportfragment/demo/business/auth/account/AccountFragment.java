@@ -1,11 +1,15 @@
 package com.jkb.supportfragment.demo.business.auth.account;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
+import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.account.contract.AccountContract;
 import com.jkb.supportfragment.demo.business.auth.account.presenter.AccountPresenter;
@@ -31,7 +35,6 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
 
     @Override
     public void initView() {
-
     }
 
     @Override
@@ -74,17 +77,11 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
 
     }
 
-    /**
-     * 继续按钮被点击
-     */
-    public void onContinueClick(View view) {
-        getPresenter().onContinueClick();
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.account_continue:
+                showShortToast("continue");
                 getPresenter().onContinueClick();
                 break;
         }
