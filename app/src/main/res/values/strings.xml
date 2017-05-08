@@ -6,4 +6,10 @@
     <string name="please_input_phone_number">请输入手机号码</string>
     <string name="please_input_right_phone_number">请输入正确手机号</string>
     <string name="Continue">继续</string>
+    <string name="sms_has_send_to">短信验证码以发送至：</string>
+    <string name="whole_phone_number">%s</string>
+    <string name="send_again_count">重新发送（%d）</string>
+    <string name="send_again">重新发送</string>
+    <string name="not_receive_vercode">没有收到验证码？</string>
+    <string name="send_verCode">发送验证码</string>
 </resources>

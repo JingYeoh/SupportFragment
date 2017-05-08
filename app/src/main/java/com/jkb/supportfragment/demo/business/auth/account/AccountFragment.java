@@ -3,21 +3,14 @@ package com.jkb.supportfragment.demo.business.auth.account;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.jkb.commonlib.base.ui.BaseDialogFragment;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.support.helper.SupportManager;
-import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.account.contract.AccountContract;
 import com.jkb.supportfragment.demo.business.auth.account.presenter.AccountPresenter;
@@ -28,9 +21,6 @@ import com.jkb.supportfragment.demo.entity.auth.AreaCodeEntity;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * 帐号
@@ -62,7 +52,6 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
     public void initListener() {
         findViewById(R.id.account_continue).setOnClickListener(this);
         findViewById(R.id.account_areaCode).setOnClickListener(this);
-        etAccount.addTextChangedListener(accountTextWatcher);
     }
 
     @Override
@@ -101,7 +90,7 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
 
     @Override
     public void launchVerCode(String account) {
-        startFragment(AppLauncher.launchVerCode(account));
+        startFragment(AppLauncher.launchVerCode(account, AppConfig.VerCodeType.REGISTER));
     }
 
     @Override
@@ -124,22 +113,4 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
         AreaCodeEntity entity = (AreaCodeEntity) message.obj;
         getBinding().getAccount().setAreaCode(entity.getCode());
     }
-
-    /**
-     * 帐号的TextWatcher
-     */
-    private TextWatcher accountTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            getBinding().getAccount().setAccount(s.toString());
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-        }
-    };
 }

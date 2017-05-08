@@ -1,13 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <data>
+
+        <import type="com.jkb.supportfragment.demo.entity.auth.VerCodeEntity"/>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="verCode"
+            type="VerCodeEntity"/>
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="验证码"/>
+        android:orientation="vertical">
 
-</LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
+
+            <include layout="@layout/title_style_0"/>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/general"
+            android:orientation="vertical">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:text="@string/sms_has_send_to"
+                        android:textColor="@color/gravy_light"
+                        android:textSize="@dimen/text_size_m"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:text="@={verCode.phoneNumber}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_xxxl"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="40dp"
+                        android:inputType="number"
+                        android:text="@={verCode.verCode}"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_xxxl"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="@{String.format(@string/send_again_count,verCode.sendCount)}"
+                            android:textColor="@color/gravy_light"
+                            android:textSize="@dimen/text_size_s"
+                            android:visibility="@{verCode.sendCount!=0?View.VISIBLE:View.GONE}"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal"
+                            android:visibility="@{verCode.sendCount==0?View.VISIBLE:View.GONE}"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/not_receive_vercode"
+                                android:textColor="@color/gravy_light"
+                                android:textSize="@dimen/text_size_s"/>
+
+                            <TextView
+                                android:id="@+id/vercode_sendSMS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/send_again"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/text_size_s"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <Button
+                android:id="@+id/verCode_continue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/selector_color_primart_dark"
+                android:enabled="@{verCode.verCode.length()==verCode.VERCODE_COUNT?true:false}"
+                android:text="@string/Continue"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text_size"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

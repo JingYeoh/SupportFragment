@@ -55,7 +55,7 @@
                     android:drawableBottom="@drawable/line_color_gravy"
                     android:drawablePadding="5dp"
                     android:focusable="false"
-                    android:text="@{account.areaCode}"/>
+                    android:text="@={account.areaCode}"/>
 
             </LinearLayout>
 
@@ -77,7 +77,7 @@
                     android:drawableBottom="@drawable/line_color_primary"
                     android:drawablePadding="5dp"
                     android:inputType="number"
-                    android:text="@{account.account}"
+                    android:text="@={account.account}"
                     android:textColorHint="@color/hint"
                     />
 

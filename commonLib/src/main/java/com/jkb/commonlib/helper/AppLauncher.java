@@ -67,10 +67,11 @@ public class AppLauncher {
     /**
      * 启动发送验证码页面
      */
-    public static SupportFragment launchVerCode(String account) {
+    public static SupportFragment launchVerCode(String account, int verCodeType) {
         return (SupportFragment) ARouter.getInstance()
                 .build(AppConfig.RouterPath.AUTH_VERCODE)
                 .withString(AppConfig.KeyBundle.ACCOUNT, account)
+                .withInt(AppConfig.KeyBundle.VERCODE_TYPE, verCodeType)
                 .navigation();
     }
 }

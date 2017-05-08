@@ -78,10 +78,11 @@ public class AccountPresenter implements AccountContract.Presenter, BaseModel.Lo
         @Override
         public void onDataLoaded(Boolean isIdentified) {
             if (!mView.isActive()) return;
+            String number = accountEntity.getAreaCode() + " " + accountEntity.getAccount();
             if (isIdentified) {
-                mView.launchLogin(accountEntity.getAccount());
+                mView.launchLogin(number);
             } else {
-                mView.launchVerCode(accountEntity.getAccount());
+                mView.launchVerCode(number);
             }
         }
 
