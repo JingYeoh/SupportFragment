@@ -69,3 +69,11 @@ public class TestFragment extends SupportFragment {
 }
 ```
 Fragment中使用时和正常使用Fragment时候一样，只是父类改为了SupportFragment
+## 发布历史
+#### v1.0.2(2017/5/8)
+1、修复Support方法中事物保存机制，使用队列进行SupportTransaction进行存储及恢复。
+#### v1.0.1(2017/5/4)
+1、修改Support框架中的showFragment场景，支持added过的Fragment进行showFragment方法的使用。
+#### v1.0(2017/5/3)
+1、SupportFragment框架分布，封装各种Fragment场景。  
+2、封装框架使用场景Demo，仿探探App。
