@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <data>
 
@@ -46,6 +47,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/account_areaCode"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,13 +60,16 @@
             </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/account_til_account"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:hint="@string/please_input_phone_number">
+                android:hint="@string/please_input_phone_number"
+                >
 
-                <EditText
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/account_et_account"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -89,8 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_color_primart_dark"
-            android:enabled="@{StringUtils.hasEmpty(account.account,account.areaCode)?false:true}"
-            android:focusable="@{StringUtils.hasEmpty(account.account,account.areaCode)?false:true}"
+            android:enabled="@{StringUtils.hasEmpty(account.areaCode,account.account)?false:true}"
             android:text="@string/Continue"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"/>

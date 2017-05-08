@@ -2,6 +2,8 @@ package com.jkb.commonlib.utils;
 
 import android.text.TextUtils;
 
+import com.jkb.support.utils.LogUtils;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

@@ -1,12 +1,14 @@
 package com.jkb.supportfragment.demo.business.auth.account.presenter;
 
 import com.jkb.commonlib.base.frame.BaseModel;
+import com.jkb.commonlib.utils.PatternUtils;
 import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.business.auth.account.contract.AccountContract;
 import com.jkb.supportfragment.demo.business.auth.account.model.AccountDataRepertory;
 import com.jkb.supportfragment.demo.entity.auth.AccountEntity;
 import com.jkb.supportfragment.demo.entity.auth.AreaCodeEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,13 +50,17 @@ public class AccountPresenter implements AccountContract.Presenter, BaseModel.Lo
 
     @Override
     public void onContinueClick() {
+        LogUtils.d(this, accountEntity.getAccount());
+        if (!PatternUtils.isMatchPhoneNumber(accountEntity.getAccount())) {
+            mView.showShortToast("请输入正确手机号");
+            return;
+        }
     }
 
     @Override
     public void onDataLoaded(List<AreaCodeEntity> data) {
-        accountEntity.setAreaCodes(data);
+        accountEntity.setAreaCodes((ArrayList<AreaCodeEntity>) data);
         accountEntity.setAreaCode(data.get(0).getCode());
-        bindDataToView();
     }
 
     @Override

@@ -20,6 +20,7 @@ import com.jkb.support.ui.action.ISupportAction;
 import com.jkb.support.ui.action.ISupportFragment;
 import com.jkb.support.utils.LogUtils;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,7 +40,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     //support data
     protected SupportActivity mActivity;
     private String mFragmentTag;//自己的标签
-    private SupportManager.Builder mFragmentExecute;//事物的操作类
+    private LinkedList<SupportManager.Builder> mFragmentTransactions;//事物的操作类
     private SupportStack mSupportStack;//内部维护的栈，用户Fragment的回退等操作
     //constant
     private static final String KEY_SAVED_FRAGMENT_IS_HIDDEN = "key.saved.fragment.isHidden";
@@ -50,6 +51,9 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         super.onCreate(savedInstanceState);
         mChildFm = getChildFragmentManager();
         mParentFm = getFragmentManager();
+        if (mFragmentTransactions == null) {
+            mFragmentTransactions = new LinkedList<>();
+        }
         if (savedInstanceState != null) {
             restoreHiddenStatus(savedInstanceState);
             restoreFragmentStack(savedInstanceState);
@@ -70,8 +74,10 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     public void onResume() {
         super.onResume();
         //如果有未提交的事物则提交事物，防止Can not perform this action after onSaveInstanceState异常的发生
-        if (mFragmentExecute != null) {
-            commitFragmentTransaction(mFragmentExecute);
+        while (true) {
+            SupportManager.Builder poll = mFragmentTransactions.poll();
+            if (poll == null) break;
+            commitFragmentTransaction(poll);
         }
     }
 
@@ -185,7 +191,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         if (mSupportStack.push(fragment.getFragmentTAG(), contentId)) {
             commitFragmentTransaction(SupportManager.beginTransaction(mChildFm).add(fragment, contentId).show
                     (fragment));
-        } else {
+        } else {//只显示Fragment
             commitFragmentTransaction(SupportManager.beginTransaction(mChildFm).show(fragment));
 //            throwException(new HasBeenAddedException(fragment.getFragmentTAG()));
         }
@@ -256,12 +262,13 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
      * 提交事物
      */
     private void commitFragmentTransaction(@NonNull SupportManager.Builder execute) {
-        mFragmentExecute = execute;
         if (!isResumed()) {
+            mFragmentTransactions.add(execute);
+            LogUtils.w(TAG, "commitFragmentTransaction------>Activity is not resumed,this commit is delayed");
             return;
         }
-        mFragmentExecute.commit();
-        mFragmentExecute = null;
+        LogUtils.i(TAG, "commitFragmentTransaction------>This transaction will be commit");
+        execute.commit();
     }
 
     /**

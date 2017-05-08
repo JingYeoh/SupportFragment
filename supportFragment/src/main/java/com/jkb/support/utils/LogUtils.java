@@ -9,7 +9,7 @@ import android.util.Log;
 
 public class LogUtils {
 
-    private static boolean isAllowToPrint = true;
+    public static boolean isAllowToPrint = true;
 
     public static void i(String TAG, String value) {
         if (isAllowToPrint) {
@@ -48,42 +48,50 @@ public class LogUtils {
     }
 
     public static void i(Class<?> clz, String value) {
-        String TAG = clz.getSimpleName();
-        i(TAG, value);
+        i(clz.getSimpleName(), value);
     }
 
     public static void d(Class<?> clz, String value) {
-        String TAG = clz.getSimpleName();
-        d(TAG, value);
+        d(clz.getSimpleName(), value);
     }
 
     public static void v(Class<?> clz, String value) {
-        String TAG = clz.getSimpleName();
-        v(TAG, value);
+        v(clz.getSimpleName(), value);
     }
 
     public static void w(Class<?> clz, String value) {
-        String TAG = clz.getSimpleName();
-        w(TAG, value);
+        w(clz.getSimpleName(), value);
     }
 
     public static void e(Class<?> clz, String value) {
-        String TAG = clz.getSimpleName();
-        e(TAG, value);
+        e(clz.getSimpleName(), value);
     }
 
     public static void wtf(Class<?> clz, String value) {
-        String TAG = clz.getSimpleName();
-        wtf(TAG, value);
+        wtf(clz.getSimpleName(), value);
     }
 
     public static void d(Object object, String value) {
-        String TAG = object.getClass().getSimpleName();
-        d(TAG, value);
+        d(object.getClass(), value);
     }
 
     public static void i(Object object, String value) {
-        String TAG = object.getClass().getSimpleName();
-        i(TAG, value);
+        i(object.getClass(), value);
+    }
+
+    public static void v(Object object, String value) {
+        v(object.getClass(), value);
+    }
+
+    public static void w(Object object, String value) {
+        w(object.getClass(), value);
+    }
+
+    public static void e(Object object, String value) {
+        e(object.getClass(), value);
+    }
+
+    public static void wtf(Object object, String value) {
+        wtf(object.getClass(), value);
     }
 }

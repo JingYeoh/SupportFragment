@@ -1,8 +1,12 @@
 package com.jkb.commonlib.helper;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.jkb.commonlib.base.ui.BaseDialogFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.support.ui.SupportFragment;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * App的启动帮助类
@@ -41,5 +45,15 @@ public class AppLauncher {
     public static SupportFragment launchLogin() {
         return (SupportFragment) ARouter.getInstance().
                 build(AppConfig.RouterPath.AUTH_LOGIN).navigation();
+    }
+
+    /**
+     * 启动地区编码页面
+     *
+     * @param value ArrayList<AreaCodeEntity>数据
+     */
+    public static BaseDialogFragment launchAreaCode(Serializable value) {
+        return (BaseDialogFragment) ARouter.getInstance().build(AppConfig.RouterPath.AUTH_AREA_CODE)
+                .withSerializable(AppConfig.KeyBundle.AREACODE, value).navigation();
     }
 }

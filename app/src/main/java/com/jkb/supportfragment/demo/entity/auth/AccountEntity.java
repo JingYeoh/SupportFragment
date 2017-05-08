@@ -3,6 +3,7 @@ package com.jkb.supportfragment.demo.entity.auth;
 import android.databinding.Bindable;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
+import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.BR;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class AccountEntity extends BaseEntity {
 
     private String account;
     private String areaCode;
-    private List<AreaCodeEntity> areaCodes = new ArrayList<>();
+    private ArrayList<AreaCodeEntity> areaCodes = new ArrayList<>();
 
     @Bindable
     public String getAccount() {
@@ -40,11 +41,11 @@ public class AccountEntity extends BaseEntity {
         notifyPropertyChanged(BR.areaCode);
     }
 
-    public List<AreaCodeEntity> getAreaCodes() {
+    public ArrayList<AreaCodeEntity> getAreaCodes() {
         return areaCodes;
     }
 
-    public void setAreaCodes(List<AreaCodeEntity> areaCodes) {
+    public void setAreaCodes(ArrayList<AreaCodeEntity> areaCodes) {
         this.areaCodes = areaCodes;
     }
 }

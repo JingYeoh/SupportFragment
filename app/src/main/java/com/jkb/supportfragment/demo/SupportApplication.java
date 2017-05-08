@@ -7,6 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.db.DbManager;
+import com.jkb.support.utils.LogUtils;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -35,6 +36,7 @@ public class SupportApplication extends Application {
     @Subscriber(mode = ThreadMode.ASYNC, tag = AppConfig.EventBusTAG.APP_INIT)
     public void initApp(Message message) {
         if (isInit) return;
+        LogUtils.isAllowToPrint = BuildConfig.DEBUG;//是否允许打印Log
         if (BuildConfig.DEBUG) {
             ARouter.openLog();
             ARouter.openDebug();

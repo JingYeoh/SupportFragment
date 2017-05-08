@@ -24,7 +24,7 @@ public interface AccountContract {
         /**
          * 显示地区编号
          */
-        void showAreaCode(List<AreaCodeEntity> areaCode);
+        void showAreaCode();
 
         /**
          * 启动登录页面

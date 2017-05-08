@@ -19,6 +19,7 @@ public interface AppConfig {
         String AUTH_LOGIN = "/auth/login";
         String AUTH_PASSWORD_FINDBACK = "/auth/password/findBack";
         String AUTH_PASSWORD_RESET = "/auth/password/reset";
+        String AUTH_AREA_CODE = "/auth/areaCode";
 
         String APP_MAIN = "/app/main";
     }
@@ -29,13 +30,16 @@ public interface AppConfig {
     interface EventBusTAG {
         String APP_INIT = "/app/init";
         String APP_INIT_COMPLECTED = "/app/init/completed";
+
+        String AUTH_AREA_CODE_SELECTE = "/auth/areaCode/select";
     }
 
     /**
      * 用于保存和恢复的Key
      */
     interface KeyBundle {
-        String ONBOARDING_TYPE = "keyBundle.onBoardingType";
+        String ONBOARDING_TYPE = "onBoardingType";
+        String AREACODE = "areaCode";
     }
 
     /**

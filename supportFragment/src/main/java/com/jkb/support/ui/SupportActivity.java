@@ -18,7 +18,9 @@ import com.jkb.support.helper.SupportManager;
 import com.jkb.support.helper.SupportStack;
 import com.jkb.support.ui.action.ISupportAction;
 import com.jkb.support.ui.action.ISupportActivity;
+import com.jkb.support.utils.LogUtils;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,13 +35,16 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     //support data
     private SupportStack mSupportStack;
     protected FragmentManager mFm;
-    private SupportManager.Builder mFragmentExecute;//事物的操作类
+    private LinkedList<SupportManager.Builder> mFragmentTransactions;//事物的操作类
     private boolean isResumed = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFm = getSupportFragmentManager();
+        if (mFragmentTransactions == null) {
+            mFragmentTransactions = new LinkedList<>();
+        }
         if (savedInstanceState == null) {
             mSupportStack = new SupportStack();
         } else {
@@ -52,8 +57,22 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         super.onResumeFragments();
         isResumed = true;
         //如果有未提交的事物则提交事物，防止Can not perform this action after onSaveInstanceState异常的发生
-        if (mFragmentExecute != null) {
-            commitFragmentTransaction(mFragmentExecute);
+        while (true) {
+            SupportManager.Builder poll = mFragmentTransactions.poll();
+            if (poll == null) break;
+            commitFragmentTransaction(poll);
+        }
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        isResumed = true;
+        //如果有未提交的事物则提交事物，防止Can not perform this action after onSaveInstanceState异常的发生
+        while (true) {
+            SupportManager.Builder poll = mFragmentTransactions.poll();
+            if (poll == null) break;
+            commitFragmentTransaction(poll);
         }
     }
 
@@ -77,6 +96,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
 
     @Override
     public final void startFragment(@NonNull SupportFragment fragment) {
+        LogUtils.i(TAG, "startFragment--->fragment=" + fragment.getClass().getSimpleName());
         if (mSupportStack.push(fragment.getFragmentTAG(), getFragmentContentId())) {
             commitFragmentTransaction(SupportManager.beginTransaction(mFm).add(fragment, getFragmentContentId())
                     .hideAll().show(fragment));
@@ -199,11 +219,12 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
      * 提交事物
      */
     private void commitFragmentTransaction(@NonNull SupportManager.Builder execute) {
-        mFragmentExecute = execute;
         if (!isResumed) {
+            mFragmentTransactions.add(execute);
+            LogUtils.w(TAG, "commitFragmentTransaction------>Activity is not resumed,this commit is delayed");
             return;
         }
-        mFragmentExecute.commit();
-        mFragmentExecute = null;
+        LogUtils.i(TAG, "commitFragmentTransaction------>This transaction will be commit");
+        execute.commit();
     }
 }
