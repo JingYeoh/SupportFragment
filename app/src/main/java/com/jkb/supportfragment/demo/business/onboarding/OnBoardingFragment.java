@@ -2,6 +2,7 @@ package com.jkb.supportfragment.demo.business.onboarding;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -12,8 +13,12 @@ import android.widget.LinearLayout;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
+import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.commonlib.utils.DimensionUtils;
 import com.jkb.supportfragment.demo.R;
+import com.jkb.supportfragment.demo.business.launch.LaunchFragment;
+
+import org.simple.eventbus.EventBus;
 
 /**
  * 新手上路
@@ -44,6 +49,7 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        EventBus.getDefault().register(this);
         onBoardingPagerAdapter = new OnBoardingPagerAdapter(mChildFm);
         viewPager.setAdapter(onBoardingPagerAdapter);
         //初始化引导指标
@@ -68,8 +74,17 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.onBoarding_finish://引导结束
+                launchApp();
                 break;
         }
+    }
+
+    /**
+     * 启动App
+     */
+    private void launchApp() {
+        startFragment(AppLauncher.launchAccount());
+        close();
     }
 
     /**
@@ -132,5 +147,11 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void onPageScrollStateChanged(int state) {
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

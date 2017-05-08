@@ -5,10 +5,16 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.jkb.commonlib.db.DbManager;
+import com.jkb.commonlib.db.dao.DaoSession;
+import com.jkb.commonlib.db.dao.UserDao;
+import com.jkb.commonlib.db.entity.User;
 import com.jkb.commonlib.utils.StringUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.account.model.AccountDataSource;
 import com.jkb.supportfragment.demo.entity.auth.AreaCodeEntity;
+
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -22,9 +28,11 @@ import java.util.List;
 public class AccountLocalDataSource implements AccountDataSource {
 
     private Context context;
+    private DaoSession daoSession;
 
     private AccountLocalDataSource(Context context) {
         this.context = context;
+        daoSession = DbManager.getInstance().getDaoSession();
     }
 
     private static AccountLocalDataSource sInstance;
@@ -51,6 +59,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public void identifyAccount(String account, LoadDataCallBack<Boolean> callBack) {
+        //本地查找帐号是否存在
+        UserDao userDao = daoSession.getUserDao();
+        QueryBuilder<User> qb = userDao.queryBuilder();
+        QueryBuilder<User> builder = qb.where(UserDao.Properties.Phone.eq(account));
+        List<User> list = builder.list();
+        if (list == null || list.size() == 0) {
+            callBack.onDataLoaded(false);
+        } else {
+            callBack.onDataLoaded(true);
+        }
     }
 
     @Override

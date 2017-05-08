@@ -1,7 +1,10 @@
 package com.jkb.supportfragment.demo.entity.launch;
 
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
+import android.widget.ImageView;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
 import com.jkb.supportfragment.demo.BR;
@@ -26,5 +29,10 @@ public class LaunchEntity extends BaseEntity {
     public void setLaunchPicture(int launchPicture) {
         this.launchPicture = launchPicture;
         notifyPropertyChanged(BR.launchPicture);
+    }
+
+    @BindingAdapter("launchImg")
+    public static void launchImage(ImageView imageView, @DrawableRes int launchImg) {
+        imageView.setImageResource(launchImg);
     }
 }

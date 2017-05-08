@@ -55,7 +55,7 @@ public class AccountDataRepertory implements AccountDataSource {
 
     @Override
     public void identifyAccount(String account, LoadDataCallBack<Boolean> callBack) {
-        remoteDataSource.identifyAccount(account, callBack);
+        localDataSource.identifyAccount(account, callBack);
     }
 
     @Override

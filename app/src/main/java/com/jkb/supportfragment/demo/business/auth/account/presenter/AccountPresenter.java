@@ -46,6 +46,7 @@ public class AccountPresenter implements AccountContract.Presenter, BaseModel.Lo
     @Override
     public void destroy() {
         if (mRepertory != null) mRepertory.destroy();
+        identifyAccountCallback = null;
     }
 
     @Override
@@ -55,6 +56,8 @@ public class AccountPresenter implements AccountContract.Presenter, BaseModel.Lo
             mView.showShortToast("请输入正确手机号");
             return;
         }
+        //请求该手机号是否注册过
+        mRepertory.identifyAccount(accountEntity.getAccount(), identifyAccountCallback);
     }
 
     @Override
@@ -67,4 +70,25 @@ public class AccountPresenter implements AccountContract.Presenter, BaseModel.Lo
     public void onDataNotAvailable(String errData) {
         bindDataToView();
     }
+
+    /**
+     * 验证手机号是否已经注册的回调
+     */
+    private BaseModel.LoadDataCallBack<Boolean> identifyAccountCallback = new BaseModel.LoadDataCallBack<Boolean>() {
+        @Override
+        public void onDataLoaded(Boolean isIdentified) {
+            if (!mView.isActive()) return;
+            if (isIdentified) {
+                mView.launchLogin(accountEntity.getAccount());
+            } else {
+                mView.launchVerCode(accountEntity.getAccount());
+            }
+        }
+
+        @Override
+        public void onDataNotAvailable(String errData) {
+            if (!mView.isActive()) return;
+            mView.showShortToast(errData);
+        }
+    };
 }

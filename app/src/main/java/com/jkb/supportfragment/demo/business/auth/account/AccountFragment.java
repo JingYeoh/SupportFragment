@@ -96,12 +96,12 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
 
     @Override
     public void launchLogin(String account) {
-
+        startFragment(AppLauncher.launchLogin(account));
     }
 
     @Override
     public void launchVerCode(String account) {
-
+        startFragment(AppLauncher.launchVerCode(account));
     }
 
     @Override

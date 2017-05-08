@@ -20,6 +20,7 @@ public interface AppConfig {
         String AUTH_PASSWORD_FINDBACK = "/auth/password/findBack";
         String AUTH_PASSWORD_RESET = "/auth/password/reset";
         String AUTH_AREA_CODE = "/auth/areaCode";
+        String AUTH_VERCODE = "/auth/verCode";
 
         String APP_MAIN = "/app/main";
     }
@@ -30,6 +31,7 @@ public interface AppConfig {
     interface EventBusTAG {
         String APP_INIT = "/app/init";
         String APP_INIT_COMPLECTED = "/app/init/completed";
+        String APP_ONBOARDING_COMPLECTED = "/app/onBoarding/completed";
 
         String AUTH_AREA_CODE_SELECTE = "/auth/areaCode/select";
     }
@@ -40,6 +42,8 @@ public interface AppConfig {
     interface KeyBundle {
         String ONBOARDING_TYPE = "onBoardingType";
         String AREACODE = "areaCode";
+        String ACCOUNT = "account";
+        String VERCODE_TYPE = "verCodeType";
     }
 
     /**
@@ -51,6 +55,15 @@ public interface AppConfig {
         int THREE = 1003;
         int FOUR = 1004;
         int FIVE = 1005;
+    }
+
+    /**
+     * 验证码场景
+     */
+    interface VerCodeType {
+        int REGISTER = 1001;//注册
+        int PASSWORD_RESET = 1002;//重置密码
+        int PASSWORD_FINDBACK = 1003;//找回密码
     }
 
     /**

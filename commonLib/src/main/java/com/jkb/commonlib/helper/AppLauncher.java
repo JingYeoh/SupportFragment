@@ -19,7 +19,8 @@ public class AppLauncher {
      */
     public static SupportFragment launchOnBoardingMain() {
         return (SupportFragment) ARouter.getInstance().
-                build(AppConfig.RouterPath.ONBOARDING_CONTENT).navigation();
+                build(AppConfig.RouterPath.ONBOARDING_CONTENT)
+                .navigation();
     }
 
     /**
@@ -28,7 +29,8 @@ public class AppLauncher {
     public static SupportFragment launchOnBoardingPlaceHolder(int onBoardType) {
         return (SupportFragment) ARouter.getInstance().
                 build(AppConfig.RouterPath.ONBOARDING_PLACEHOLDER)
-                .withInt(AppConfig.KeyBundle.ONBOARDING_TYPE, onBoardType).navigation();
+                .withInt(AppConfig.KeyBundle.ONBOARDING_TYPE, onBoardType)
+                .navigation();
     }
 
     /**
@@ -36,15 +38,18 @@ public class AppLauncher {
      */
     public static SupportFragment launchAccount() {
         return (SupportFragment) ARouter.getInstance().
-                build(AppConfig.RouterPath.AUTH_ACCOUNT).navigation();
+                build(AppConfig.RouterPath.AUTH_ACCOUNT)
+                .navigation();
     }
 
     /**
      * 启动登录页面
      */
-    public static SupportFragment launchLogin() {
-        return (SupportFragment) ARouter.getInstance().
-                build(AppConfig.RouterPath.AUTH_LOGIN).navigation();
+    public static SupportFragment launchLogin(String account) {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.AUTH_LOGIN)
+                .withString(AppConfig.KeyBundle.ACCOUNT, account)
+                .navigation();
     }
 
     /**
@@ -53,7 +58,19 @@ public class AppLauncher {
      * @param value ArrayList<AreaCodeEntity>数据
      */
     public static BaseDialogFragment launchAreaCode(Serializable value) {
-        return (BaseDialogFragment) ARouter.getInstance().build(AppConfig.RouterPath.AUTH_AREA_CODE)
-                .withSerializable(AppConfig.KeyBundle.AREACODE, value).navigation();
+        return (BaseDialogFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.AUTH_AREA_CODE)
+                .withSerializable(AppConfig.KeyBundle.AREACODE, value)
+                .navigation();
+    }
+
+    /**
+     * 启动发送验证码页面
+     */
+    public static SupportFragment launchVerCode(String account) {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.AUTH_VERCODE)
+                .withString(AppConfig.KeyBundle.ACCOUNT, account)
+                .navigation();
     }
 }
