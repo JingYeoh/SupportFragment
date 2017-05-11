@@ -18,6 +18,5 @@
         style="@style/TitleTextStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/general_padding"
-        android:paddingRight="@dimen/general_padding"/>
+        android:layout_marginRight="@dimen/general_padding"/>
 </LinearLayout>

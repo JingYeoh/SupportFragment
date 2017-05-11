@@ -66,7 +66,7 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
     }
 
     @Override
-    public boolean requestImmersiveStatusStyle() {
+    public boolean requestFullScreenStyle() {
         return true;
     }
 

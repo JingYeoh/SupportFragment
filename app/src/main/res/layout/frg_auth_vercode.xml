@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -56,16 +57,23 @@
                         android:layout_marginTop="10dp"
                         android:text="@={verCode.phoneNumber}"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_xxxl"/>
+                        android:textSize="30sp"/>
 
-                    <EditText
+                    <com.jkb.supportfragment.demo.view.vercode.VerificationCodeEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="40dp"
+                        android:background="@color/clarity"
                         android:inputType="number"
                         android:text="@={verCode.verCode}"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/text_size_xxxl"/>
+                        android:textSize="40sp"
+                        app:bottomLineHeight="5dp"
+                        app:bottomLineNormalColor="@color/gravy_deep"
+                        app:bottomLineSelectedColor="@color/colorAccent"
+                        app:figures="4"
+                        app:selectedBackgroundColor="@color/colorPrimary_alpha33"
+                        app:verCodeMargin="10dp"/>
 
                     <RelativeLayout
                         android:layout_width="match_parent"

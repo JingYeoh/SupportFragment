@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,15 +56,15 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setWindowStyle();
-        setImmersiveStatus();
+        setFullScreenStyle();
+//        setImmersiveStatus();
         init(savedInstanceState);
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) setWindowStyle();
+        if (!hidden) setFullScreenStyle();
     }
 
     @Override
@@ -81,7 +82,7 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     /**
      * 设置窗口是否全屏
      */
-    private void setWindowStyle() {
+    private void setFullScreenStyle() {
         Window window = mActivity.getWindow();
         if (requestFullScreenStyle()) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
@@ -97,13 +98,21 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
      * 沉浸式状态栏
      */
     private void setImmersiveStatus() {
-        if (!requestImmersiveStatusStyle()) return;
         Window window = mActivity.getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //透明状态栏
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //透明导航栏
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            int flag_translucent_status = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+
+            if (requestImmersiveStatusStyle()) {
+                //透明状态栏
+                window.setFlags(flag_translucent_status, flag_translucent_status);
+                //  设置根布局的参数
+                ViewGroup rootView = (ViewGroup) ((ViewGroup) mActivity.findViewById(android.R.id.content))
+                        .getChildAt(0);
+                ViewCompat.setFitsSystemWindows(rootView, false);
+                rootView.setClipToPadding(true);
+            } else {
+                window.clearFlags(flag_translucent_status);
+            }
         }
     }
 

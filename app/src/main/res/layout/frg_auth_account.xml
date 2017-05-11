@@ -22,8 +22,7 @@
 
         <FrameLayout
             style="@style/TitleStyle"
-            android:background="@color/colorPrimary"
-            >
+            android:background="@color/colorPrimary">
 
             <TextView
                 style="@style/TitleTextStyle"

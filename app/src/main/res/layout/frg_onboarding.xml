@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     >
 
     <android.support.v4.view.ViewPager
         android:id="@+id/onBoarding_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true"
         android:paddingBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -33,7 +33,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal"/>
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
             android:id="@+id/onBoarding_finish"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
@@ -46,4 +46,4 @@
 
     </FrameLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
