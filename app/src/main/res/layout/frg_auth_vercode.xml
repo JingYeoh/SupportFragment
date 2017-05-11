@@ -69,7 +69,7 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="40sp"
                         app:bottomLineHeight="5dp"
-                        app:bottomLineNormalColor="@color/gravy_deep"
+                        app:bottomLineNormalColor="@color/gravy_light"
                         app:bottomLineSelectedColor="@color/colorAccent"
                         app:figures="4"
                         app:selectedBackgroundColor="@color/colorPrimary_alpha33"

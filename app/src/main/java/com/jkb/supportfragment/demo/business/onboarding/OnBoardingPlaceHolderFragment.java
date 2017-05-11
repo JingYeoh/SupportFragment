@@ -72,6 +72,11 @@ public class OnBoardingPlaceHolderFragment extends BaseFragment {
     }
 
     @Override
+    public boolean requestFullScreenStyle() {
+        return true;
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(AppConfig.KeyBundle.ONBOARDING_TYPE, mOnBoardingType);
