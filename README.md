@@ -3,8 +3,14 @@
   这是一个Fragment封装库，解决Fragment在使用过程中遇到的常见问题，并封装了Fragment和Activity的基类，并针对Fragment常见使用场景封装了一些常用操作。
 帮助项目支持单Activity+多Fragment或者多Activity+多Fragment架构。
 
-#### 最新版本
+## Demo演示
+  Demo为仿照探探做的App，整体架构采用了单Activity+多Fragment，使用MVP+MVVM框架，采用ARouter路由框架进行界面跳转，使用EventBus作为消息总线通知框架，
+后续会推出该demo相关的wiki。
+<video src="/demo/auth.mp4" width="320" height="240" controls="controls">
+ Your browser does not support the video tag.
+</video>
 
+#### 最新版本
 模块|supportfragment
 ---|---
 最新版本|![Download](https://api.bintray.com/packages/jkb/maven/supportfragment/images/download.svg)
