@@ -4,6 +4,7 @@
     <string name="onboarding_finish_button_description">开始探探</string>
     <string name="phone_number">手机号码</string>
     <string name="please_input_phone_number">请输入手机号码</string>
+    <string name="please_input_password">请输入密码</string>
     <string name="please_input_right_phone_number">请输入正确手机号</string>
     <string name="Continue">继续</string>
     <string name="sms_has_send_to">短信验证码以发送至：</string>
@@ -12,4 +13,13 @@
     <string name="send_again">重新发送</string>
     <string name="not_receive_vercode">没有收到验证码？</string>
     <string name="send_verCode">发送验证码</string>
+    <string name="password">密码</string>
+    <string name="birth_date">出生日期</string>
+    <string name="hint_you_can_match_only_when_you_use_yourself_photo">请注意：只有使用本人照片才能配对聊天</string>
+    <string name="register_means_agree_user_rules">注册成为会员即为同意以下<font color="#bd3e27"><u>用户协议</u></font></string>
+    <string name="name">姓名</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+
+    <string name="register_new_user">注册新用户</string>
 </resources>

@@ -14,7 +14,7 @@ import com.jkb.support.helper.SupportManager;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.account.contract.AccountContract;
 import com.jkb.supportfragment.demo.business.auth.account.presenter.AccountPresenter;
-import com.jkb.supportfragment.demo.business.helper.InjectRepertory;
+import com.jkb.supportfragment.demo.business.helper.RepertoryInject;
 import com.jkb.supportfragment.demo.databinding.FrgAuthAccountBinding;
 import com.jkb.supportfragment.demo.entity.auth.AccountEntity;
 import com.jkb.supportfragment.demo.entity.auth.AreaCodeEntity;
@@ -62,7 +62,7 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
 
     @Override
     public void initPresenter() {
-        new AccountPresenter(this, InjectRepertory.provideAccountDR(mContext));
+        new AccountPresenter(this, RepertoryInject.provideAccountDR(mContext));
     }
 
     @Override
@@ -112,5 +112,13 @@ public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuth
     public void onAreaCodeSelected(Message message) {
         AreaCodeEntity entity = (AreaCodeEntity) message.obj;
         getBinding().getAccount().setAreaCode(entity.getCode());
+    }
+
+    /**
+     * 接收到登录成功的消息通知
+     */
+    @Subscriber(tag = AppConfig.EventBusTAG.LOGIN_SUCCESS)
+    public void receiveMessageLoginSuccess(Message message) {
+        close();
     }
 }

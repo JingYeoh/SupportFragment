@@ -25,7 +25,7 @@ public interface VerCodeContract {
         /**
          * 启动登录页面
          */
-        void launchLogin();
+        void launchRegister();
     }
 
     interface Presenter extends BasePresenter {
@@ -33,5 +33,10 @@ public interface VerCodeContract {
          * 发送验证码
          */
         void sendVerCode();
+
+        /**
+         * 验证验证码是否正确
+         */
+        void identifyVerCode();
     }
 }

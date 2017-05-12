@@ -21,6 +21,7 @@ public interface AppConfig {
         String AUTH_PASSWORD_RESET = "/auth/password/reset";
         String AUTH_AREA_CODE = "/auth/areaCode";
         String AUTH_VERCODE = "/auth/verCode";
+        String AUTH_REGISTER = "/auth/register";
 
         String APP_MAIN = "/app/main";
     }
@@ -34,6 +35,8 @@ public interface AppConfig {
         String APP_ONBOARDING_COMPLECTED = "/app/onBoarding/completed";
 
         String AUTH_AREA_CODE_SELECTE = "/auth/areaCode/select";
+
+        String LOGIN_SUCCESS = "/login/success";
     }
 
     /**

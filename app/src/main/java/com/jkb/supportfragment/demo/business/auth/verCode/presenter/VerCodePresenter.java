@@ -29,7 +29,7 @@ public class VerCodePresenter implements VerCodeContract.Presenter {
 
     @Override
     public void start() {
-
+        sendVerCode();
     }
 
     @Override
@@ -48,6 +48,13 @@ public class VerCodePresenter implements VerCodeContract.Presenter {
         mRepertory.sendVerCode(verCodeEntity.getPhoneNumber(), sendVerCodeCallback);
     }
 
+    @Override
+    public void identifyVerCode() {
+        String phoneNumber = verCodeEntity.getPhoneNumber();
+        String verCode = verCodeEntity.getVerCode();
+        mRepertory.identifyVerCodeWithAccount(phoneNumber, verCode, identifyVerCodeCallback);
+    }
+
     /**
      * 发送验证码回调
      */
@@ -62,7 +69,25 @@ public class VerCodePresenter implements VerCodeContract.Presenter {
         @Override
         public void onDataNotAvailable(String errData) {
             if (!mView.isActive()) return;
-            mView.showShortToast("errData");
+            mView.showShortToast(errData);
+        }
+    };
+
+    /**
+     * 验证手机号验证码是否正确
+     */
+    private BaseModel.LoadDataCallBack<Boolean> identifyVerCodeCallback = new BaseModel.LoadDataCallBack<Boolean>() {
+        @Override
+        public void onDataLoaded(Boolean data) {
+            if (!mView.isActive()) return;
+            if (data) mView.launchRegister();
+        }
+
+        @Override
+        public void onDataNotAvailable(String errData) {
+            if (!mView.isActive()) return;
+            mView.showShortToast(errData);
+            verCodeEntity.setVerCode("");
         }
     };
 }

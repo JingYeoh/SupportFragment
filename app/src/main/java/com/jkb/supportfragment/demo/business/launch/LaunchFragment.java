@@ -7,7 +7,7 @@ import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.supportfragment.demo.R;
-import com.jkb.supportfragment.demo.business.helper.InjectRepertory;
+import com.jkb.supportfragment.demo.business.helper.RepertoryInject;
 import com.jkb.supportfragment.demo.business.launch.contract.LaunchContract;
 import com.jkb.supportfragment.demo.business.launch.presenter.LaunchPresenter;
 import com.jkb.supportfragment.demo.databinding.FrgLaunchBinding;
@@ -39,7 +39,7 @@ public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunch
 
     @Override
     public void initPresenter() {
-        new LaunchPresenter(this, InjectRepertory.provideLaunchDR(mContext));
+        new LaunchPresenter(this, RepertoryInject.provideLaunchDR(mContext));
     }
 
     @Override

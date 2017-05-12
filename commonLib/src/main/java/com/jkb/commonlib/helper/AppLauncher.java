@@ -6,7 +6,6 @@ import com.jkb.commonlib.config.AppConfig;
 import com.jkb.support.ui.SupportFragment;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * App的启动帮助类
@@ -72,6 +71,25 @@ public class AppLauncher {
                 .build(AppConfig.RouterPath.AUTH_VERCODE)
                 .withString(AppConfig.KeyBundle.ACCOUNT, account)
                 .withInt(AppConfig.KeyBundle.VERCODE_TYPE, verCodeType)
+                .navigation();
+    }
+
+    /**
+     * 启动注册页面
+     */
+    public static SupportFragment launchRegister(String account) {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.AUTH_REGISTER)
+                .withString(AppConfig.KeyBundle.ACCOUNT, account)
+                .navigation();
+    }
+
+    /**
+     * 启动App首页
+     */
+    public static SupportFragment launchAppMain() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.AUTH_REGISTER)
                 .navigation();
     }
 }

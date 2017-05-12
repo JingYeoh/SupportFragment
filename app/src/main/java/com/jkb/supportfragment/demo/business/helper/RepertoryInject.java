@@ -2,9 +2,13 @@ package com.jkb.supportfragment.demo.business.helper;
 
 import android.content.Context;
 
+import com.jkb.commonlib.base.frame.BaseModel;
 import com.jkb.supportfragment.demo.business.auth.account.model.AccountDataRepertory;
 import com.jkb.supportfragment.demo.business.auth.account.model.local.AccountLocalDataSource;
 import com.jkb.supportfragment.demo.business.auth.account.model.remote.AccountRemoteDataSource;
+import com.jkb.supportfragment.demo.business.auth.register.model.RegisterDataRepertory;
+import com.jkb.supportfragment.demo.business.auth.register.model.local.RegisterLocalDataSource;
+import com.jkb.supportfragment.demo.business.auth.register.model.remote.RegisterRemoteDataSource;
 import com.jkb.supportfragment.demo.business.auth.verCode.model.VerCodeDataRepertory;
 import com.jkb.supportfragment.demo.business.auth.verCode.model.local.VerCodeLocalDataSource;
 import com.jkb.supportfragment.demo.business.auth.verCode.model.remote.VerCodeRemoteDataSource;
@@ -16,7 +20,7 @@ import com.jkb.supportfragment.demo.business.launch.model.local.LaunchLocalDataS
  * Created by yj on 2017/5/5.
  */
 
-public class InjectRepertory {
+public class RepertoryInject {
 
     /**
      * 返回启动页数据仓库
@@ -39,5 +43,13 @@ public class InjectRepertory {
     public static VerCodeDataRepertory provideVerCodeDR(Context context) {
         return VerCodeDataRepertory.getInstance(VerCodeLocalDataSource.getInstance(context),
                 VerCodeRemoteDataSource.getInstance());
+    }
+
+    /**
+     * 返回注册数据仓库
+     */
+    public static RegisterDataRepertory provideRegisterDR(Context context) {
+        return RegisterDataRepertory.getInstance(RegisterLocalDataSource.getInstance(context),
+                RegisterRemoteDataSource.getInstance());
     }
 }
