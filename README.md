@@ -2,6 +2,12 @@
 ## 简介
   这是一个Fragment封装库，解决Fragment在使用过程中遇到的常见问题，并封装了Fragment和Activity的基类，并针对Fragment常见使用场景封装了一些常用操作。
 帮助项目支持单Activity+多Fragment或者多Activity+多Fragment架构。
+### 功能介绍
+1、完全解决同级Fragment重叠问题  
+2、为Fragment多层嵌套提供支持  
+3、为Fragment提供OnBackPressed()监听方法  
+4、提供Fragment和Activity基类，封装一系列方法，使用起来更加方便  
+5、解决在“内存重启”时候可能发生的一系列异常  
 
 ## Demo演示
   Demo为仿照探探做的App，整体架构采用了单Activity+多Fragment，使用MVP+MVVM框架，采用ARouter路由框架进行界面跳转，使用EventBus作为消息总线通知框架，
@@ -73,6 +79,11 @@ public class TestFragment extends SupportFragment {
 }
 ```
 Fragment中使用时和正常使用Fragment时候一样，只是父类改为了SupportFragment
+## 使用说明
+所有的方法在Activity和Fragment均被支持，可根据自己的具体业务来决定在哪里调用相关的方法。
+方法|说明|场景
+---|---|---
+int getFragmentContentId()/返回Fragment的根布局id，在startFragment()时作为显示区域/Activity
 ## 发布历史
 #### v1.0.2(2017/5/8)
 1、修复Support方法中事物保存机制，使用队列对SupportTransaction进行存储及恢复。
