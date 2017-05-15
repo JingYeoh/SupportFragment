@@ -42,6 +42,8 @@ compile 'com.justkiddingbaby:supportfragment:最新版本'
 ```
 ## 用法
 #### 为Activity添加支持
+Activity需要继承[SupportActivity](/supportFragment/src/main/java/com/jkb/support/ui/SupportActivity.java)并重写int getFragmentContentId()方法，
+该方法用于startFragment(SupportFragment)时候作为根视图显示，可让项目的Activity基类继承该类。
 ##### TestAvtivity.java
 ```java
 public class TestActivity extends SupportActivity {
@@ -68,30 +70,27 @@ public class TestActivity extends SupportActivity {
     android:layout_height="match_parent"/>
 ```
 #### 为Fragment添加支持
+Fragment需要继承[SupportFragment](/supportFragment/src/main/java/com/jkb/support/ui/SupportFragment.java)即可，在项目中可让项目的Fragment基类继承该类。
 ##### TestFragment.java
 ```java
 public class TestFragment extends SupportFragment {
 
-    public static TestFragment newInstance() {
-        TestFragment fragment = new TestFragment();
-        return fragment;
-    }
 }
 ```
 Fragment中使用时和正常使用Fragment时候一样，只是父类改为了SupportFragment
 ## 使用说明
-方法|说明|场景
+返回值|方法|说明|场景
 ---|---|---
-|[int getFragmentContentId()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportActivity.java)|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity|
-|[void startFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏getFragmentContentId()中显示的视图，并显示新的Fragment|Activity/Fragment|
-|[void showFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|在int位置显示Fragment，并保留该contentId中之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
-|[void replaceFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|替换int参数的Fragment并销毁之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
-|[void showPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|显示栈顶的Fragment|Activity/Fragment|
-|[void closeCurrentAndShowPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment并显示上级Fragment|Activity/Fragment|
-|[void clearFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|清空栈中所有Fragment|Activity/Fragment|
-|[void close()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment或者Activity|Activity/Fragment|
-|[void closeFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭指定Fragment|Activity/Fragment|
-|[void String getFragmentTAG()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回Fragment的TAG，可以重写，但不建议这样做，自定义可能会有重复的TAG，会发生相关异常|Fragment|
+|int|[getFragmentContentId()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportActivity.java)|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity|
+|void|[startFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏getFragmentContentId()中显示的视图，并显示新的Fragment|Activity/Fragment|
+|void|[showFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|在int位置显示Fragment，并保留该contentId中之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
+|void|[replaceFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|替换int参数的Fragment并销毁之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
+|void|[showPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|显示栈顶的Fragment|Activity/Fragment|
+|void|[closeCurrentAndShowPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment并显示上级Fragment|Activity/Fragment|
+|void|[clearFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|清空栈中所有Fragment|Activity/Fragment|
+|void|[close()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment或者Activity|Activity/Fragment|
+|void|[closeFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭指定Fragment|Activity/Fragment|
+|void|[String getFragmentTAG()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回Fragment的TAG，可以重写，但不建议这样做，自定义可能会有重复的TAG，会发生相关异常|Fragment|
 
 上述的方法，有的被Activity支持，有的被Fragment支持，还有二者均支持的，根据自己的业务逻辑判断在何处使用什么方法，
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
