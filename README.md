@@ -80,7 +80,7 @@ public class TestFragment extends SupportFragment {
 Fragment中使用时和正常使用Fragment时候一样，只是父类改为了SupportFragment
 ## 使用说明
 返回值|方法|说明|场景
----|---|---
+---|---|---|---
 |int|[getFragmentContentId()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportActivity.java)|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity|
 |void|[startFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏getFragmentContentId()中显示的视图，并显示新的Fragment|Activity/Fragment|
 |void|[showFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|在int位置显示Fragment，并保留该contentId中之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
