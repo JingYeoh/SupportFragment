@@ -80,10 +80,10 @@ public class TestFragment extends SupportFragment {
 ```
 Fragment中使用时和正常使用Fragment时候一样，只是父类改为了SupportFragment
 ## 使用说明
-所有的方法在Activity和Fragment均被支持，可根据自己的具体业务来决定在哪里调用相关的方法。
-方法|说明|场景
----|---|---
-int getFragmentContentId()/返回Fragment的根布局id，在startFragment()时作为显示区域/Activity
+所有的方法在Activity和Fragment均被支持，可根据自己的具体业务来决定在哪里调用相关的方法。  
+|方法|说明|场景|
+|---|---|---|
+|int getFragmentContentId()|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity|
 ## 发布历史
 #### v1.0.2(2017/5/8)
 1、修复Support方法中事物保存机制，使用队列对SupportTransaction进行存储及恢复。
