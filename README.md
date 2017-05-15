@@ -83,7 +83,12 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 ---|---|---|---
 |int|[getFragmentContentId()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportActivity.java)|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity|
 |void|[startFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏getFragmentContentId()中显示的视图，并显示新的Fragment|Activity/Fragment|
+|void|[startFragmentForResult(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|和startFragment使用相似，支持返回值|Activity/Fragment|
+|void|[startFragmentForResult(SupportFragment,int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|和startFragment使用相似，支持返回值|Activity/Fragment|
+|void|[setFragmentResult(int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|设置Fragment的返回值|Activity/Fragment|
+|void|[onFragmentResult(int,int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|Fragment的返回值的回调|Activity/Fragment|
 |void|[showFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|在int位置显示Fragment，并保留该contentId中之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
+|void|[hideFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏Fragment的显示，用于Fragment多层嵌套|Activity/Fragment|
 |void|[replaceFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|替换int参数的Fragment并销毁之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
 |void|[showPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|显示栈顶的Fragment|Activity/Fragment|
 |void|[closeCurrentAndShowPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment并显示上级Fragment|Activity/Fragment|
@@ -96,6 +101,9 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
+#### v1.1.0(2017/5/15)
+1、增加hideFragment(SupportFragment)方法。
+2、增加startFragmentForResult系列方法，使用参考startActivityForResult。
 #### v1.0.2(2017/5/8)
 1、修复Support方法中事物保存机制，使用队列对SupportTransaction进行存储及恢复。
 #### v1.0.1(2017/5/4)
