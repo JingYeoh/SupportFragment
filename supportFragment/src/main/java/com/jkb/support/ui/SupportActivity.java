@@ -116,6 +116,8 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         args.putInt(KEY_BUNDLE_FRAGMENT_REQUEST_CODE, requestCode);
         if (bundle != null) {
             args.putBundle(KEY_BUNDLE_FRAGMENT_RESULT, bundle);
+        } else {
+            args.putBundle(KEY_BUNDLE_FRAGMENT_RESULT, new Bundle());
         }
         startFragment(fragment);
     }
@@ -134,7 +136,8 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         } else {
             Fragment fragment = SupportManager.getFragment(mFm, fragmentTag);
             if (fragment instanceof SupportFragment) {
-                ((SupportFragment) fragment).onFragmentResult(resultCode, RESULT_OK_FRAGMENT, bundle);
+                ((SupportFragment) fragment).onFragmentResult(((SupportFragment) fragment).getRequestCode(),
+                        resultCode, bundle);
             } else {
                 throwException(new NotSupportException(fragment.getClass().getSimpleName()));
             }
@@ -172,7 +175,6 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
                     (fragment));
         } else {
             commitFragmentTransaction(SupportManager.beginTransaction(mFm).show(fragment));
-//            throwException(new HasBeenAddedException(fragment.getFragmentTAG()));
         }
     }
 

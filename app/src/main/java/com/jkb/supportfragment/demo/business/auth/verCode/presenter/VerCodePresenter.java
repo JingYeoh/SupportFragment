@@ -1,6 +1,9 @@
 package com.jkb.supportfragment.demo.business.auth.verCode.presenter;
 
+import android.text.TextUtils;
+
 import com.jkb.commonlib.base.frame.BaseModel;
+import com.jkb.commonlib.utils.StringUtils;
 import com.jkb.supportfragment.demo.business.auth.verCode.contract.VerCodeContract;
 import com.jkb.supportfragment.demo.business.auth.verCode.model.VerCodeDataRepertory;
 import com.jkb.supportfragment.demo.entity.auth.VerCodeEntity;
@@ -52,6 +55,7 @@ public class VerCodePresenter implements VerCodeContract.Presenter {
     public void identifyVerCode() {
         String phoneNumber = verCodeEntity.getPhoneNumber();
         String verCode = verCodeEntity.getVerCode();
+        if (StringUtils.hasEmpty(verCode, phoneNumber)) return;
         mRepertory.identifyVerCodeWithAccount(phoneNumber, verCode, identifyVerCodeCallback);
     }
 

@@ -1,8 +1,12 @@
 package com.jkb.supportfragment.demo.business.auth.register;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.annotation.IdRes;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -19,13 +23,15 @@ import com.jkb.supportfragment.demo.entity.auth.RegisterEntity;
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
 
+import java.util.Calendar;
+
 /**
  * 注册
  * Created by yj on 2017/5/12.
  */
 @Route(path = AppConfig.RouterPath.AUTH_REGISTER)
 public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAuthRegisterBinding> implements
-        RegisterContract.View, View.OnClickListener {
+        RegisterContract.View, View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     private String mAccount;
 
@@ -52,6 +58,7 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
             args = getArguments();
         }
         mAccount = args.getString(AppConfig.KeyBundle.ACCOUNT);
+        getBinding().getRegister().setAccount(mAccount);
 
         getPresenter().start();
     }
@@ -62,6 +69,7 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
         findViewById(R.id.register_continue).setOnClickListener(this);
         findViewById(R.id.register_birthday).setOnClickListener(this);
         findViewById(R.id.register_avatar).setOnClickListener(this);
+        ((RadioGroup) findViewById(R.id.register_radioGroup)).setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -86,8 +94,10 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
                 getPresenter().register();
                 break;
             case R.id.register_birthday:
+                showTimePicker();
                 break;
             case R.id.register_avatar:
+                showPhotoPicker();
                 break;
         }
     }
@@ -100,7 +110,6 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
     @Override
     public void bindPasswordEntity(RegisterEntity entity) {
         getBinding().setRegister(entity);
-        getBinding().getRegister().setAccount(mAccount);
     }
 
     @Override
@@ -124,5 +133,30 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
     @Subscriber(tag = AppConfig.EventBusTAG.LOGIN_SUCCESS)
     public void receiveMessageLoginSuccess(Message message) {
         close();
+    }
+
+    /**
+     * 显示照片选择器
+     */
+    private void showPhotoPicker() {
+
+    }
+
+    /**
+     * 显示日期选择器
+     */
+    private void showTimePicker() {
+        Calendar c = Calendar.getInstance();
+        new DatePickerDialog(mContext, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                getBinding().getRegister().setBirthday(year + "/" + monthOfYear + "/" + dayOfMonth);
+            }
+        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+        getBinding().getRegister().changeSex();
     }
 }

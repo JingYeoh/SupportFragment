@@ -1,9 +1,13 @@
 package com.jkb.supportfragment.demo.entity.auth;
 
 import android.databinding.Bindable;
+import android.widget.Button;
+import android.widget.RadioGroup;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
+import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.utils.StringUtils;
+import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.BR;
 
 /**
@@ -18,7 +22,7 @@ public class RegisterEntity extends BaseEntity {
     private String name;
     private String avatarUrl;
     private String password;
-    private String sex;
+    private String sex = "男";
     private String birthday;
 
     @Bindable
@@ -78,6 +82,7 @@ public class RegisterEntity extends BaseEntity {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+        notifyPropertyChanged(BR.birthday);
     }
 
     /**
@@ -85,7 +90,24 @@ public class RegisterEntity extends BaseEntity {
      */
     @Bindable
     public boolean isAllowRegister() {
-        return !StringUtils.hasEmpty(getAccount(), getAvatarUrl(), getBirthday(),
+        LogUtils.d(this, "account=" + account);
+        RadioGroup radioGroup;
+        LogUtils.d(this, "birthday=" + birthday);
+        LogUtils.d(this, "name=" + name);
+        LogUtils.d(this, "password=" + password);
+        LogUtils.d(this, "sex=" + sex);
+        return !StringUtils.hasEmpty(getAccount(), getBirthday(),
                 getName(), getPassword(), getSex());
+    }
+
+    /**
+     * 切换性别
+     */
+    public void changeSex() {
+        if (sex.equals("男")) {
+            sex = "女";
+        } else {
+            sex = "男";
+        }
     }
 }

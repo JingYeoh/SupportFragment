@@ -45,6 +45,10 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     //constant
     private static final String KEY_SAVED_FRAGMENT_IS_HIDDEN = "key.saved.fragment.isHidden";
     private static final String KEY_SAVED_FRAGMENT_TAG = "key.saved.fragment.tag";
+    private static final String KEY_SAVED_IS_START_FOR_RESULT = "key.saved.isStartForResult";
+    //startForResult
+    private int mRequestCode;
+    private boolean isStartForResult = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         } else {
             mSupportStack = new SupportStack();
         }
+        initRequestByStartForResult(savedInstanceState);
     }
 
     @Override
@@ -87,6 +92,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         outState.putBoolean(KEY_SAVED_FRAGMENT_IS_HIDDEN, isHidden());
         outState.putString(KEY_SAVED_FRAGMENT_TAG, mFragmentTag);
         outState.putSerializable(SupportStack.KEY_SAVED_SUPPORT_STACK, mSupportStack);
+        outState.putBoolean(KEY_SAVED_IS_START_FOR_RESULT, isStartForResult);
     }
 
     @Override
@@ -120,6 +126,21 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         mSupportStack = (SupportStack) savedInstanceState.getSerializable(SupportStack.KEY_SAVED_SUPPORT_STACK);
     }
 
+    /**
+     * 初始化通过StartForResult方法请求的数据
+     */
+    private void initRequestByStartForResult(Bundle savedInstanceState) {
+        Bundle args = savedInstanceState;
+        if (savedInstanceState == null) {
+            isStartForResult = args.getBundle(KEY_BUNDLE_FRAGMENT_RESULT) != null;
+            args = getArguments();
+        } else {
+            isStartForResult = args.getBoolean(KEY_SAVED_IS_START_FOR_RESULT);
+        }
+        mRequestCode = args.getInt(KEY_BUNDLE_FRAGMENT_REQUEST_CODE);
+
+    }
+
     @Override
     public void onBackPressed() {
         LogUtils.d(TAG, "onBackPressed");
@@ -148,6 +169,11 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     }
 
     @Override
+    final public int getRequestCode() {
+        return mRequestCode;
+    }
+
+    @Override
     public final void startFragment(@NonNull SupportFragment fragment) {
         mActivity.startFragment(fragment);
     }
@@ -159,12 +185,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
 
     @Override
     public void startFragmentForResult(@NonNull SupportFragment fragment, int requestCode, Bundle bundle) {
-        Bundle args = fragment.getArguments();
-        args.putInt(KEY_BUNDLE_FRAGMENT_REQUEST_CODE, requestCode);
-        if (bundle != null) {
-            args.putBundle(KEY_BUNDLE_FRAGMENT_RESULT, bundle);
-        }
-        startFragment(fragment);
+        mActivity.startFragmentForResult(fragment, requestCode, bundle);
     }
 
     @Override
@@ -179,6 +200,9 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
 
     @Override
     public void close() {
+        if (isStartForResult) {
+            mActivity.setFragmentResult(RESULT_CANCELED_FRAGMENT, null);
+        }
         clearFragments();
         Fragment parentFragment = getParentFragment();
         if (parentFragment == null) {//由Activity直接添加的
@@ -218,7 +242,6 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
                     (fragment));
         } else {//只显示Fragment
             commitFragmentTransaction(SupportManager.beginTransaction(mChildFm).show(fragment));
-//            throwException(new HasBeenAddedException(fragment.getFragmentTAG()));
         }
     }
 

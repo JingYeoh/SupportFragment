@@ -82,6 +82,7 @@
                         </android.support.design.widget.TextInputLayout>
 
                         <RadioGroup
+                            android:id="@+id/register_radioGroup"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
@@ -132,6 +133,7 @@
                         android:hint="@string/birth_date"
                         android:inputType="text"
                         android:text="@={register.birthday}"
+                        android:textColor="@color/colorPrimary"
                         android:textColorHint="@color/hint"
                         />
 
@@ -173,7 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/selector_color_primart_dark"
-            android:enabled="@{register.allowRegister?true:false}"
+            android:enabled="@{StringUtils.hasEmpty(register.account,register.birthday,register.name,register.password,register.sex)?false:true}"
             android:text="@string/Continue"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"/>

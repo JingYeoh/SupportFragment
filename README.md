@@ -101,6 +101,8 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
+#### v1.1.1(2017/5/15)
+1、修复增加startFragmentForResult系列方法中的onFragmentResult中requestCode参数传递错误。
 #### v1.1.0(2017/5/15)
 1、增加hideFragment(SupportFragment)方法。  
 2、增加startFragmentForResult系列方法，使用参考startActivityForResult。

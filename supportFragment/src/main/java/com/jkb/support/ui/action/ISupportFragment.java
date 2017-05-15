@@ -15,4 +15,9 @@ public interface ISupportFragment {
      * 返回Fragment的TAG
      */
     String getFragmentTAG();
+
+    /**
+     * 返回请求码
+     */
+    int getRequestCode();
 }
