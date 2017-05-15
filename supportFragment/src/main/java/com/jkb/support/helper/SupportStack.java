@@ -104,6 +104,26 @@ public class SupportStack implements Cloneable, Serializable {
     }
 
     /**
+     * 返回倒数第二个栈内的Fragment
+     */
+    public String getPenultimateFragmentTag() {
+        if (mSupportStack == null || mSupportStack.isEmpty() || mSupportStack.size() == 1) {
+            return null;
+        } else {
+            return mSupportStack.get(mSupportStack.size() - 2);
+        }
+    }
+
+    /**
+     * Fragment是否被添到栈中
+     *
+     * @param fragmentTAG Fragment的TAG
+     */
+    public boolean isFragmentInStack(String fragmentTAG) {
+        return !(mSupportStack == null || mSupportStack.isEmpty()) && mSupportStack.contains(fragmentTAG);
+    }
+
+    /**
      * 清空栈，在Destroy的时候使用，使用后该栈不可用
      */
     public void clear() {

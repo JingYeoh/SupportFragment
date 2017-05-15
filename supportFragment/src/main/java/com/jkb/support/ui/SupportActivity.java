@@ -106,6 +106,42 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
+    public void startFragmentForResult(@NonNull SupportFragment fragment, int requestCode) {
+        startFragmentForResult(fragment, requestCode, null);
+    }
+
+    @Override
+    public void startFragmentForResult(@NonNull SupportFragment fragment, int requestCode, Bundle bundle) {
+        Bundle args = fragment.getArguments();
+        args.putInt(KEY_BUNDLE_FRAGMENT_REQUEST_CODE, requestCode);
+        if (bundle != null) {
+            args.putBundle(KEY_BUNDLE_FRAGMENT_RESULT, bundle);
+        }
+        startFragment(fragment);
+    }
+
+    @Override
+    public void onFragmentResult(int requestCode, int resultCode, Bundle bundle) {
+
+    }
+
+    @Override
+    public void setFragmentResult(int resultCode, Bundle bundle) {
+        String fragmentTag = mSupportStack.getPenultimateFragmentTag();
+        if (TextUtils.isEmpty(fragmentTag)) {
+            throwException(new NotFoundException("the fragment that call this method is might closed,this is not " +
+                    "allowed"));
+        } else {
+            Fragment fragment = SupportManager.getFragment(mFm, fragmentTag);
+            if (fragment instanceof SupportFragment) {
+                ((SupportFragment) fragment).onFragmentResult(resultCode, RESULT_OK_FRAGMENT, bundle);
+            } else {
+                throwException(new NotSupportException(fragment.getClass().getSimpleName()));
+            }
+        }
+    }
+
+    @Override
     public void close() {
         clearFragments();
         finish();
@@ -137,6 +173,15 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         } else {
             commitFragmentTransaction(SupportManager.beginTransaction(mFm).show(fragment));
 //            throwException(new HasBeenAddedException(fragment.getFragmentTAG()));
+        }
+    }
+
+    @Override
+    public void hideFragment(@NonNull SupportFragment fragment) {
+        if (mSupportStack.isFragmentInStack(fragment.getFragmentTAG())) {
+            commitFragmentTransaction(SupportManager.beginTransaction(mFm).hide(fragment));
+        } else {
+            throwException(new NotAddedException(fragment.getFragmentTAG()));
         }
     }
 

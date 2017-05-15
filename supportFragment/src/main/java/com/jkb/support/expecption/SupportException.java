@@ -7,6 +7,8 @@ package com.jkb.support.expecption;
 
 public class SupportException extends RuntimeException {
 
+    private static final long serialVersionUID = 4314484409264972826L;
+
     public SupportException(String action, String error) {
         super(String.format("the action is %s ,and error is %s \n,please check your code",
                 action, error));

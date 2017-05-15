@@ -9,6 +9,6 @@ public class NotFoundException extends SupportException {
 
     public NotFoundException(String error) {
         super("NotFoundException",
-                String.format("%s is not found ", error));
+                String.format("%s", error));
     }
 }
