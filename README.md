@@ -102,7 +102,7 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 
 ## 发布历史
 #### v1.1.0(2017/5/15)
-1、增加hideFragment(SupportFragment)方法。
+1、增加hideFragment(SupportFragment)方法。  
 2、增加startFragmentForResult系列方法，使用参考startActivityForResult。
 #### v1.0.2(2017/5/8)
 1、修复Support方法中事物保存机制，使用队列对SupportTransaction进行存储及恢复。
