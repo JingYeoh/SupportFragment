@@ -132,13 +132,12 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     private void initRequestByStartForResult(Bundle savedInstanceState) {
         Bundle args = savedInstanceState;
         if (savedInstanceState == null) {
-            isStartForResult = args.getBundle(KEY_BUNDLE_FRAGMENT_RESULT) != null;
             args = getArguments();
+            isStartForResult = args.getBundle(KEY_BUNDLE_FRAGMENT_RESULT) != null;
         } else {
             isStartForResult = args.getBoolean(KEY_SAVED_IS_START_FOR_RESULT);
         }
         mRequestCode = args.getInt(KEY_BUNDLE_FRAGMENT_REQUEST_CODE);
-
     }
 
     @Override
