@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
-def appVerCode = 5
-def appVerName = "1.1.1"
+def appVerCode = 6
+def appVerName = "1.1.2"
 
 publish {
     userOrg = 'jkb'
