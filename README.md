@@ -25,7 +25,7 @@
 <dependency>
   <groupId>com.justkiddingbaby</groupId>
   <artifactId>supportfragment</artifactId>
-  <version>1.0.1</version>
+  <version>最新版本</version>
   <type>pom</type>
 </dependency>
 ```
