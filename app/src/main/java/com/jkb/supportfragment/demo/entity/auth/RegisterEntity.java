@@ -1,14 +1,19 @@
 package com.jkb.supportfragment.demo.entity.auth;
 
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
 import com.jkb.commonlib.config.AppConfig;
+import com.jkb.commonlib.loader.ImageLoaderHelper;
 import com.jkb.commonlib.utils.StringUtils;
 import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.BR;
+import com.jkb.supportfragment.demo.R;
 
 /**
  * 注册的数据实体
@@ -86,21 +91,6 @@ public class RegisterEntity extends BaseEntity {
     }
 
     /**
-     * 是否允许注册
-     */
-    @Bindable
-    public boolean isAllowRegister() {
-        LogUtils.d(this, "account=" + account);
-        RadioGroup radioGroup;
-        LogUtils.d(this, "birthday=" + birthday);
-        LogUtils.d(this, "name=" + name);
-        LogUtils.d(this, "password=" + password);
-        LogUtils.d(this, "sex=" + sex);
-        return !StringUtils.hasEmpty(getAccount(), getBirthday(),
-                getName(), getPassword(), getSex());
-    }
-
-    /**
      * 切换性别
      */
     public void changeSex() {
@@ -108,6 +98,15 @@ public class RegisterEntity extends BaseEntity {
             sex = "女";
         } else {
             sex = "男";
+        }
+    }
+
+    @BindingAdapter({"userAvatar"})
+    public static void loadImage(ImageView view, String avatarUrl) {
+        if (TextUtils.isEmpty(avatarUrl)) {
+            view.setImageResource(R.drawable.ic_placeholder_profile);
+        } else {
+            ImageLoaderHelper.displayImage(avatarUrl, R.drawable.ic_placeholder_profile, view);
         }
     }
 }

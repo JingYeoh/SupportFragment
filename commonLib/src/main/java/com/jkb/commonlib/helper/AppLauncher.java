@@ -89,7 +89,16 @@ public class AppLauncher {
      */
     public static SupportFragment launchAppMain() {
         return (SupportFragment) ARouter.getInstance()
-                .build(AppConfig.RouterPath.AUTH_REGISTER)
+                .build(AppConfig.RouterPath.APP_MAIN)
+                .navigation();
+    }
+
+    /**
+     * 启动图片选择器
+     */
+    public static SupportFragment launchPhotoSelector() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.PHOTO_SELECRTOR)
                 .navigation();
     }
 }

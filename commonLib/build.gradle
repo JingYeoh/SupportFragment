@@ -51,4 +51,5 @@ dependencies {
     compile deps.eventbus
     //net
     compile deps.gson
+    compile deps.glide
 }

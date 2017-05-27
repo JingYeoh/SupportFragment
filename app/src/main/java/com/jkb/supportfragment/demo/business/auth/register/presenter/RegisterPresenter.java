@@ -1,5 +1,6 @@
 package com.jkb.supportfragment.demo.business.auth.register.presenter;
 
+import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.base.frame.BaseModel;
 import com.jkb.commonlib.base.frame.i.IBasePresenter;
 import com.jkb.commonlib.db.entity.User;
@@ -68,7 +69,11 @@ public class RegisterPresenter extends IBasePresenter<RegisterContract.View, Reg
     private BaseModel.LoadDataCallBack<User> registerCallback = new BaseModel.LoadDataCallBack<User>() {
         @Override
         public void onDataLoaded(User data) {
-
+            if (isViewActive()) {
+                AppManager.getInstance().loginSystem(data.getUserId());
+                mView.registerSuccess();
+                mView.launchAppMain();
+            }
         }
 
         @Override

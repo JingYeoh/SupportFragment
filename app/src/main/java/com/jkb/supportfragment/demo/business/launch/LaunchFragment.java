@@ -88,7 +88,7 @@ public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunch
 
     @Override
     public void launchMain() {
-        startFragment(AppLauncher.launchAccount());
+        startFragment(AppLauncher.launchAppMain());
         close();
     }
 

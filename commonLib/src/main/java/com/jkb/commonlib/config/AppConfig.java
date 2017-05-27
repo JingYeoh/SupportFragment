@@ -24,6 +24,8 @@ public interface AppConfig {
         String AUTH_REGISTER = "/auth/register";
 
         String APP_MAIN = "/app/main";
+
+        String PHOTO_SELECRTOR = "/photo/selector";
     }
 
     /**
@@ -47,6 +49,9 @@ public interface AppConfig {
         String AREACODE = "areaCode";
         String ACCOUNT = "account";
         String VERCODE_TYPE = "verCodeType";
+
+        String PHOTO_PATH = "photoPath";
+        String PHOTO_PICKER_ERROR = "photo.picker.error";
     }
 
     /**

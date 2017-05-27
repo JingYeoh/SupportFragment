@@ -63,7 +63,8 @@ public class AppManager extends Observable implements AppAction {
                 if (data.isFlag_login()) {
                     loginSystem(data.getUser_id());
                 } else {
-                    logoutSystem();
+                    setAppStatusToLogout();
+                    notifyStatusChanged(AppConfig.AppStatus.UNLOGIN);
                 }
             }
 

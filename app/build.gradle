@@ -82,6 +82,8 @@ dependencies {
     compile deps.arouter_annotation
     //v
     compile deps.design
+    //utils
+    compile deps.photopicker
 }
 
 def static releaseTime() {

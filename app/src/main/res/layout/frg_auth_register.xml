@@ -54,7 +54,7 @@
                         android:layout_height="110dp"
                         android:background="@drawable/selector_color_clarity_gravy_alpha30"
                         android:scaleType="centerCrop"
-                        android:src="@{StringUtils.hasEmpty(register.avatarUrl)?@drawable/ic_placeholder_profile:register.avatarUrl}"/>
+                        app:userAvatar="@{register.avatarUrl}"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/selector_color_primart_dark"
-            android:enabled="@{StringUtils.hasEmpty(register.account,register.birthday,register.name,register.password,register.sex)?false:true}"
+            android:enabled="@{StringUtils.hasEmpty(register.avatarUrl,register.account,register.birthday,register.name,register.password,register.sex)?false:true}"
             android:text="@string/Continue"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text_size"/>

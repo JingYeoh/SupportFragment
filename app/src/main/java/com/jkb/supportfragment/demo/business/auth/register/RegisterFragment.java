@@ -13,6 +13,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.register.contract.RegisterContract;
 import com.jkb.supportfragment.demo.business.auth.register.presenter.RegisterPresenter;
@@ -34,6 +35,7 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
         RegisterContract.View, View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     private String mAccount;
+    private static final int REQUEST_CORE_PHOTO_PICKER = 1001;
 
     @Override
     public void initPresenter() {
@@ -97,7 +99,7 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
                 showTimePicker();
                 break;
             case R.id.register_avatar:
-                showPhotoPicker();
+                launchPhotoPicker();
                 break;
         }
     }
@@ -138,8 +140,8 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
     /**
      * 显示照片选择器
      */
-    private void showPhotoPicker() {
-
+    private void launchPhotoPicker() {
+        startFragmentForResult(AppLauncher.launchPhotoSelector(), REQUEST_CORE_PHOTO_PICKER);
     }
 
     /**
@@ -158,5 +160,14 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         getBinding().getRegister().changeSex();
+    }
+
+    @Override
+    public void onFragmentResult(int requestCode, int resultCode, Bundle bundle) {
+        super.onFragmentResult(requestCode, resultCode, bundle);
+        if (resultCode != RESULT_OK_FRAGMENT) return;
+        String path = bundle.getString(AppConfig.KeyBundle.PHOTO_PATH);
+        LogUtils.d(this, "path=" + path);
+        getBinding().getRegister().setAvatarUrl(path);
     }
 }
