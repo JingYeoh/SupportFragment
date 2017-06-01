@@ -1,6 +1,7 @@
 package com.jkb.supportfragment.demo.business.auth.verCode.model.remote;
 
 import com.jkb.supportfragment.demo.business.auth.verCode.model.VerCodeDataSource;
+import com.jkb.supportfragment.demo.net.entity.VerCodeAttributes;
 
 /**
  * 验证码的本地数据来源类
@@ -36,7 +37,7 @@ public class VerCodeRemoteDataSource implements VerCodeDataSource {
     }
 
     @Override
-    public void sendVerCode(String account, LoadDataCallBack<String> callBack) {
+    public void sendVerCode(String account, LoadDataCallBack<VerCodeAttributes> callBack) {
 
     }
 

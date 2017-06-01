@@ -1,5 +1,7 @@
 package com.jkb.supportfragment.demo.business.auth.verCode.model;
 
+import com.jkb.supportfragment.demo.net.entity.VerCodeAttributes;
+
 /**
  * 验证码的本地数据来源类
  * Created by yj on 2017/5/8.
@@ -43,7 +45,7 @@ public class VerCodeDataRepertory implements VerCodeDataSource {
     }
 
     @Override
-    public void sendVerCode(String account, LoadDataCallBack<String> callBack) {
+    public void sendVerCode(String account, LoadDataCallBack<VerCodeAttributes> callBack) {
         localDataSource.sendVerCode(account, callBack);
     }
 

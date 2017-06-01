@@ -1,6 +1,7 @@
 package com.jkb.supportfragment.demo.business.auth.verCode.model;
 
 import com.jkb.commonlib.base.frame.BaseModel;
+import com.jkb.supportfragment.demo.net.entity.VerCodeAttributes;
 
 /**
  * 发送验证码：DataSource
@@ -12,7 +13,7 @@ public interface VerCodeDataSource extends BaseModel {
     /**
      * 发送验证码
      */
-    void sendVerCode(String account, LoadDataCallBack<String> callBack);
+    void sendVerCode(String account, LoadDataCallBack<VerCodeAttributes> callBack);
 
     /**
      * 使用帐号和验证码验证

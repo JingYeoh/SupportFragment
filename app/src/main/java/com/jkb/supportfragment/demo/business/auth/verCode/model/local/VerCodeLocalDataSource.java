@@ -2,9 +2,17 @@ package com.jkb.supportfragment.demo.business.auth.verCode.model.local;
 
 import android.content.Context;
 
+import com.jkb.commonlib.db.DbManager;
+import com.jkb.commonlib.db.dao.DaoSession;
+import com.jkb.commonlib.db.dao.UserDao;
+import com.jkb.commonlib.db.entity.User;
 import com.jkb.supportfragment.demo.business.auth.verCode.model.VerCodeDataSource;
+import com.jkb.supportfragment.demo.net.entity.VerCodeAttributes;
+
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -49,12 +57,27 @@ public class VerCodeLocalDataSource implements VerCodeDataSource {
     }
 
     @Override
-    public void sendVerCode(String account, LoadDataCallBack<String> callBack) {
+    public void sendVerCode(String account, LoadDataCallBack<VerCodeAttributes> callBack) {
         //随机生成验证码
         Random random = new Random();
         int next = random.nextInt(8999) + 1000;
         mAccountVerCodes.put(account, String.valueOf(next));
-        callBack.onDataLoaded(String.valueOf(next));
+        //查找数据库是否存在该帐号
+        DaoSession daoSession = DbManager.getInstance().getDaoSession();
+        UserDao userDao = daoSession.getUserDao();
+        QueryBuilder<User> builder = userDao.queryBuilder();
+        QueryBuilder<User> qb = builder.where(UserDao.Properties.Phone.eq(account));
+        List<User> list = qb.list();
+
+        VerCodeAttributes attributes = new VerCodeAttributes();
+        attributes.setCode(String.valueOf(next));
+        if (list == null || list.isEmpty()) {
+            attributes.setAction(VerCodeAttributes.REGISTER);
+        } else {
+            attributes.setAction(VerCodeAttributes.LOGIN);
+            attributes.setUserId(list.get(0).getUserId());
+        }
+        callBack.onDataLoaded(attributes);
     }
 
     @Override

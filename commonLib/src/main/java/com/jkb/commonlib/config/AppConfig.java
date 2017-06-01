@@ -52,6 +52,8 @@ public interface AppConfig {
 
         String PHOTO_PATH = "photoPath";
         String PHOTO_PICKER_ERROR = "photo.picker.error";
+
+        String FRAGMENT_TAG_LAUNCH = "fragment.tag.launch";
     }
 
     /**

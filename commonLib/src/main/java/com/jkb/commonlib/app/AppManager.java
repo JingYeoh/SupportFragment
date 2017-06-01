@@ -185,5 +185,6 @@ public class AppManager extends Observable implements AppAction {
             status.setUser_id(-1);
         }
         status.setCreate_time(TimeUtils.getCurrentTime());
+        mRepertory.saveStatus(status);
     }
 }
