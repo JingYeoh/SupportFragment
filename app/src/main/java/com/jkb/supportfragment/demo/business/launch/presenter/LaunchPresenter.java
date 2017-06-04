@@ -54,7 +54,7 @@ public class LaunchPresenter implements LaunchContract.Presenter, BaseModel.Load
             if (AppManager.getInstance().isLogin()) {
                 mView.launchMain();
             } else {
-                mView.launchAccount();
+                mView.launchMain();
             }
         } else {
             mRepertory.updateUseVersion();

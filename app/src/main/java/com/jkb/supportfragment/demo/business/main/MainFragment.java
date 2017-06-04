@@ -7,7 +7,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
+import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.supportfragment.demo.R;
+import com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout;
 
 /**
  * App主页
@@ -16,6 +18,8 @@ import com.jkb.supportfragment.demo.R;
 @Route(path = AppConfig.RouterPath.APP_MAIN)
 public class MainFragment extends BaseFragment {
 
+    private SlideMenuLayout slideMenuLayout;
+
     @Override
     public int getRootViewId() {
         return R.layout.frg_main;
@@ -23,12 +27,14 @@ public class MainFragment extends BaseFragment {
 
     @Override
     public void initView() {
-
+        slideMenuLayout = (SlideMenuLayout) findViewById(R.id.mainSlideMenu);
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        if (savedInstanceState == null) {
+            showFragment(AppLauncher.launchOnBoardingMain(), R.id.leftSlide);
+        }
     }
 
     @Override
