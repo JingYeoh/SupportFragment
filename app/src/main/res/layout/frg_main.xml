@@ -16,8 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        app:slideMode="left"
-        app:slidePadding="50dp"
+        app:slideMode="both"
         >
 
         <FrameLayout
@@ -33,6 +32,10 @@
             android:text="系统主页"
             android:textColor="@color/white"/>
 
+        <FrameLayout
+            android:id="@+id/rightSlide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout>
 
 </RelativeLayout>

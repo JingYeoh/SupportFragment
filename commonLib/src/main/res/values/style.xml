@@ -11,4 +11,9 @@
         <item name="android:backgroundDimEnabled">true</item>//模糊
         <item name="android:backgroundDimAmount">0.6</item>
     </style>
+    <!--沉浸式状态栏的主题-->
+    <style name="ImmersiveStatusStyle">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:clipToPadding">true</item>
+    </style>
 </resources>

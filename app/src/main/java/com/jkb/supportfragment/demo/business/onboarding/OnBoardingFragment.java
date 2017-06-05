@@ -67,7 +67,7 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public boolean requestFullScreenStyle() {
-        return true;
+        return false;
     }
 
     @Override

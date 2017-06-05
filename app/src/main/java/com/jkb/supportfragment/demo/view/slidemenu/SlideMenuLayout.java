@@ -34,9 +34,10 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     //slide
     private Scroller mScroller;
     private int mLastX;
+    private int mDx;//滑动的距离，在手指抬起时清空
     private boolean mTriggerSlideLeft;
     private boolean mTriggerSlideRight;
-    private static final int TIME_SLIDE = 1000;
+    private static final int TIME_SLIDE = 2000;
 
     public SlideMenuLayout(Context context) {
         this(context, null);
@@ -68,7 +69,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     @Override
     public void addView(View child) {
         if (getChildCount() > 3) {
-            throw new IllegalStateException("SlideMenuLayout can host only one direct child");
+            throw new IllegalStateException("SlideMenuLayout can host only three direct child");
         }
         super.addView(child);
     }
@@ -76,7 +77,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     @Override
     public void addView(View child, int index) {
         if (getChildCount() > 3) {
-            throw new IllegalStateException("SlideMenuLayout can host only one direct child");
+            throw new IllegalStateException("SlideMenuLayout can host only three direct child");
         }
         super.addView(child, index);
     }
@@ -84,7 +85,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     @Override
     public void addView(View child, ViewGroup.LayoutParams params) {
         if (getChildCount() > 3) {
-            throw new IllegalStateException("SlideMenuLayout can host only one direct child");
+            throw new IllegalStateException("SlideMenuLayout can host only three direct child");
         }
         super.addView(child, params);
     }
@@ -92,7 +93,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         if (getChildCount() > 3) {
-            throw new IllegalStateException("SlideMenuLayout can host only one direct child");
+            throw new IllegalStateException("SlideMenuLayout can host only three direct child");
         }
         super.addView(child, index, params);
     }
@@ -125,7 +126,6 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
 
         setMeasuredDimension(mContentWidth, mContentHeight);
     }
-
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -166,13 +166,15 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                     scrollRight(dx);
                 }
                 mLastX = currentX;
+                mDx = dx;
                 break;
             case MotionEvent.ACTION_UP:
-                if (getScrollX() < 0) {//右滑
+                if (mDx > 0) {//右滑
                     inertiaScrollRight();
                 } else {
                     inertiaScrollLeft();
                 }
+                mDx = 0;
                 break;
         }
         return true;
@@ -182,7 +184,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
      * 惯性左滑
      */
     private void inertiaScrollLeft() {
-        if (mSlideMode == SLIDE_MODE_RIGHT || mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
+        if (mSlideMode == SLIDE_MODE_RIGHT) {
             if (getScrollX() >= mSlideWidth / 2) {
                 openRightSlide();
             } else {
@@ -191,10 +193,24 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 }
             }
         } else if (mSlideMode == SLIDE_MODE_LEFT) {
-            if (-getScrollX() >= mSlideWidth / 2) {
+            if (-getScrollX() <= mSlideWidth / 2) {
                 closeLeftSlide();
             } else {
                 if (mTriggerSlideLeft) {
+                    openLeftSlide();
+                }
+            }
+        } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
+            if (!mTriggerSlideLeft && !mTriggerSlideRight) {//左右滑动菜单都关闭状态
+                if (getScrollX() >= mSlideWidth / 2) {
+                    openRightSlide();
+                } else {
+                    closeRightSlide();
+                }
+            } else if (mTriggerSlideLeft) {
+                if (-getScrollX() <= mSlideWidth / 2) {
+                    closeLeftSlide();
+                } else {
                     openLeftSlide();
                 }
             }
@@ -205,7 +221,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
      * 惯性右滑
      */
     private void inertiaScrollRight() {
-        if (mSlideMode == SLIDE_MODE_LEFT || mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
+        if (mSlideMode == SLIDE_MODE_LEFT) {
             if (-getScrollX() >= mSlideWidth / 2) {
                 openLeftSlide();
             } else {
@@ -218,6 +234,20 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 closeRightSlide();
             } else {
                 if (mTriggerSlideRight) {
+                    openRightSlide();
+                }
+            }
+        } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
+            if (!mTriggerSlideLeft && !mTriggerSlideRight) {//左右滑动菜单都关闭状态
+                if (-getScrollX() >= mSlideWidth / 2) {
+                    openLeftSlide();
+                } else {
+                    closeLeftSlide();
+                }
+            } else if (mTriggerSlideRight) {
+                if (getScrollX() <= mSlideWidth / 2) {
+                    closeRightSlide();
+                } else {
                     openRightSlide();
                 }
             }
@@ -293,7 +323,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
      */
     private void initSlideView(int widthResult, int heightResult) {
         if (getChildCount() == 0) {
-            throw new IllegalStateException("SlideMenuLayout must host only one direct child");
+            throw new IllegalStateException("SlideMenuLayout must host one direct child");
         }
         mSlideWidth = widthResult - mSlidePadding;
         mContentWidth = widthResult;
@@ -304,8 +334,16 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                 mContentView = getChildAt(0);
                 break;
             case 2:
-                mLeftView = getChildAt(0);
-                mContentView = getChildAt(1);
+                if (mSlideMode == SLIDE_MODE_LEFT) {
+                    mLeftView = getChildAt(0);
+                    mContentView = getChildAt(1);
+                } else if (mSlideMode == SLIDE_MODE_RIGHT) {
+                    mContentView = getChildAt(0);
+                    mRightView = getChildAt(1);
+                } else {
+                    throw new IllegalStateException("SlideMenuLayout must host only three direct child if slideMode " +
+                            "is both");
+                }
                 break;
             case 3:
                 mLeftView = getChildAt(0);
@@ -394,6 +432,11 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     }
 
     @Override
+    public boolean isLeftSlideOpen() {
+        return mTriggerSlideLeft;
+    }
+
+    @Override
     public void toggleRightSlide() {
         if (mTriggerSlideRight) {
             closeRightSlide();
@@ -414,5 +457,10 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         if (mSlideMode == SLIDE_MODE_LEFT) return;
         mTriggerSlideRight = false;
         smoothScrollTo(0, 0);
+    }
+
+    @Override
+    public boolean isRightSlideOpen() {
+        return mTriggerSlideRight;
     }
 }

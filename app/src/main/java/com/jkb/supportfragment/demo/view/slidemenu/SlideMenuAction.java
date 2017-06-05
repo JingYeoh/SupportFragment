@@ -78,6 +78,11 @@ public interface SlideMenuAction {
     void closeLeftSlide();
 
     /**
+     * 左侧滑菜单是否打开
+     */
+    boolean isLeftSlideOpen();
+
+    /**
      * 打开/关闭右侧滑菜单
      */
     void toggleRightSlide();
@@ -91,4 +96,9 @@ public interface SlideMenuAction {
      * 关闭右侧滑菜单
      */
     void closeRightSlide();
+
+    /**
+     * 右侧滑菜单是否打开
+     */
+    boolean isRightSlideOpen();
 }

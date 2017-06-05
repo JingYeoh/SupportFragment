@@ -73,7 +73,7 @@ public class OnBoardingPlaceHolderFragment extends BaseFragment {
 
     @Override
     public boolean requestFullScreenStyle() {
-        return true;
+        return false;
     }
 
     @Override

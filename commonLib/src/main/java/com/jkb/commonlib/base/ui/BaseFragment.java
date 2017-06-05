@@ -57,14 +57,17 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setFullScreenStyle();
-//        setImmersiveStatus();
+        setImmersiveStatus();
         init(savedInstanceState);
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) setFullScreenStyle();
+        if (!hidden) {
+            setFullScreenStyle();
+            setImmersiveStatus();
+        }
     }
 
     @Override
@@ -101,15 +104,8 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
         Window window = mActivity.getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             int flag_translucent_status = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-
             if (requestImmersiveStatusStyle()) {
-                //透明状态栏
-                window.setFlags(flag_translucent_status, flag_translucent_status);
-                //  设置根布局的参数
-                ViewGroup rootView = (ViewGroup) ((ViewGroup) mActivity.findViewById(android.R.id.content))
-                        .getChildAt(0);
-                ViewCompat.setFitsSystemWindows(rootView, false);
-                rootView.setClipToPadding(true);
+                window.setFlags(flag_translucent_status, flag_translucent_status);//透明状态栏
             } else {
                 window.clearFlags(flag_translucent_status);
             }
@@ -133,7 +129,7 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
 
     @Override
     public boolean requestImmersiveStatusStyle() {
-        return false;
+        return true;
     }
 
     @Override
