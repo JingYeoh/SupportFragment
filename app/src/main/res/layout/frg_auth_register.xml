@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="com.jkb.supportfragment.demo.entity.auth.RegisterEntity"/>
+        <import type="com.jkb.supportfragment.demo.entity.auth.RegisterEntity" />
 
-        <import type="com.jkb.commonlib.utils.StringUtils"/>
+        <import type="com.jkb.commonlib.utils.StringUtils" />
 
         <variable
             name="register"
-            type="RegisterEntity"/>
+            type="RegisterEntity" />
 
     </data>
 
@@ -21,19 +20,10 @@
         android:background="@color/general"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/registerTitle"
-            style="@style/TitleStyle"
-            android:background="@color/colorPrimary">
-
-            <include layout="@layout/title_style_0"/>
-        </FrameLayout>
-
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/register_continue"
-            android:layout_below="@+id/registerTitle">
+            android:layout_height="match_parent"
+            android:layout_above="@+id/register_continue">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +44,7 @@
                         android:layout_height="110dp"
                         android:background="@drawable/selector_color_clarity_gravy_alpha30"
                         android:scaleType="centerCrop"
-                        app:userAvatar="@{register.avatarUrl}"/>
+                        app:userAvatar="@{register.avatarUrl}" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -66,8 +56,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/name"
-                            app:counterMaxLength="50"
-                            >
+                            app:counterMaxLength="50">
 
                             <android.support.design.widget.TextInputEditText
                                 style="@style/EditTextStyle"
@@ -77,8 +66,7 @@
                                 android:drawablePadding="5dp"
                                 android:inputType="text"
                                 android:text="@={register.name}"
-                                android:textColorHint="@color/hint"
-                                />
+                                android:textColorHint="@color/hint" />
                         </android.support.design.widget.TextInputLayout>
 
                         <RadioGroup
@@ -94,14 +82,14 @@
                                 android:layout_height="wrap_content"
                                 android:checked="@{register.sex.equals(@string/male)}"
                                 android:text="@string/male"
-                                android:textColor="@color/hint"/>
+                                android:textColor="@color/hint" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="@{register.sex.equals(@string/female)}"
                                 android:text="@string/female"
-                                android:textColor="@color/hint"/>
+                                android:textColor="@color/hint" />
                         </RadioGroup>
                     </LinearLayout>
 
@@ -119,7 +107,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/hint_you_can_match_only_when_you_use_yourself_photo"
                         android:textColor="@color/hint"
-                        android:textSize="@dimen/text_size_s"/>
+                        android:textSize="@dimen/text_size_s" />
 
                     <TextView
                         android:id="@+id/register_birthday"
@@ -134,16 +122,14 @@
                         android:inputType="text"
                         android:text="@={register.birthday}"
                         android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/hint"
-                        />
+                        android:textColorHint="@color/hint" />
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/account_til_account"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:hint="@string/password"
-                        >
+                        android:hint="@string/password">
 
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/account_et_account"
@@ -154,8 +140,7 @@
                             android:drawablePadding="5dp"
                             android:inputType="textPassword"
                             android:text="@={register.password}"
-                            android:textColorHint="@color/hint"
-                            />
+                            android:textColorHint="@color/hint" />
                     </android.support.design.widget.TextInputLayout>
 
                     <TextView
@@ -164,7 +149,7 @@
                         android:layout_marginTop="20dp"
                         android:text="@string/register_means_agree_user_rules"
                         android:textColor="@color/hint"
-                        android:textSize="@dimen/text_size_s"/>
+                        android:textSize="@dimen/text_size_s" />
                 </LinearLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
@@ -178,6 +163,6 @@
             android:enabled="@{StringUtils.hasEmpty(register.avatarUrl,register.account,register.birthday,register.name,register.password,register.sex)?false:true}"
             android:text="@string/Continue"
             android:textColor="@color/white"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size" />
     </RelativeLayout>
 </layout>

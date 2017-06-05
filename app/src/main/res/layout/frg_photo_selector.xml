@@ -11,7 +11,7 @@
             style="@style/TitleStyle"
             android:background="@color/colorPrimary">
 
-            <include layout="@layout/title_style_0"/>
+            <include layout="@layout/toolbar_1"/>
         </FrameLayout>
 
         <FrameLayout

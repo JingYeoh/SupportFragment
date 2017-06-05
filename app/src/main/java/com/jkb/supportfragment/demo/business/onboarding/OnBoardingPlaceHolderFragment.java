@@ -6,12 +6,16 @@ import android.widget.ImageView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
+import com.jkb.commonlib.ui.annotation.SupportContent;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.supportfragment.demo.R;
 
 /**
  * 新手上路的占位
  * Created by yj on 2017/5/4.
  */
+@SupportWindow(fullScreen = true)
+@SupportContent(contentViewId = R.layout.frg_onboarding_placeholder)
 @Route(path = AppConfig.RouterPath.ONBOARDING_PLACEHOLDER)
 public class OnBoardingPlaceHolderFragment extends BaseFragment {
 
@@ -19,11 +23,6 @@ public class OnBoardingPlaceHolderFragment extends BaseFragment {
     private int mOnBoardingType;
     //ui
     private ImageView imageView;
-
-    @Override
-    public int getRootViewId() {
-        return R.layout.frg_onboarding_placeholder;
-    }
 
     @Override
     public void initView() {
@@ -69,11 +68,6 @@ public class OnBoardingPlaceHolderFragment extends BaseFragment {
     @Override
     public void initListener() {
 
-    }
-
-    @Override
-    public boolean requestFullScreenStyle() {
-        return false;
     }
 
     @Override

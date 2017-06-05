@@ -2,7 +2,6 @@ package com.jkb.supportfragment.demo.business.onboarding;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -14,9 +13,10 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.commonlib.ui.annotation.SupportContent;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.commonlib.utils.DimensionUtils;
 import com.jkb.supportfragment.demo.R;
-import com.jkb.supportfragment.demo.business.launch.LaunchFragment;
 
 import org.simple.eventbus.EventBus;
 
@@ -24,6 +24,8 @@ import org.simple.eventbus.EventBus;
  * 新手上路
  * Created by yj on 2017/5/4.
  */
+@SupportWindow(fullScreen = true)
+@SupportContent(contentViewId = R.layout.frg_onboarding)
 @Route(path = AppConfig.RouterPath.ONBOARDING_CONTENT)
 public class OnBoardingFragment extends BaseFragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -34,11 +36,6 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
     //data
     private OnBoardingPagerAdapter onBoardingPagerAdapter;
     private int[] onBoardingColors;
-
-    @Override
-    public int getRootViewId() {
-        return R.layout.frg_onboarding;
-    }
 
     @Override
     public void initView() {
@@ -63,11 +60,6 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
     public void initListener() {
         btFinish.setOnClickListener(this);
         viewPager.addOnPageChangeListener(this);
-    }
-
-    @Override
-    public boolean requestFullScreenStyle() {
-        return false;
     }
 
     @Override

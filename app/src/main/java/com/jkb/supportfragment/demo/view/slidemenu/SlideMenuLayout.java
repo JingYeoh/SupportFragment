@@ -37,7 +37,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     private int mDx;//滑动的距离，在手指抬起时清空
     private boolean mTriggerSlideLeft;
     private boolean mTriggerSlideRight;
-    private static final int TIME_SLIDE = 2000;
+    private static final int TIME_SLIDE = 1500;
 
     public SlideMenuLayout(Context context) {
         this(context, null);
@@ -301,6 +301,7 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         int scrollX = getScrollX();
         int deltaX = destX - scrollX;
         float time = deltaX * 1.0f / (mSlideWidth * 1.0f / TIME_SLIDE);
+        time = Math.abs(time);
         mScroller.startScroll(scrollX, 0, deltaX, destY, (int) time);
         invalidate();
     }

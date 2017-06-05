@@ -13,6 +13,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.commonlib.ui.annotation.SupportContent;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.register.contract.RegisterContract;
@@ -30,7 +32,9 @@ import java.util.Calendar;
  * 注册
  * Created by yj on 2017/5/12.
  */
+@SupportWindow
 @Route(path = AppConfig.RouterPath.AUTH_REGISTER)
+@SupportContent(contentViewId = R.layout.frg_auth_register, toolBarViewId = R.layout.toolbar_1)
 public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAuthRegisterBinding> implements
         RegisterContract.View, View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
@@ -40,11 +44,6 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
     @Override
     public void initPresenter() {
         new RegisterPresenter(this, RepertoryInject.provideRegisterDR(mApplicationContext));
-    }
-
-    @Override
-    public int getRootViewId() {
-        return R.layout.frg_auth_register;
     }
 
     @Override

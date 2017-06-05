@@ -6,6 +6,8 @@ import android.os.Message;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.commonlib.ui.annotation.SupportContent;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.helper.RepertoryInject;
 import com.jkb.supportfragment.demo.business.launch.contract.LaunchContract;
@@ -21,7 +23,8 @@ import org.simple.eventbus.ThreadMode;
  * 启动页
  * Created by yj on 2017/5/4.
  */
-
+@SupportWindow(fullScreen = true)
+@SupportContent(contentViewId = R.layout.frg_launch)
 public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunchBinding> implements
         LaunchContract.View {
 
@@ -30,11 +33,6 @@ public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunch
         LaunchFragment fragment = new LaunchFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public int getRootViewId() {
-        return R.layout.frg_launch;
     }
 
     @Override
@@ -68,11 +66,6 @@ public class LaunchFragment extends BaseFrameFragment<LaunchPresenter, FrgLaunch
     @Subscriber(mode = ThreadMode.MAIN, tag = AppConfig.EventBusTAG.APP_INIT_COMPLECTED)
     public void onAppInitCompleted(Message message) {
         getPresenter().start();
-    }
-
-    @Override
-    public boolean requestFullScreenStyle() {
-        return true;
     }
 
     @Override

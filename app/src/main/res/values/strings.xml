@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SupportFragment</string>
+    <string name="app_name">探探</string>
 
     <string name="onboarding_finish_button_description">开始探探</string>
     <string name="phone_number">手机号码</string>

@@ -7,16 +7,18 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
-import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.supportfragment.demo.R;
+import com.jkb.supportfragment.demo.business.menu.left.SlideMenuLeftFragment;
 import com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout;
 
 /**
  * App主页
  * Created by yj on 2017/5/12.
  */
+@SupportWindow(immersiveStatus = true)
 @Route(path = AppConfig.RouterPath.APP_MAIN)
-public class MainFragment extends BaseFragment {
+public class MainFragment extends BaseFragment implements View.OnClickListener {
 
     private SlideMenuLayout slideMenuLayout;
 
@@ -33,7 +35,8 @@ public class MainFragment extends BaseFragment {
     @Override
     public void initData(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-            showFragment(AppLauncher.launchOnBoardingMain(), R.id.leftSlide);
+//            showFragment(AppLauncher.launchOnBoardingMain(), R.id.leftSlide);
+            showFragment(SlideMenuLeftFragment.newInstance(), R.id.leftSlide);
         }
     }
 
@@ -45,5 +48,30 @@ public class MainFragment extends BaseFragment {
                 AppManager.getInstance().logoutSystem();
             }
         });
+        findViewById(R.id.fm_leftMenu).setOnClickListener(this);
+        findViewById(R.id.fm_rightMenu).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fm_leftMenu:
+                slideMenuLayout.toggleLeftSlide();
+                break;
+            case R.id.fm_rightMenu:
+                slideMenuLayout.toggleRightSlide();
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (slideMenuLayout.isLeftSlideOpen() || slideMenuLayout.isRightSlideOpen()) {
+            slideMenuLayout.closeLeftSlide();
+            slideMenuLayout.closeRightSlide();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

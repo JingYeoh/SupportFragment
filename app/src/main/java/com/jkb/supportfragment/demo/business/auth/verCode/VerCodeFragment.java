@@ -10,6 +10,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.commonlib.ui.annotation.SupportContent;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.verCode.contract.VerCodeContract;
 import com.jkb.supportfragment.demo.business.auth.verCode.presenter.VerCodePresenter;
@@ -28,7 +30,9 @@ import java.lang.ref.WeakReference;
  * 输入验证码
  * Created by yj on 2017/5/8.
  */
+@SupportWindow
 @Route(path = AppConfig.RouterPath.AUTH_VERCODE)
+@SupportContent(contentViewId = R.layout.frg_auth_vercode, toolBarViewId = R.layout.toolbar_1)
 public class VerCodeFragment extends BaseFrameFragment<VerCodePresenter, FrgAuthVercodeBinding> implements
         VerCodeContract.View, View.OnClickListener {
 
@@ -41,11 +45,6 @@ public class VerCodeFragment extends BaseFrameFragment<VerCodePresenter, FrgAuth
     @Override
     public void initPresenter() {
         new VerCodePresenter(this, RepertoryInject.provideVerCodeDR(mApplicationContext));
-    }
-
-    @Override
-    public int getRootViewId() {
-        return R.layout.frg_auth_vercode;
     }
 
     @Override

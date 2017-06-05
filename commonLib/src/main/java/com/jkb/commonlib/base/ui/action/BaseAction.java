@@ -22,6 +22,12 @@ public interface BaseAction {
     int getRootViewId();
 
     /**
+     * 返回Toolbar的佈局id
+     */
+    @LayoutRes
+    int getToolbarViewId();
+
+    /**
      * 初始化
      */
     void init(Bundle savedInstanceState);

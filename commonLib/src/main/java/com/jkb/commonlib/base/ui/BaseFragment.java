@@ -18,13 +18,17 @@ import android.widget.Toast;
 import com.jkb.commonlib.base.ui.action.BaseAction;
 import com.jkb.commonlib.base.ui.action.BaseFragmentAction;
 import com.jkb.commonlib.base.ui.action.frame.IMVVMAction;
+import com.jkb.commonlib.helper.AndroidBug5497Workaround;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
+import com.jkb.commonlib.ui.injection.SupportContentInjection;
+import com.jkb.commonlib.ui.injection.SupportWindowInjection;
 import com.jkb.support.ui.SupportFragment;
 import com.jkb.support.utils.LogUtils;
 
 /**
  * Fragment的基类
  */
-
+@SupportWindow()
 public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFragment implements BaseAction,
         BaseFragmentAction, IMVVMAction<VM> {
 
@@ -44,30 +48,38 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         LogUtils.d(TAG, "onCreateView");
-        if (isSupportMVVM()) {
-            mBinding = DataBindingUtil.inflate(inflater, getRootViewId(), container, false);
-            rootView = mBinding.getRoot();
-        } else {
-            rootView = inflater.inflate(getRootViewId(), container, false);
-        }
+        initContentView();
         return rootView;
+    }
+
+    /**
+     * 初始化ContentView
+     */
+    private void initContentView() {
+        rootView = SupportContentInjection.injectContentView(this, mActivity);
+        if (rootView == null) {
+            rootView = SupportContentInjection.injectContentView(mActivity, getRootViewId(),
+                    getToolbarViewId());
+        }
+        //设置MVVM的支持
+        if (isSupportMVVM() && rootView != null) {
+            ViewGroup contentGroup = (ViewGroup) rootView;
+            int contentPosition = contentGroup.getChildCount() > 1 ? 1 : 0;
+            View child = ((ViewGroup) rootView).getChildAt(contentPosition);
+            mBinding = DataBindingUtil.bind(child);
+        }
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setFullScreenStyle();
-        setImmersiveStatus();
         init(savedInstanceState);
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {
-            setFullScreenStyle();
-            setImmersiveStatus();
-        }
+        if (!hidden) SupportWindowInjection.injectWindow(this, mActivity);
     }
 
     @Override
@@ -77,39 +89,11 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
 
     @Override
     public void init(Bundle savedInstanceState) {
+        SupportWindowInjection.injectWindow(this, mActivity);
+//        AndroidBug5497Workaround.assistActivity(rootView);
         initView();
         initData(savedInstanceState);
         initListener();
-    }
-
-    /**
-     * 设置窗口是否全屏
-     */
-    private void setFullScreenStyle() {
-        Window window = mActivity.getWindow();
-        if (requestFullScreenStyle()) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        } else {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            window.setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams
-                    .FLAG_FORCE_NOT_FULLSCREEN);
-        }
-    }
-
-    /**
-     * 沉浸式状态栏
-     */
-    private void setImmersiveStatus() {
-        Window window = mActivity.getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            int flag_translucent_status = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-            if (requestImmersiveStatusStyle()) {
-                window.setFlags(flag_translucent_status, flag_translucent_status);//透明状态栏
-            } else {
-                window.clearFlags(flag_translucent_status);
-            }
-        }
     }
 
     @Override
@@ -120,16 +104,6 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     @Override
     public boolean isActive() {
         return isAdded();
-    }
-
-    @Override
-    public boolean requestFullScreenStyle() {
-        return false;
-    }
-
-    @Override
-    public boolean requestImmersiveStatusStyle() {
-        return true;
     }
 
     @Override
@@ -146,5 +120,15 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     @Override
     final public VM getBinding() {
         return mBinding;
+    }
+
+    @Override
+    public int getRootViewId() {
+        return 0;
+    }
+
+    @Override
+    public int getToolbarViewId() {
+        return 0;
     }
 }

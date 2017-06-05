@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseDialogFragment;
 import com.jkb.commonlib.base.ui.BaseFrameFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
+import com.jkb.commonlib.ui.annotation.SupportContent;
+import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.support.helper.SupportManager;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.account.contract.AccountContract;
@@ -26,20 +29,18 @@ import org.simple.eventbus.Subscriber;
  * 帐号
  * Created by yj on 2017/5/5.
  */
+@SupportWindow
 @Route(path = AppConfig.RouterPath.AUTH_ACCOUNT)
+@SupportContent(toolBarViewId = R.layout.toolbar_0, contentViewId = R.layout.frg_auth_account)
 public class AccountFragment extends BaseFrameFragment<AccountPresenter, FrgAuthAccountBinding> implements
         AccountContract.View, View.OnClickListener {
 
     private TextInputEditText etAccount;
 
     @Override
-    public int getRootViewId() {
-        return R.layout.frg_auth_account;
-    }
-
-    @Override
     public void initView() {
         etAccount = (TextInputEditText) findViewById(R.id.account_et_account);
+        ((TextView) findViewById(R.id.title_name)).setText(R.string.phone_number);
     }
 
     @Override

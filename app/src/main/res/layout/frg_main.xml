@@ -1,41 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/fm_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="退出登录"/>
 
     <com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout
         android:id="@+id/mainSlideMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        app:slideMode="both"
-        >
+        app:slideMode="both">
 
         <FrameLayout
             android:id="@+id/leftSlide"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/black"
-            android:gravity="center"
-            android:text="系统主页"
-            android:textColor="@color/white"/>
+            android:orientation="vertical">
+
+            <android.support.v7.widget.Toolbar
+                style="@style/TitleStyle.StatusBar"
+                android:background="@color/colorPrimary"
+                app:contentInsetStart="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/fm_leftMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/general_padding"
+                        android:layout_marginRight="@dimen/general_padding"
+                        android:src="@drawable/ic_back_white" />
+
+                    <TextView
+                        android:id="@+id/title_name"
+                        style="@style/TitleTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/app_name" />
+
+                    <ImageView
+                        android:id="@+id/fm_rightMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/general_padding"
+                        android:layout_marginRight="@dimen/general_padding"
+                        android:src="@drawable/ic_back_white" />
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/rightSlide"
+            style="@style/ImmersiveStatusStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout>
 
+    <Button
+        android:id="@+id/fm_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="退出登录" />
 </RelativeLayout>

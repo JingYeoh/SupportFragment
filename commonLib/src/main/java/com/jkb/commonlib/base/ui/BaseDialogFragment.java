@@ -92,6 +92,11 @@ public abstract class BaseDialogFragment<VM extends ViewDataBinding> extends Dia
     }
 
     @Override
+    public int getToolbarViewId() {
+        return 0;
+    }
+
+    @Override
     public int getStyleResId() {
         return R.style.dialog_style;
     }

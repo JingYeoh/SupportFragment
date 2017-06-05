@@ -49,4 +49,9 @@ public abstract class BaseActivity extends SupportActivity implements BaseAction
             Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public int getToolbarViewId() {
+        return 0;
+    }
 }

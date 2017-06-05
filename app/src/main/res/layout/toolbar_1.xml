@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    app:contentInsetStart="0dp">
+
+    <FrameLayout style="@style/TitleStyle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/title_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/general_padding"
+                android:layout_marginRight="@dimen/general_padding"
+                android:src="@drawable/ic_back_white" />
+
+            <TextView
+                android:id="@+id/title_name"
+                style="@style/TitleTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center" />
+        </RelativeLayout>
+    </FrameLayout>
+</android.support.v7.widget.Toolbar>

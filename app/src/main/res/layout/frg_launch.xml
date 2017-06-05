@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="com.jkb.supportfragment.demo.entity.launch.LaunchEntity"/>
+        <import type="com.jkb.supportfragment.demo.entity.launch.LaunchEntity" />
 
         <variable
             name="launch"
-            type="LaunchEntity"/>
+            type="LaunchEntity" />
     </data>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:launchImg="@{launch.launchPicture}"/>
+        app:launchImg="@{launch.launchPicture}" />
 </layout>

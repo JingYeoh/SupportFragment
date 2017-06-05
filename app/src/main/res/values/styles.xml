@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
@@ -8,12 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!-- toolbar的主题-->
-        <item name="toolbarStyle">@style/MyActionBarStyle</item>
+        <item name="toolbarStyle">@style/Support.ActionBar</item>
         <item name="android:windowBackground">@drawable/img_launch</item>
     </style>
 
     <!--自定义的ActionBar样式-->
-    <style name="MyActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+    <style name="Support.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@color/clarity</item>
         <!-- Support library compatibility -->
         <item name="background">@color/clarity</item>
@@ -22,8 +21,8 @@
         <item name="contentInsetEnd">0dp</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
