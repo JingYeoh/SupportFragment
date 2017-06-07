@@ -1,4 +1,4 @@
-package com.jkb.supportfragment.demo.business.menu.left;
+package com.jkb.supportfragment.demo.business.user.friends;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.supportfragment.demo.R;
 
 /**
- * 左侧滑菜单
- * Created by yangjing on 17-6-5.
+ * 好友列表
+ * Created by yangjing on 17-6-7.
  */
-@Route(path = AppConfig.RouterPath.APP_MAIN_SLIDE_LEFT)
+@Route(path = AppConfig.RouterPath.USER_FRIENDS_LIST)
 @SupportWindow(immersiveStatus = true)
-@SupportContent(contentViewId = R.layout.frg_menu_left)
-public class SlideMenuLeftFragment extends BaseFragment {
+@SupportContent(contentViewId = R.layout.frg_user_friends_list)
+public class FriendsListFragment extends BaseFragment {
 
     @Override
     public void initView() {
@@ -32,5 +32,4 @@ public class SlideMenuLeftFragment extends BaseFragment {
     public void initListener() {
 
     }
-
 }

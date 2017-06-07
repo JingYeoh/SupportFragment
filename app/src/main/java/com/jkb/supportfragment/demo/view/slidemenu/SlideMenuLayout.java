@@ -34,10 +34,12 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
     //slide
     private Scroller mScroller;
     private int mLastX;
+    private int mLastXIntercept;//为了处理滑动冲突
+    private int mLastYIntercept;//为了处理滑动冲突
     private int mDx;//滑动的距离，在手指抬起时清空
     private boolean mTriggerSlideLeft;
     private boolean mTriggerSlideRight;
-    private static final int TIME_SLIDE = 1500;
+    private static final int TIME_SLIDE = 700;
 
     public SlideMenuLayout(Context context) {
         this(context, null);
@@ -132,11 +134,11 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         if (mLeftView != null) {
             mLeftView.layout(-mSlideWidth, 0, 0, mContentHeight);
         }
-        if (mContentView != null) {
-            mContentView.layout(0, 0, mContentWidth, mContentHeight);
-        }
         if (mRightView != null) {
             mRightView.layout(mContentWidth, 0, mContentWidth + mSlideWidth, mContentHeight);
+        }
+        if (mContentView != null) {
+            mContentView.layout(0, 0, mContentWidth, mContentHeight);
         }
     }
 
@@ -145,8 +147,58 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
         super.computeScroll();
         if (mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            if (mLeftView != null) {
+                int leftTranslationX = 2 * (mSlideWidth + getScrollX()) / 3;
+                //有菜单打开或者关闭的时候回恢复原位
+                if (getScrollX() == 0 || getScrollX() == mSlideWidth || getScrollX() == -mSlideWidth) {
+                    leftTranslationX = 0;
+                }
+                mLeftView.setTranslationX(leftTranslationX);
+            }
+            if (mRightView != null) {
+                int rightTranslationX = 2 * (-mSlideWidth + getScrollX()) / 3;
+                //有菜单打开或者关闭的时候回恢复原位X
+                if (getScrollX() == 0 || getScrollX() == mSlideWidth || getScrollX() == -mSlideWidth) {
+                    rightTranslationX = 0;
+                }
+                mRightView.setTranslationX(rightTranslationX);
+            }
             postInvalidate();
         }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean intercept = false;
+        int x = (int) ev.getX();
+        int y = (int) ev.getY();
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                intercept = false;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int deltaX = (int) ev.getX() - mLastXIntercept;
+                int deltaY = (int) ev.getY() - mLastYIntercept;
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {//横向滑动
+                    if (mTriggerSlideLeft) {
+                        intercept = x > mSlideWidth;
+                    } else if (mTriggerSlideRight) {
+                        intercept = x < mSlidePadding;
+                    } else {
+                        intercept = true;
+                    }
+                } else {//纵向滑动
+                    intercept = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                intercept = false;
+                break;
+        }
+        mLastX = x;
+        mLastXIntercept = x;
+        mLastYIntercept = y;
+        return intercept;
     }
 
     @Override
@@ -258,18 +310,28 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
      * 向左滑动
      */
     private void scrollLeft(int dx) {
-        if (mSlideMode == SLIDE_MODE_LEFT_RIGHT || mSlideMode == SLIDE_MODE_RIGHT) {
+        if (mSlideMode == SLIDE_MODE_RIGHT) {
             //右滑菜单已经打开，不做操作
             if (mTriggerSlideRight || getScrollX() - dx >= mSlideWidth) {
                 openRightSlide();
                 return;
             }
+            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
         } else if (mSlideMode == SLIDE_MODE_LEFT) {
             //右滑菜单未打开，不做操作
             if (!mTriggerSlideLeft || getScrollX() - dx >= 0) {
                 closeLeftSlide();
                 return;
             }
+            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
+        } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
+            //右滑菜单已经打开，不做操作
+            if (mTriggerSlideRight || getScrollX() - dx >= mSlideWidth) {
+                openRightSlide();
+                return;
+            }
+            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
+            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
         }
         scrollBy(-dx, 0);
     }
@@ -278,18 +340,28 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
      * 向右滑动
      */
     private void scrollRight(int dx) {
-        if (mSlideMode == SLIDE_MODE_LEFT_RIGHT || mSlideMode == SLIDE_MODE_LEFT) {
+        if (mSlideMode == SLIDE_MODE_LEFT) {
             //左滑菜单已经打开，不做操作
             if (mTriggerSlideLeft || getScrollX() - dx <= -mSlideWidth) {
                 openLeftSlide();
                 return;
             }
+            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
         } else if (mSlideMode == SLIDE_MODE_RIGHT) {
             //右滑菜单未打开，不做操作
             if (!mTriggerSlideRight || getScrollX() - dx <= 0) {
                 closeRightSlide();
                 return;
             }
+            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
+        } else if (mSlideMode == SLIDE_MODE_LEFT_RIGHT) {
+            //左滑菜单已经打开，不做操作
+            if (mTriggerSlideLeft || getScrollX() - dx <= -mSlideWidth) {
+                openLeftSlide();
+                return;
+            }
+            mLeftView.setTranslationX(2 * (mSlideWidth + getScrollX()) / 3);
+            mRightView.setTranslationX(2 * (-mSlideWidth + getScrollX()) / 3);
         }
         scrollBy(-dx, 0);
     }
@@ -339,17 +411,17 @@ public class SlideMenuLayout extends ViewGroup implements SlideMenuAction {
                     mLeftView = getChildAt(0);
                     mContentView = getChildAt(1);
                 } else if (mSlideMode == SLIDE_MODE_RIGHT) {
-                    mContentView = getChildAt(0);
-                    mRightView = getChildAt(1);
+                    mRightView = getChildAt(0);
+                    mContentView = getChildAt(1);
                 } else {
-                    throw new IllegalStateException("SlideMenuLayout must host only three direct child if slideMode " +
+                    throw new IllegalStateException("SlideMenuLayout must host only three direct child when slideMode " +
                             "is both");
                 }
                 break;
             case 3:
                 mLeftView = getChildAt(0);
-                mContentView = getChildAt(1);
-                mRightView = getChildAt(2);
+                mRightView = getChildAt(1);
+                mContentView = getChildAt(2);
                 break;
         }
         if (mLeftView != null) {

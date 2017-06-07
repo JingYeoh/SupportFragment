@@ -18,9 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <FrameLayout
+            android:id="@+id/rightSlide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <LinearLayout
+            android:id="@+id/fm_slide_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="vertical">
 
             <android.support.v7.widget.Toolbar
@@ -38,9 +45,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/general_padding"
-                        android:layout_marginRight="@dimen/general_padding"
-                        android:src="@drawable/ic_back_white" />
+                        android:layout_marginLeft="@dimen/general_padding_10"
+                        android:layout_marginRight="@dimen/general_padding_10"
+                        android:src="@drawable/ic_action_menu" />
 
                     <TextView
                         android:id="@+id/title_name"
@@ -57,24 +64,13 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/general_padding"
-                        android:layout_marginRight="@dimen/general_padding"
-                        android:src="@drawable/ic_back_white" />
+                        android:layout_marginLeft="@dimen/general_padding_10"
+                        android:layout_marginRight="@dimen/general_padding_10"
+                        android:src="@drawable/ic_action_conversations" />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/rightSlide"
-            style="@style/ImmersiveStatusStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout>
 
-    <Button
-        android:id="@+id/fm_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="退出登录" />
 </RelativeLayout>

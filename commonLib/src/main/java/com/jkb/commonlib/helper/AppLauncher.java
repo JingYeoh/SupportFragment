@@ -101,4 +101,40 @@ public class AppLauncher {
                 .build(AppConfig.RouterPath.PHOTO_SELECRTOR)
                 .navigation();
     }
+
+    /**
+     * 启动右滑菜单
+     */
+    public static SupportFragment launchSlideMenuRight() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.APP_MAIN_SLIDE_RIGHT)
+                .navigation();
+    }
+
+    /**
+     * 启动左滑菜单
+     */
+    public static SupportFragment launchSlideMenuLeft() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.APP_MAIN_SLIDE_LEFT)
+                .navigation();
+    }
+
+    /**
+     * 启动好友列表
+     */
+    public static SupportFragment launchUserFriendsList() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.USER_FRIENDS_LIST)
+                .navigation();
+    }
+
+    /**
+     * 启动聊天列表
+     */
+    public static SupportFragment launchUserChatList() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.USER_CHAT_LIST)
+                .navigation();
+    }
 }

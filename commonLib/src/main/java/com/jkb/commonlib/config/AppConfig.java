@@ -24,8 +24,13 @@ public interface AppConfig {
         String AUTH_REGISTER = "/auth/register";
 
         String APP_MAIN = "/app/main";
+        String APP_MAIN_SLIDE_LEFT = "/app/main/slide/left";
+        String APP_MAIN_SLIDE_RIGHT = "/app/main/slide/right";
 
         String PHOTO_SELECRTOR = "/photo/selector";
+
+        String USER_FRIENDS_LIST = "/user/friends/list";
+        String USER_CHAT_LIST = "/user/chat/list";
     }
 
     /**

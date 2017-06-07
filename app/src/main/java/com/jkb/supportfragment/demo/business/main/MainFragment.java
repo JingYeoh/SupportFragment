@@ -4,12 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
+import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.supportfragment.demo.R;
-import com.jkb.supportfragment.demo.business.menu.left.SlideMenuLeftFragment;
 import com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout;
 
 /**
@@ -35,21 +34,16 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void initData(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
-//            showFragment(AppLauncher.launchOnBoardingMain(), R.id.leftSlide);
-            showFragment(SlideMenuLeftFragment.newInstance(), R.id.leftSlide);
+            showFragment(AppLauncher.launchSlideMenuRight(), R.id.leftSlide);
+            showFragment(AppLauncher.launchSlideMenuRight(), R.id.rightSlide);
         }
     }
 
     @Override
     public void initListener() {
-        findViewById(R.id.fm_logout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppManager.getInstance().logoutSystem();
-            }
-        });
         findViewById(R.id.fm_leftMenu).setOnClickListener(this);
         findViewById(R.id.fm_rightMenu).setOnClickListener(this);
+        findViewById(R.id.fm_slide_content).setOnClickListener(this);
     }
 
     @Override
@@ -61,6 +55,10 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
             case R.id.fm_rightMenu:
                 slideMenuLayout.toggleRightSlide();
                 break;
+            case R.id.fm_slide_content:
+                slideMenuLayout.closeLeftSlide();
+                slideMenuLayout.closeRightSlide();
+                break;
         }
     }
 
@@ -71,7 +69,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
             slideMenuLayout.closeLeftSlide();
             slideMenuLayout.closeRightSlide();
         } else {
-            super.onBackPressed();
+            mActivity.close();
         }
     }
 }

@@ -23,4 +23,10 @@
 
     <string name="register_new_user">注册新用户</string>
     <string name="media">媒体</string>
+    <string name="all_match_count">所有配对<font color="#C0C0C0">%d</font></string>
+    <string name="friend_circle">朋友圈</string>
+
+    <string name="all_match">所有配对</string>
+    <string name="chat">聊天</string>
+
 </resources>

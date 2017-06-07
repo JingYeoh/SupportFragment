@@ -6,6 +6,8 @@
     <dimen name="appbar_padding_top">8dp</dimen>
 
     <dimen name="general_padding">20dp</dimen>
+    <dimen name="general_padding_10">10dp</dimen>
+
     <dimen name="button_text_size">17sp</dimen>
 
     <dimen name="text_size_l">16sp</dimen>
