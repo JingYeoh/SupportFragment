@@ -84,6 +84,8 @@ dependencies {
     compile deps.design
     //utils
     compile deps.photopicker
+    compile deps.slidemenulayout
+    compile deps.circleimageview
 }
 
 def static releaseTime() {

@@ -14,7 +14,7 @@ import com.jkb.supportfragment.demo.business.photo.picker.PhotoPickerFragment;
  * 图片选择器
  * Created by yj on 2017/5/27.
  */
-@Route(path = AppConfig.RouterPath.PHOTO_SELECRTOR)
+@Route(path = AppConfig.RouterPath.PHOTO_SELECTOR)
 public class PhotoSelectorFragment extends BaseFragment implements PhotoPickerFragment.OnPickerResultCallback, View
         .OnClickListener {
 

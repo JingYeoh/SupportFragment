@@ -98,7 +98,7 @@ public class AppLauncher {
      */
     public static SupportFragment launchPhotoSelector() {
         return (SupportFragment) ARouter.getInstance()
-                .build(AppConfig.RouterPath.PHOTO_SELECRTOR)
+                .build(AppConfig.RouterPath.PHOTO_SELECTOR)
                 .navigation();
     }
 
@@ -135,6 +135,15 @@ public class AppLauncher {
     public static SupportFragment launchUserChatList() {
         return (SupportFragment) ARouter.getInstance()
                 .build(AppConfig.RouterPath.USER_CHAT_LIST)
+                .navigation();
+    }
+
+    /**
+     * 启动雷达探测
+     */
+    public static SupportFragment launchAppRadarSearch() {
+        return (SupportFragment) ARouter.getInstance()
+                .build(AppConfig.RouterPath.APP_MAIN_RADAR)
                 .navigation();
     }
 }

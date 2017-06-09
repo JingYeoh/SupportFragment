@@ -1,4 +1,4 @@
-package com.jkb.supportfragment.demo.business.menu.right;
+package com.jkb.supportfragment.demo.business.main.menu.right;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

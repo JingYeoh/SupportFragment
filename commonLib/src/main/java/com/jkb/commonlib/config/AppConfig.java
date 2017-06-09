@@ -26,8 +26,9 @@ public interface AppConfig {
         String APP_MAIN = "/app/main";
         String APP_MAIN_SLIDE_LEFT = "/app/main/slide/left";
         String APP_MAIN_SLIDE_RIGHT = "/app/main/slide/right";
+        String APP_MAIN_RADAR = "/app/main/radar";
 
-        String PHOTO_SELECRTOR = "/photo/selector";
+        String PHOTO_SELECTOR = "/photo/selector";
 
         String USER_FRIENDS_LIST = "/user/friends/list";
         String USER_CHAT_LIST = "/user/chat/list";

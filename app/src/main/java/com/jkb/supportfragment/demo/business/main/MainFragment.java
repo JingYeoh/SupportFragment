@@ -8,8 +8,8 @@ import com.jkb.commonlib.base.ui.BaseFragment;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.commonlib.ui.annotation.SupportWindow;
+import com.jkb.slidemenu.SlideMenuLayout;
 import com.jkb.supportfragment.demo.R;
-import com.jkb.supportfragment.demo.view.slidemenu.SlideMenuLayout;
 
 /**
  * App主页
@@ -36,6 +36,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener {
         if (savedInstanceState == null) {
             showFragment(AppLauncher.launchSlideMenuRight(), R.id.leftSlide);
             showFragment(AppLauncher.launchSlideMenuRight(), R.id.rightSlide);
+            showFragment(AppLauncher.launchAppRadarSearch(), R.id.fm_slide_content);
         }
     }
 
