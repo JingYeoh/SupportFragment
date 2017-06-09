@@ -3,11 +3,11 @@
   这是一个Fragment封装库，解决Fragment在使用过程中遇到的常见问题，并封装了Fragment和Activity的基类，并针对Fragment常见使用场景封装了一些常用操作。
 帮助项目支持单Activity+多Fragment或者多Activity+多Fragment架构。
 ### 功能介绍
-1、完全解决同级Fragment重叠问题  
-2、为Fragment多层嵌套提供支持  
-3、为Fragment提供OnBackPressed()监听方法  
-4、提供Fragment和Activity基类，封装一系列方法，使用起来更加方便  
-5、解决在“内存重启”时候可能发生的一系列异常  
+- [x] **完全解决同级Fragment重叠问题**  
+- [x] **为Fragment多层嵌套提供支持**  
+- [x] **为Fragment提供OnBackPressed()监听方法**  
+- [x] **提供Fragment和Activity基类，封装一系列方法，使用起来更加方便**  
+- [x] **解决在“内存重启”时候可能发生的一系列异常**  
 
 ## Demo演示
   Demo为仿照探探做的App，整体架构采用了单Activity+多Fragment，使用MVP+MVVM框架，采用ARouter路由框架进行界面跳转，使用EventBus作为消息总线通知框架，
