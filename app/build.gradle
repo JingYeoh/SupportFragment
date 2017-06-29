@@ -1,17 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    def appVerCode = 1
-    def appVerName = "0.0.1"
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.jkb.supportfragment.demo"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode appVerCode
-        versionName appVerName + "-${releaseTime()}"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId rootProject.ext.app.applicationId
+        minSdkVersion rootProject.ext.app.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.app.versionCode
+        versionName rootProject.ext.app.versionName
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -29,65 +28,51 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
-        targetCompatibility rootProject.ext.targetCompatibilityVersion
+        sourceCompatibility rootProject.ext.android.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.android.targetCompatibilityVersion
     }
 
     signingConfigs {
-        debug {
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
-            v2SigningEnabled false
-        }
-        release {
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
+        myConfig {
+            storeFile file(rootProject.ext.store.storeKey)
+            storePassword rootProject.ext.store.storePassword
+            keyAlias rootProject.ext.store.keyAlias
+            keyPassword rootProject.ext.store.keyPassword
             v2SigningEnabled false
         }
     }
 
     buildTypes {
         release {
-            minifyEnabled false //混淆编译
-            shrinkResources false //移除无用的资源文件
-            zipAlignEnabled true //是否启用zipAlign压缩
-            signingConfig signingConfigs.release
+            minifyEnabled true
+            //是否清理无用资源
+            shrinkResources true
+            //是否启用zipAlign压缩
+            zipAlignEnabled true
+            signingConfig signingConfigs.myConfig
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            versionNameSuffix rootProject.ext.app.versionNameSuffix
         }
         debug {
-            minifyEnabled false
-            zipAlignEnabled false
-            shrinkResources false
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.myConfig
+            versionNameSuffix rootProject.ext.app.versionNameSuffix
         }
     }
 
-    lintOptions { abortOnError false }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile deps.junit
     compile project(':commonLib')
     //ARouter
-    compile deps.arouter_api
-    annotationProcessor deps.arouter_compiler
-    compile deps.arouter_annotation
+    annotationProcessor rootProject.ext.dependencies.arouter_compiler
+    compile rootProject.ext.dependencies.arouter_annotation
     //v
-    compile deps.design
+    compile rootProject.ext.dependencies.design
     //utils
-    compile deps.photopicker
-    compile deps.slidemenulayout
-    compile deps.circleimageview
-}
-
-def static releaseTime() {
-    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
+    compile rootProject.ext.dependencies.photopicker
+    compile rootProject.ext.dependencies.slidemenulayout
+    compile rootProject.ext.dependencies.circleimageview
 }

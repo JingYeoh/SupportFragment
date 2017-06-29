@@ -2,54 +2,50 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.app.publishCode
+        versionName rootProject.ext.app.publishVersion
 
         dataBinding {
             enabled = true
         }
     }
     compileOptions {
-        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
-        targetCompatibility rootProject.ext.targetCompatibilityVersion
+        sourceCompatibility rootProject.ext.android.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.android.targetCompatibilityVersion
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions { abortOnError false }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 greendao {
-    targetGenDir 'src/main/java'
-    daoPackage 'com.jkb.commonlib.db.dao'
-    schemaVersion 1
+    targetGenDir rootProject.ext.db.targetGenDir
+    daoPackage rootProject.ext.db.daoPackage
+    schemaVersion rootProject.ext.db.schemaVersion
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile deps.appcompat_v7
-    testCompile deps.junit
     compile project(':supportFragment')
-    compile deps.arouter_api
+    compile rootProject.ext.dependencies.arouter_api
     //db
-    compile deps.greendao
+    compile rootProject.ext.dependencies.greendao
     //helper
-    compile deps.eventbus
+    compile rootProject.ext.dependencies.eventbus
     //net
-    compile deps.gson
-    compile deps.glide
+    compile rootProject.ext.dependencies.gson
+    compile rootProject.ext.dependencies.glide
 }

@@ -1,12 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+apply from: "config.gradle"
+
 buildscript {
     repositories {
         jcenter()
         mavenCentral() // add repository
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:2.3.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' //路由需要
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // GreenDao plugin
 
@@ -31,40 +33,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-ext {
-    minSdkVersion = 15
-    targetSdkVersion = 25
-    compileSdkVersion = 25
-    buildToolsVersion = "25.0.2"
-    sourceCompatibilityVersion = JavaVersion.VERSION_1_7
-    targetCompatibilityVersion = JavaVersion.VERSION_1_7
-}
-
-ext.deps = [
-        //Junit
-        junit             : 'junit:junit:4.12',
-        //v
-        appcompat_v7      : 'com.android.support:appcompat-v7:25.3.1',
-        support_v4        : 'com.android.support:support-v4:25.3.1',
-        design            : 'com.android.support:design:25.3.1',
-        //ARouter
-        arouter_api       : 'com.alibaba:arouter-api:1.2.1.1',
-        arouter_compiler  : 'com.alibaba:arouter-compiler:1.1.2.1',
-        arouter_annotation: 'com.alibaba:arouter-annotation:1.0.3',
-        //helper
-        imgsel            : 'com.yuyh.imgsel:library:1.3.2',
-        glide             : 'com.github.bumptech.glide:glide:3.7.0',
-        eventbus          : 'org.simple:androideventbus:1.0.5.1',
-        photopicker       : 'com.justkiddingbaby.support:photopicker:1.0.0',
-        slidemenulayout   : 'com.justkiddingbaby:slidemenu:1.0.0',
-        circleimageview   : 'de.hdodenhof:circleimageview:2.1.0',
-        //db
-        greendao          : 'org.greenrobot:greendao:3.2.2',
-        //net
-        retrofit          : 'com.squareup.retrofit2:retrofit:2.0.2',
-        converter_gson    : 'com.squareup.retrofit2:converter-gson:2.0.0-beta3',
-        adapter_rxjava    : 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4',
-        converter_scalars : 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4',
-        gson              : 'com.google.code.gson:gson:2.7'
-]
