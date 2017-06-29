@@ -20,6 +20,8 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.supportfragment.publishCode
         versionName rootProject.ext.supportfragment.publishVersion
+
+        multiDexEnabled true
     }
 
     compileOptions {

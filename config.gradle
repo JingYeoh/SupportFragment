@@ -24,7 +24,7 @@ ext {
     android = [
             minSdkVersion             : 12,
             targetSdkVersion          : 23,
-            compileSdkVersion         : 25,
+            compileSdkVersion         : 23,
             buildToolsVersion         : "25.0.0",
             sourceCompatibilityVersion: JavaVersion.VERSION_1_7,
             targetCompatibilityVersion: JavaVersion.VERSION_1_7
@@ -48,7 +48,7 @@ ext {
             glide             : 'com.github.bumptech.glide:glide:3.7.0',
             eventbus          : 'org.simple:androideventbus:1.0.5.1',
             photopicker       : 'com.justkiddingbaby.support:photopicker:1.0.0',
-            slidemenulayout   : 'com.justkiddingbaby:slidemenu:1.0.0',
+            slidemenulayout   : 'com.justkiddingbaby:slidemenu:1.0.1',
             circleimageview   : 'de.hdodenhof:circleimageview:2.1.0',
             gson              : 'com.google.code.gson:gson:2.7',
             //db

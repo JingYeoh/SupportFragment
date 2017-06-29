@@ -2,28 +2,23 @@ package com.jkb.commonlib.base.ui;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jkb.commonlib.base.ui.action.BaseAction;
 import com.jkb.commonlib.base.ui.action.BaseFragmentAction;
 import com.jkb.commonlib.base.ui.action.frame.IMVVMAction;
-import com.jkb.commonlib.helper.AndroidBug5497Workaround;
 import com.jkb.commonlib.ui.annotation.SupportWindow;
 import com.jkb.commonlib.ui.injection.SupportContentInjection;
 import com.jkb.commonlib.ui.injection.SupportWindowInjection;
 import com.jkb.support.ui.SupportFragment;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 /**
  * Fragment的基类
@@ -47,7 +42,7 @@ public abstract class BaseFragment<VM extends ViewDataBinding> extends SupportFr
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        LogUtils.d(TAG, "onCreateView");
+        SLogUtils.d(TAG, "onCreateView");
         initContentView();
         return rootView;
     }

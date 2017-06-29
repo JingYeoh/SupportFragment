@@ -3,7 +3,7 @@ package com.jkb.supportfragment.demo.entity.auth;
 import android.databinding.Bindable;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 import com.jkb.supportfragment.demo.BR;
 
 /**
@@ -38,7 +38,7 @@ public class VerCodeEntity extends BaseEntity {
     public void setVerCode(String verCode) {
         this.verCode = verCode;
         notifyPropertyChanged(BR.verCode);
-        LogUtils.d(this, "verCode=" + verCode);
+        SLogUtils.d(this, "verCode=" + verCode);
     }
 
     @Bindable

@@ -3,15 +3,10 @@ package com.jkb.supportfragment.demo.entity.auth;
 import android.databinding.Bindable;
 import android.databinding.BindingAdapter;
 import android.text.TextUtils;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
-import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.loader.ImageLoaderHelper;
-import com.jkb.commonlib.utils.StringUtils;
-import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.BR;
 import com.jkb.supportfragment.demo.R;
 

@@ -1,7 +1,7 @@
 package com.jkb.commonlib.exception.auth;
 
 
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 /**
  * 系统的异常类
@@ -12,7 +12,7 @@ import com.jkb.support.utils.LogUtils;
 public class AuthException extends Exception {
 
     public AuthException(String operation, String error) {
-        LogUtils.e(this.getClass(), String.format("the operation %s is not  illegal ," +
+        SLogUtils.e(this.getClass(), String.format("the operation %s is not  illegal ," +
                 " the error is %s ,please check your operation！", operation, error));
     }
 }

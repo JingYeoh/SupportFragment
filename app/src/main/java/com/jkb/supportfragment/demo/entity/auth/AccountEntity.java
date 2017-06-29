@@ -3,11 +3,9 @@ package com.jkb.supportfragment.demo.entity.auth;
 import android.databinding.Bindable;
 
 import com.jkb.commonlib.base.frame.BaseEntity;
-import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.BR;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 帐号的数据实体类

@@ -94,15 +94,6 @@ public class AppLauncher {
     }
 
     /**
-     * 启动图片选择器
-     */
-    public static SupportFragment launchPhotoSelector() {
-        return (SupportFragment) ARouter.getInstance()
-                .build(AppConfig.RouterPath.PHOTO_SELECTOR)
-                .navigation();
-    }
-
-    /**
      * 启动右滑菜单
      */
     public static SupportFragment launchSlideMenuRight() {

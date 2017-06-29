@@ -1,7 +1,13 @@
 # SupportFragment
 ## 简介
   这是一个Fragment封装库，解决Fragment在使用过程中遇到的常见问题，并封装了Fragment和Activity的基类，并针对Fragment常见使用场景封装了一些常用操作。
-帮助项目支持单Activity+多Fragment或者多Activity+多Fragment架构。
+帮助项目支持单Activity+多Fragment或者多Activity+多Fragment架构。  
+
+[![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
+<img src="https://img.shields.io/badge/license-Apache 2.0-green.svg?style=flat">
+[![SDK](https://img.shields.io/badge/API-12%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=11)
+![SupportFragment](https://api.bintray.com/packages/jkb/maven/supportfragment/images/download.svg)
+
 ### 功能介绍
 - [x] **完全解决同级Fragment重叠问题**  
 - [x] **为Fragment多层嵌套提供支持**  
@@ -17,7 +23,7 @@
 ## 最新版本
 模块|supportfragment
 ---|---
-最新版本|![Download](https://api.bintray.com/packages/jkb/maven/supportfragment/images/download.svg)
+最新版本|![SupportFragment](https://api.bintray.com/packages/jkb/maven/supportfragment/images/download.svg)
 
 ## 集成
 #### Maven集成
@@ -81,27 +87,27 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 ## 使用说明
 返回值|方法|说明|场景
 ---|---|---|---
-|int|[getFragmentContentId()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportActivity.java)|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity|
-|void|[startFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏getFragmentContentId()中显示的视图，并显示新的Fragment|Activity/Fragment|
-|void|[startFragmentForResult(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|和startFragment使用相似，支持返回值|Activity/Fragment|
-|void|[startFragmentForResult(SupportFragment,int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|和startFragment使用相似，支持返回值|Activity/Fragment|
-|void|[setFragmentResult(int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|设置Fragment的返回值|Activity/Fragment|
-|void|[onFragmentResult(int,int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|Fragment的返回值的回调|Activity/Fragment|
-|void|[showFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|在int位置显示Fragment，并保留该contentId中之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
-|void|[hideFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏Fragment的显示，用于Fragment多层嵌套|Activity/Fragment|
-|void|[replaceFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|替换int参数的Fragment并销毁之前的Fragment，用于Fragment多层嵌套|Activity/Fragment|
-|void|[showPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|显示栈顶的Fragment|Activity/Fragment|
-|void|[closeCurrentAndShowPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment并显示上级Fragment|Activity/Fragment|
-|void|[clearFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|清空栈中所有Fragment|Activity/Fragment|
-|void|[close()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment或者Activity|Activity/Fragment|
-|void|[closeFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭指定Fragment|Activity/Fragment|
-|void|[String getFragmentTAG()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回Fragment的TAG，可以重写，但不建议这样做，自定义可能会有重复的TAG，会发生相关异常|Fragment|
+int|[getFragmentContentId()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportActivity.java)|返回Fragment的根布局id，在startFragment()时作为显示区域|Activity
+void|[startFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏getFragmentContentId()中显示的视图，并显示新的Fragment|Activity/Fragment
+void|[startFragmentForResult(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|和startFragment使用相似，支持返回值|Activity/Fragment
+void|[startFragmentForResult(SupportFragment,int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|和startFragment使用相似，支持返回值|Activity/Fragment
+void|[setFragmentResult(int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|设置Fragment的返回值|Activity/Fragment
+void|[onFragmentResult(int,int,Bundle)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|Fragment的返回值的回调|Activity/Fragment
+void|[showFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|在int位置显示Fragment，并保留该contentId中之前的Fragment，用于Fragment多层嵌套|Activity/Fragment
+void|[hideFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|隐藏Fragment的显示，用于Fragment多层嵌套|Activity/Fragment
+void|[replaceFragment(SupportFragment,int)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|替换int参数的Fragment并销毁之前的Fragment，用于Fragment多层嵌套|Activity/Fragment
+void|[showPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|显示栈顶的Fragment|Activity/Fragment
+void|[closeCurrentAndShowPopFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment并显示上级Fragment|Activity/Fragment
+void|[clearFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|清空栈中所有Fragment|Activity/Fragment
+void|[close()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭当前Fragment或者Activity|Activity/Fragment
+void|[closeFragment(SupportFragment)](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportAction.java)|关闭指定Fragment|Activity/Fragment
+void|[String getFragmentTAG()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回Fragment的TAG，可以重写，但不建议这样做，自定义可能会有重复的TAG，会发生相关异常|Fragment
 
 上述的方法，有的被Activity支持，有的被Fragment支持，还有二者均支持的，根据自己的业务逻辑判断在何处使用什么方法，
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
-#### v1.1.5(2017/6/28)
+#### v1.1.5(2017/6/29)
 1、修复依赖supportFragment框架时allowBackup冲突问题。
 #### v1.1.4(2017/5/19)
 1、更改框架项目最小SDK版本为12

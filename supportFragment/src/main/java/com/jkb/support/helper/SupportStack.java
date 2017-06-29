@@ -1,6 +1,6 @@
 package com.jkb.support.helper;
 
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -136,7 +136,7 @@ public class SupportStack implements Cloneable, Serializable {
      */
     public void printStack() {
         for (String tag : mSupportStack) {
-            LogUtils.i(this.getClass(), "tag=" + tag);
+            SLogUtils.i(this.getClass(), "tag=" + tag);
         }
     }
 }

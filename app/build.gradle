@@ -25,6 +25,8 @@ android {
         /*jackOptions {
             enabled true
         }*/
+
+        multiDexEnabled true
     }
 
     compileOptions {
@@ -44,9 +46,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             //是否清理无用资源
-            shrinkResources true
+            shrinkResources false
             //是否启用zipAlign压缩
             zipAlignEnabled true
             signingConfig signingConfigs.myConfig
@@ -54,6 +56,8 @@ android {
             versionNameSuffix rootProject.ext.app.versionNameSuffix
         }
         debug {
+            minifyEnabled false
+            shrinkResources false
             signingConfig signingConfigs.myConfig
             versionNameSuffix rootProject.ext.app.versionNameSuffix
         }
@@ -72,7 +76,6 @@ dependencies {
     //v
     compile rootProject.ext.dependencies.design
     //utils
-    compile rootProject.ext.dependencies.photopicker
     compile rootProject.ext.dependencies.slidemenulayout
     compile rootProject.ext.dependencies.circleimageview
 }

@@ -1,13 +1,15 @@
 package com.jkb.supportfragment.demo;
 
-import android.app.Application;
+import android.content.Context;
 import android.os.Message;
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.jkb.commonlib.app.AppManager;
 import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.db.DbManager;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 import org.simple.eventbus.EventBus;
 import org.simple.eventbus.Subscriber;
@@ -19,10 +21,16 @@ import org.simple.eventbus.ThreadMode;
  * Created by yj on 2017/5/3.
  */
 
-public class SupportApplication extends Application {
+public class SupportApplication extends MultiDexApplication {
 
     /*是否初始化*/
     private boolean isInit = false;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+    }
 
     @Override
     public void onCreate() {
@@ -36,7 +44,7 @@ public class SupportApplication extends Application {
     @Subscriber(mode = ThreadMode.ASYNC, tag = AppConfig.EventBusTAG.APP_INIT)
     public void initApp(Message message) {
         if (isInit) return;
-        LogUtils.isAllowToPrint = BuildConfig.DEBUG;//是否允许打印Log
+        SLogUtils.isAllowToPrint = BuildConfig.DEBUG;//是否允许打印Log
         if (BuildConfig.DEBUG) {
             ARouter.openLog();
             ARouter.openDebug();

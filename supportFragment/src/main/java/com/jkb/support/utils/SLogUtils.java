@@ -7,7 +7,7 @@ import android.util.Log;
  * Created by JustKiddingBaby on 2016/10/18.
  */
 
-public class LogUtils {
+public class SLogUtils {
 
     public static boolean isAllowToPrint = true;
 

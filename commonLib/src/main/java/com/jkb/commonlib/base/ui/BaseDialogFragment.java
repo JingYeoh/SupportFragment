@@ -15,7 +15,6 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -23,7 +22,6 @@ import android.widget.Toast;
 import com.jkb.commonlib.R;
 import com.jkb.commonlib.base.ui.action.BaseDialogAction;
 import com.jkb.commonlib.base.ui.action.frame.IMVVMAction;
-import com.jkb.support.utils.LogUtils;
 
 /**
  * DialogFragment的基类

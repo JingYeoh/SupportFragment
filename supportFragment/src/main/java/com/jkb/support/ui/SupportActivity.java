@@ -18,7 +18,7 @@ import com.jkb.support.helper.SupportManager;
 import com.jkb.support.helper.SupportStack;
 import com.jkb.support.ui.action.ISupportAction;
 import com.jkb.support.ui.action.ISupportActivity;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -96,7 +96,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
 
     @Override
     public final void startFragment(@NonNull SupportFragment fragment) {
-        LogUtils.i(TAG, "startFragment--->fragment=" + fragment.getClass().getSimpleName());
+        SLogUtils.i(TAG, "startFragment--->fragment=" + fragment.getClass().getSimpleName());
         if (mSupportStack.push(fragment.getFragmentTAG(), getFragmentContentId())) {
             commitFragmentTransaction(SupportManager.beginTransaction(mFm).add(fragment, getFragmentContentId())
                     .hideAll().show(fragment));
@@ -268,10 +268,10 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     private void commitFragmentTransaction(@NonNull SupportManager.Builder execute) {
         if (!isResumed) {
             mFragmentTransactions.add(execute);
-            LogUtils.w(TAG, "commitFragmentTransaction------>Activity is not resumed,this commit is delayed");
+            SLogUtils.w(TAG, "commitFragmentTransaction------>Activity is not resumed,this commit is delayed");
             return;
         }
-        LogUtils.i(TAG, "commitFragmentTransaction------>This transaction will be commit");
+        SLogUtils.i(TAG, "commitFragmentTransaction------>This transaction will be commit");
         execute.commit();
     }
 }

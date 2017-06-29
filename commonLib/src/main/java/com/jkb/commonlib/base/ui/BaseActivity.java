@@ -1,15 +1,13 @@
 package com.jkb.commonlib.base.ui;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.jkb.commonlib.base.ui.action.BaseAction;
 import com.jkb.support.ui.SupportActivity;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 /**
  * 基类的Activity
@@ -24,7 +22,7 @@ public abstract class BaseActivity extends SupportActivity implements BaseAction
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LogUtils.d(TAG, "onCreate");
+        SLogUtils.d(TAG, "onCreate");
         context = this;
         applicationContext = getApplicationContext();
         setContentView(getRootViewId());

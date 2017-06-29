@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jkb.commonlib.base.ui.BaseDialogFragment;
 import com.jkb.commonlib.config.AppConfig;
-import com.jkb.support.utils.LogUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.databinding.FrgAuthAreaCodeBinding;
 import com.jkb.supportfragment.demo.entity.auth.AreaCodeEntity;

@@ -15,7 +15,7 @@ import com.jkb.commonlib.config.AppConfig;
 import com.jkb.commonlib.helper.AppLauncher;
 import com.jkb.commonlib.ui.annotation.SupportContent;
 import com.jkb.commonlib.ui.annotation.SupportWindow;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 import com.jkb.supportfragment.demo.R;
 import com.jkb.supportfragment.demo.business.auth.register.contract.RegisterContract;
 import com.jkb.supportfragment.demo.business.auth.register.presenter.RegisterPresenter;
@@ -140,7 +140,6 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
      * 显示照片选择器
      */
     private void launchPhotoPicker() {
-        startFragmentForResult(AppLauncher.launchPhotoSelector(), REQUEST_CORE_PHOTO_PICKER);
     }
 
     /**
@@ -166,7 +165,7 @@ public class RegisterFragment extends BaseFrameFragment<RegisterPresenter, FrgAu
         super.onFragmentResult(requestCode, resultCode, bundle);
         if (resultCode != RESULT_OK_FRAGMENT) return;
         String path = bundle.getString(AppConfig.KeyBundle.PHOTO_PATH);
-        LogUtils.d(this, "path=" + path);
+        SLogUtils.d(this, "path=" + path);
         getBinding().getRegister().setAvatarUrl(path);
     }
 }

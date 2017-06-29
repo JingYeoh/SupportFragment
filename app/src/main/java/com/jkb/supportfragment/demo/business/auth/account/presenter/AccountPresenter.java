@@ -2,7 +2,7 @@ package com.jkb.supportfragment.demo.business.auth.account.presenter;
 
 import com.jkb.commonlib.base.frame.BaseModel;
 import com.jkb.commonlib.utils.PatternUtils;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 import com.jkb.supportfragment.demo.business.auth.account.contract.AccountContract;
 import com.jkb.supportfragment.demo.business.auth.account.model.AccountDataRepertory;
 import com.jkb.supportfragment.demo.entity.auth.AccountEntity;
@@ -51,7 +51,7 @@ public class AccountPresenter implements AccountContract.Presenter, BaseModel.Lo
 
     @Override
     public void onContinueClick() {
-        LogUtils.d(this, accountEntity.getAccount());
+        SLogUtils.d(this, accountEntity.getAccount());
         if (!PatternUtils.isMatchPhoneNumber(accountEntity.getAccount())) {
             mView.showShortToast("请输入正确手机号");
             return;

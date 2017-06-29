@@ -18,7 +18,7 @@ import com.jkb.support.helper.SupportManager;
 import com.jkb.support.helper.SupportStack;
 import com.jkb.support.ui.action.ISupportAction;
 import com.jkb.support.ui.action.ISupportFragment;
-import com.jkb.support.utils.LogUtils;
+import com.jkb.support.utils.SLogUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -142,7 +142,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
 
     @Override
     public void onBackPressed() {
-        LogUtils.d(TAG, "onBackPressed");
+        SLogUtils.d(TAG, "onBackPressed");
         String popFragmentTag = mSupportStack.peek();
         if (TextUtils.isEmpty(popFragmentTag)) {
             closeCurrentAndShowPopFragment();
@@ -320,10 +320,10 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     private void commitFragmentTransaction(@NonNull SupportManager.Builder execute) {
         if (!isResumed()) {
             mFragmentTransactions.add(execute);
-            LogUtils.w(TAG, "commitFragmentTransaction------>Activity is not resumed,this commit is delayed");
+            SLogUtils.w(TAG, "commitFragmentTransaction------>Activity is not resumed,this commit is delayed");
             return;
         }
-        LogUtils.i(TAG, "commitFragmentTransaction------>This transaction will be commit");
+        SLogUtils.i(TAG, "commitFragmentTransaction------>This transaction will be commit");
         execute.commit();
     }
 
