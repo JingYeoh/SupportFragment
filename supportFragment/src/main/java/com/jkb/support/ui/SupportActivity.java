@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 
 import com.jkb.support.expecption.HasBeenAddedException;
 import com.jkb.support.expecption.NotAddedException;
@@ -253,6 +254,26 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         } else {
             throwException(new NotSupportException(popFragmentTag));
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        String popFragmentTag = mSupportStack.peek();
+        //栈为空时退出Activity
+        if (TextUtils.isEmpty(popFragmentTag)) {
+            close();
+            return super.onKeyDown(keyCode, event);
+        }
+        Fragment popFragment = SupportManager.getFragment(mFm, popFragmentTag);
+        if (popFragment == null) {//找不到Fragment的时候抛出异常
+            throwException(new NotFoundException(popFragmentTag));
+        }
+        if (popFragment instanceof SupportFragment) {
+            ((SupportFragment) popFragment).onKeyDown(keyCode, event);//委托给栈顶的Fragment
+        } else {
+            throwException(new NotSupportException(popFragmentTag));
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     /**
