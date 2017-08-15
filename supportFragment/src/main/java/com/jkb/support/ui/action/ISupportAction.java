@@ -31,6 +31,11 @@ public interface ISupportAction {
     String KEY_BUNDLE_FRAGMENT_REQUEST_CODE = "key.bundle.fragment.requestCode";
 
     /**
+     * 是否处于Resume状态.
+     */
+    boolean isResumed();
+
+    /**
      * 打开新页面
      * Action:隐藏该Activity的所有Fragment
      */

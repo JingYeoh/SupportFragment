@@ -108,6 +108,8 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
+#### v1.1.7(2017/8/15)
+1、为SupportActivity/SupportFragment添加isResumed方法支持。  
 #### v1.1.6(2017/8/10)
 1、为Fragment添加`onKeyDown(int keyCode, KeyEvent event)`方法的支持。  
 #### v1.1.5(2017/6/29)

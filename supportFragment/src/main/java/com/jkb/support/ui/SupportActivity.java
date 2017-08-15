@@ -96,6 +96,11 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
+    public boolean isResumed() {
+        return isResumed;
+    }
+
+    @Override
     public final void startFragment(@NonNull SupportFragment fragment) {
         SLogUtils.i(TAG, "startFragment--->fragment=" + fragment.getClass().getSimpleName());
         if (mSupportStack.push(fragment.getFragmentTAG(), getFragmentContentId())) {
