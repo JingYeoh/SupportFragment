@@ -109,7 +109,7 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 
 ## 发布历史
 #### v1.1.7(2017/8/15)
-1、为SupportActivity/SupportFragment添加isResumed方法支持。  
+1、为SupportActivity/SupportFragment添加isSupportResumed方法支持,判断宿主Activity是否处于Resume状态。  
 #### v1.1.6(2017/8/10)
 1、为Fragment添加`onKeyDown(int keyCode, KeyEvent event)`方法的支持。  
 #### v1.1.5(2017/6/29)

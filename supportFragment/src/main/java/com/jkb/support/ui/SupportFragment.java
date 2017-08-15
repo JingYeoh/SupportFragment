@@ -194,6 +194,11 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     }
 
     @Override
+    public boolean isSupportResumed() {
+        return isResumed();
+    }
+
+    @Override
     public final void startFragment(@NonNull SupportFragment fragment) {
         mActivity.startFragment(fragment);
     }

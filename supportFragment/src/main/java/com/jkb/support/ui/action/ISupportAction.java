@@ -33,7 +33,7 @@ public interface ISupportAction {
     /**
      * 是否处于Resume状态.
      */
-    boolean isResumed();
+    boolean isSupportResumed();
 
     /**
      * 打开新页面

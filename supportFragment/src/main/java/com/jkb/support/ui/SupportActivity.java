@@ -96,7 +96,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
-    public boolean isResumed() {
+    public boolean isSupportResumed() {
         return isResumed;
     }
 

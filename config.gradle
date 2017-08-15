@@ -11,8 +11,8 @@ ext {
     ]
 
     supportfragment = [
-            publishCode   : 11,
-            publishVersion: "1.1.7",
+            publishCode   : 12,
+            publishVersion: "1.1.8",
 
             userOrg       : 'jkb',
             groupId       : 'com.justkiddingbaby',
