@@ -248,6 +248,15 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
+    public SupportFragment getPopSupportFragment() {
+        String popFragmentTag = mSupportStack.peek();
+        if (TextUtils.isEmpty(popFragmentTag)) return null;
+        Fragment popFragment = SupportManager.getFragment(mFm, popFragmentTag);
+        if (popFragment != null && popFragment instanceof SupportFragment) return (SupportFragment) popFragment;
+        return null;
+    }
+
+    @Override
     public void onBackPressed() {
         String popFragmentTag = mSupportStack.peek();
         //栈为空时退出Activity

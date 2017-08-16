@@ -345,6 +345,15 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         return !TextUtils.isEmpty(mSupportStack.peek());
     }
 
+    @Override
+    public SupportFragment getPopSupportFragment() {
+        String popFragmentTag = mSupportStack.peek();
+        if (TextUtils.isEmpty(popFragmentTag)) return null;
+        Fragment popFragment = SupportManager.getFragment(mChildFm, popFragmentTag);
+        if (popFragment != null && popFragment instanceof SupportFragment) return (SupportFragment) popFragment;
+        return null;
+    }
+
     /**
      * 提交事物
      */

@@ -131,4 +131,11 @@ public interface ISupportAction {
      * @return true表示该Fragment为最内层Fragment, 否则该Fragment还有子Fragment.
      */
     boolean isContainChildFragment();
+
+    /**
+     * 返回栈顶的Fragment
+     *
+     * @return 无则返回null
+     */
+    SupportFragment getPopSupportFragment();
 }
