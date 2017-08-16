@@ -152,8 +152,8 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
 
     @Override
     public void close() {
-        clearFragments();
         finish();
+        clearFragments();
     }
 
     @Override
@@ -237,7 +237,6 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     @Override
     public final void closeCurrentAndShowPopFragment() {
         close();
-        showPopFragment();
     }
 
     @Override
