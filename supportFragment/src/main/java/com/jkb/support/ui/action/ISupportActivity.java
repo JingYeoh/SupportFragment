@@ -14,4 +14,13 @@ public interface ISupportActivity {
      */
     @IdRes
     int getFragmentContentId();
+
+    /**
+     * 在finish之前是否隐藏最后一个Fragment.
+     *
+     * @return true表示Activity会一直会退到Activity本身的View然后进行finish操作
+     * false表示Activity会回退到栈内只剩一个Fragment,然后再按onBackPressed然后直接finish.
+     * 默认为false.
+     */
+    boolean isHideLashFragmentBeforeFinish();
 }

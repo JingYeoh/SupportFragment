@@ -29,6 +29,13 @@ public class SupportStack implements Cloneable, Serializable {
     }
 
     /**
+     * 返回Support栈
+     */
+    public Stack<String> getSupportStack() {
+        return mSupportStack;
+    }
+
+    /**
      * fragmentTag入栈
      *
      * @param fragmentTag Fragment的tag

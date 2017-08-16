@@ -76,7 +76,7 @@ public class OnBoardingFragment extends BaseFragment implements View.OnClickList
      */
     private void launchApp() {
         startFragment(AppLauncher.launchAccount());
-        close();
+//        close();
     }
 
     /**

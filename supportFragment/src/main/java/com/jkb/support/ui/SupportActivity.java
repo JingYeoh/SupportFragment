@@ -219,8 +219,12 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         //显示栈顶的视图
         String popFragmentTag = mSupportStack.peek();
         if (TextUtils.isEmpty(popFragmentTag)) {//此处只会被子Fragment调用
-            close();
-            return;
+            if (isHideLashFragmentBeforeFinish()) {
+                return;
+            } else {
+                close();
+                return;
+            }
         }
         Fragment popFragment = SupportManager.getFragment(mFm, popFragmentTag);
         if (popFragment != null) {
@@ -257,7 +261,18 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
+    public boolean isHideLashFragmentBeforeFinish() {
+        return false;
+    }
+
+    @Override
     public void onBackPressed() {
+        if (!isHideLashFragmentBeforeFinish()) {
+            if (mSupportStack.getSupportStack().size() <= 1) {
+                close();
+                return;
+            }
+        }
         String popFragmentTag = mSupportStack.peek();
         //栈为空时退出Activity
         if (TextUtils.isEmpty(popFragmentTag)) {
