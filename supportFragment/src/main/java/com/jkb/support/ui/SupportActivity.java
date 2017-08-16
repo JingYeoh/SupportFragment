@@ -243,6 +243,11 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     }
 
     @Override
+    public boolean isContainChildFragment() {
+        return !TextUtils.isEmpty(mSupportStack.peek());
+    }
+
+    @Override
     public void onBackPressed() {
         String popFragmentTag = mSupportStack.peek();
         //栈为空时退出Activity
@@ -263,7 +268,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        String popFragmentTag = mSupportStack.peek();
+      /*  String popFragmentTag = mSupportStack.peek();
         //栈为空时退出Activity
         if (TextUtils.isEmpty(popFragmentTag)) {
             close();
@@ -277,7 +282,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
             ((SupportFragment) popFragment).onKeyDown(keyCode, event);//委托给栈顶的Fragment
         } else {
             throwException(new NotSupportException(popFragmentTag));
-        }
+        }*/
         return super.onKeyDown(keyCode, event);
     }
 

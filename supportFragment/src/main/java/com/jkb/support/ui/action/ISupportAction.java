@@ -124,4 +124,11 @@ public interface ISupportAction {
      * 清空栈中的所有Fragment
      */
     void clearFragments();
+
+    /**
+     * 是否包含子Fragment
+     *
+     * @return true表示该Fragment为最内层Fragment, 否则该Fragment还有子Fragment.
+     */
+    boolean isContainChildFragment();
 }

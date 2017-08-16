@@ -340,6 +340,11 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         commitFragmentTransaction(SupportManager.beginTransaction(mChildFm).removeAll());
     }
 
+    @Override
+    public boolean isContainChildFragment() {
+        return !TextUtils.isEmpty(mSupportStack.peek());
+    }
+
     /**
      * 提交事物
      */
