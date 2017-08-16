@@ -105,13 +105,13 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 |String|[getFragmentTAG()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回Fragment的TAG，可以重写，但不建议这样做，自定义可能会有重复的TAG，会发生相关异常|Fragment|
 |boolean|[isContainChildFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回当前Activity/Fragment是否有子Fragment|Activity/Fragment|
 |SupportFragment|[getPopSupportFragment()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|返回栈顶的SupportFragment,否则返回null|Activity/Fragment|
-|boolean|[isHideLashFragmentBeforeFinish()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|Activity在finish之前是否显示最上层的Fragment|Activity|
+|boolean|[isHideLashFragmentBeforeFinish()](/supportFragment/src/main/java/com/jkb/support/ui/action/ISupportFragment.java)|Activity在finish之前是否显示最上层的Fragment,默认为false|Activity|
 
 > 上述的方法，有的被Activity支持，有的被Fragment支持，还有二者均支持的，根据自己的业务逻辑判断在何处使用什么方法，
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
-#### v1.1.11(2017/8/16)
+#### v1.1.13(2017/8/16)
 1、添加isContainChildFragment()方法。  
 2、去除SupportFragment的onKeyDown方法支持。  
 3、添加getPopSupportFragment()方法。  

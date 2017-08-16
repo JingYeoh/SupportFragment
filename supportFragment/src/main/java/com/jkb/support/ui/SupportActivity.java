@@ -92,6 +92,7 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        clearFragments();
         mSupportStack = null;
     }
 
@@ -153,7 +154,6 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
     @Override
     public void close() {
         finish();
-        clearFragments();
     }
 
     @Override
