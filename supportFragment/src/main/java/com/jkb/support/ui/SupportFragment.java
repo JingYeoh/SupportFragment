@@ -144,6 +144,12 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     @Override
     public void onBackPressed() {
         SLogUtils.d(TAG, "onBackPressed");
+        if (!mActivity.isHideLashFragmentBeforeFinish()) {
+            if (mSupportStack.getSupportStack().size() <= 1) {
+                mActivity.onBackPressed();
+                return;
+            }
+        }
         String popFragmentTag = mSupportStack.peek();
         if (TextUtils.isEmpty(popFragmentTag)) {
             closeCurrentAndShowPopFragment();

@@ -111,13 +111,15 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
+#### v1.1.14(2017/8/4)
+1、修复Fragment调用onBackPressed()方法时,栈顶的Fragment在`isHideLashFragmentBeforeFinish()`返回为false的时候出栈。  
 #### v1.1.13(2017/8/16)
-1、添加isContainChildFragment()方法。  
-2、去除SupportFragment的onKeyDown方法支持。  
-3、添加getPopSupportFragment()方法。  
-4、添加isHideLashFragmentBeforeFinish()方法。  
+1、添加`isContainChildFragment()`方法。  
+2、去除`SupportFragment的onKeyDown`方法支持。  
+3、添加`getPopSupportFragment()`方法。  
+4、添加`isHideLashFragmentBeforeFinish()`方法。  
 #### v1.1.7(2017/8/15)
-1、为SupportActivity/SupportFragment添加isSupportResumed方法支持,判断宿主Activity是否处于Resume状态。  
+1、为SupportActivity/SupportFragment添加`isSupportResumed()`方法支持,判断宿主Activity是否处于Resume状态。  
 #### v1.1.6(2017/8/10)
 1、为Fragment添加`onKeyDown(int keyCode, KeyEvent event)`方法的支持。  
 #### v1.1.5(2017/6/29)
