@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 
+import com.jkb.support.helper.SupportStack;
 import com.jkb.support.ui.SupportFragment;
 
 /**
@@ -138,4 +139,10 @@ public interface ISupportAction {
      * @return 无则返回null
      */
     SupportFragment getPopSupportFragment();
+
+    /**
+     * 返回Support框架的栈
+     */
+    @NonNull
+    SupportStack getSupportStack();
 }

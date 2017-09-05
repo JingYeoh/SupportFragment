@@ -264,6 +264,12 @@ public abstract class SupportActivity extends AppCompatActivity implements ISupp
         return false;
     }
 
+    @NonNull
+    @Override
+    public SupportStack getSupportStack() {
+        return mSupportStack;
+    }
+
     @Override
     public void onBackPressed() {
         if (!isHideLashFragmentBeforeFinish()) {

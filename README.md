@@ -111,7 +111,7 @@ Fragment中使用时和正常使用Fragment时候一样，只是父类改为了S
 只要处理好Fragment上下级之间的关系，Fragment还是比较简单的。
 
 ## 发布历史
-#### v1.1.14(2017/8/4)
+#### v1.1.15(2017/8/5)
 1、修复Fragment调用onBackPressed()方法时,栈顶的Fragment在`isHideLashFragmentBeforeFinish()`返回为false的时候出栈。  
 #### v1.1.13(2017/8/16)
 1、添加`isContainChildFragment()`方法。  

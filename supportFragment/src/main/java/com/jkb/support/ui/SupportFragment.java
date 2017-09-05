@@ -145,7 +145,7 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
     public void onBackPressed() {
         SLogUtils.d(TAG, "onBackPressed");
         if (!mActivity.isHideLashFragmentBeforeFinish()) {
-            if (mSupportStack.getSupportStack().size() <= 1) {
+            if (mActivity.getSupportStack().getSupportStack().size() <= 1) {
                 mActivity.onBackPressed();
                 return;
             }
@@ -358,6 +358,12 @@ public class SupportFragment extends Fragment implements ISupportFragment, ISupp
         Fragment popFragment = SupportManager.getFragment(mChildFm, popFragmentTag);
         if (popFragment != null && popFragment instanceof SupportFragment) return (SupportFragment) popFragment;
         return null;
+    }
+
+    @NonNull
+    @Override
+    public SupportStack getSupportStack() {
+        return mSupportStack;
     }
 
     /**
