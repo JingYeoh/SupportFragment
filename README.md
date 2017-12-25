@@ -1,4 +1,5 @@
 # SupportFragment
+**该项目已经停止维护，请移至[FragmentRigger](https://github.com/JustKiddingBaby/FragmentRigger)，这个一个基于AOP设计的Fragment框架。**
 ## 简介
 >  这是一个Fragment封装库，解决Fragment在使用过程中遇到的常见问题，并封装了Fragment和Activity的基类，并针对Fragment常见使用场景封装了一些常用操作。
 帮助项目支持单Activity+多Fragment或者多Activity+多Fragment架构。  
